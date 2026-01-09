@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;cuentaBanco&apos; to &apos;t3p5_CuentaBanco&apos;&#x0D;&#x0A;- Original project: &apos;T4Herencia&apos;&#x0D;&#x0A;- Original element: &apos;T4Herencia/src/cuentaBanco&apos;&#x0D;&#x0A;- Renamed element: &apos;T4Herencia/src/t3p5_CuentaBanco&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;cuentaBanco&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;cuentaBanco" name="t3p5_CuentaBanco" qualified="false" references="true" stamp="1767989530955" textual="false" version="1.0"/>
+</session>
