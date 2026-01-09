@@ -12,7 +12,9 @@ public class CuentaBanco {
 	
 	public boolean bloqueada;
 	
-	Random rand=new Random();
+	public static final int numeroMaximoCuentas=1000;
+	
+	public static int numeroCuenta=1;	
 	
 	//Constructores
 	public CuentaBanco(int numCuenta, String titularCuenta) {
@@ -22,9 +24,11 @@ public class CuentaBanco {
 		this.saldo=0.0;
 	}
 	
-	
-	public CuentaBanco(String titularCuenta) { //Este constructor genera el numero de cuenta de forma aleatoria
-		this.numero=""+generarNumeroCuenta();
+	public CuentaBanco(String titularCuenta) { //Este constructor genera el numero de cuenta automaticamente sin repetir
+		if (numeroCuenta>numeroMaximoCuentas) {
+			System.out.println("No se pueden crear mas cuentas, se ha alcanzado el maximo.");
+		}
+		this.numero=""+numeroCuenta++;
 		this.titular=titularCuenta;
 		this.bloqueada=false;
 		this.saldo=0.0;
@@ -98,9 +102,5 @@ public class CuentaBanco {
 		System.out.println("El saldo de la cuenta es "+this.saldo);
 		System.out.println("¿Esta bloqueada?"+this.bloqueada);
 		System.out.println("----------------------------------------------------------");
-	}
-	
-	public int[] generarNumeroCuenta() {
-		
 	}
 }
