@@ -6,7 +6,6 @@ public class PruebaCuentaBanco {
 		
 		CuentaBanco cb2 = new CuentaBanco("Gonzalo");
 		
-		//El problema pedia que consultarSaldo solo devolviese un numero, necesita un syso para imprimirlo
 		System.out.println("El saldo de la cuenta es: "+cb.consultarSaldo());
 		
 		
