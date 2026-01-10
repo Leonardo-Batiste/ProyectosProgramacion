@@ -30,10 +30,15 @@ public class CuentaBanco {
 	public static final int numeroMaximoCuentas = 1000;
 
 	/**
-	 * @param El numero en el que empieza las cuentas
+	 * El numero en el que empieza las cuentas
 	 */
 	public static int numeroActualCuenta = 1;
 
+	/**
+	 * Cada
+	 */
+	public static double SumaSaldosCuentas=0;
+	
 	/**
 	 * Constructores de la clase CuentaBanco
 	 */
@@ -71,6 +76,25 @@ public class CuentaBanco {
 		this.bloqueada = false;
 		this.saldo = 0.0;
 	}
+	
+	/**
+	 * Constructor que recibe: Numero de cuenta, nombre titular, saldo inicial, y estado de bloqueo
+	 * @param numCuenta Numero de cuenta asignado manualmente
+	 * @param titularCuenta Nombre del titular de la cuenta a crear
+	 * @param saldoInicial El saldo con el que empieza esta cuenta
+	 * @param bloqueadoInicial Si la cuenta esta bloqueada(true) o no(false) en el momento de crearla
+	 */
+	public CuentaBanco(int numCuenta, String titularCuenta, double saldoInicial, boolean bloqueadoInicial) {
+		if (numCuenta > numeroMaximoCuentas) {
+			System.out.println("No es posible asignar ese numero de cuenta a una nueva cuenta, prueba que no esta repetido, o si se ha llegado al maximo.");
+		}
+		this.numero = "" + numCuenta;
+		this.titular = titularCuenta;
+		this.bloqueada = bloqueadoInicial;
+		
+		this.saldo = saldoInicial;
+		this.SumaSaldosCuentas+=saldoInicial;
+	}
 
 	/**
 	 * Metodos de la clase CuentaBanco
@@ -84,11 +108,11 @@ public class CuentaBanco {
 	public double consultarSaldo() {
 		return this.saldo;
 	}
-
 	/**
 	 * Ingresa X dinero a this.saldo si no esta bloqueada la cuenta El problema
 	 * pedia que consultarSaldo solo devolviese un double, necesita un syso para
-	 * imprimirlo
+	 * imprimirlo.
+	 * Se añade la cantidad ingresada a la variable SumaSaldosCuentas para saber la cantidad total de saldo entre todas las cuentas
 	 * 
 	 * @param cantidad Cantidad que se añade
 	 */
@@ -98,14 +122,15 @@ public class CuentaBanco {
 		} else {
 			System.out.println("Has ingresado $" + cantidad + " de la cuenta nº " + numero);
 			this.saldo += cantidad;
+			this.SumaSaldosCuentas+=cantidad;
 		}
 
 	}
 
 	/**
 	 * Resta dinero de this.saldo, en caso de que no este bloqueada, y tengas
-	 * suficiente saldo para retirar esa cantidad
-	 * 
+	 * suficiente saldo para retirar esa cantidad.
+	 * * Se resta la cantidad ingresada a la variable SumaSaldosCuentas para saber la cantidad total de saldo entre todas las cuentas
 	 * @param cantidad Cantidad a retirar
 	 */
 	public void retirarDinero(double cantidad) {
@@ -115,6 +140,7 @@ public class CuentaBanco {
 			System.out.println("Error.Estas intentando retirar mas dinero del que hay disponible en la cuenta.");
 		} else {
 			this.saldo -= cantidad;
+			this.SumaSaldosCuentas-=cantidad;
 			System.out.println("Has retirado $" + cantidad + " de la cuenta nº " + this.numero);
 		}
 	}
@@ -168,5 +194,13 @@ public class CuentaBanco {
 		}
 
 		System.out.println("----------------------------------------------------------\n");
+	}
+	
+	public static int getNumeroTotalCuentas() {
+		return numeroActualCuenta;
+	}
+
+	public static double getSumaSaldosCuentas() {
+		return SumaSaldosCuentas;
 	}
 }
