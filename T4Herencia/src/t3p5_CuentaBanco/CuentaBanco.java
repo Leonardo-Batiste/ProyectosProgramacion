@@ -32,7 +32,7 @@ public class CuentaBanco {
 	/**
 	 * El numero en el que empieza las cuentas
 	 */
-	public static int numeroActualCuenta = 1;
+	public static int numeroActualCuenta = 0;
 
 	/**
 	 * Cada
@@ -71,7 +71,7 @@ public class CuentaBanco {
 		if (numeroActualCuenta > numeroMaximoCuentas) {
 			System.out.println("No se pueden crear mas cuentas, se ha alcanzado el maximo.");
 		}
-		this.numero = "" + numeroActualCuenta++;
+		this.numero = "" + ++numeroActualCuenta;
 		this.titular = titularCuenta;
 		this.bloqueada = false;
 		this.saldo = 0.0;
@@ -79,21 +79,22 @@ public class CuentaBanco {
 	
 	/**
 	 * Constructor que recibe: Numero de cuenta, nombre titular, saldo inicial, y estado de bloqueo
-	 * @param numCuenta Numero de cuenta asignado manualmente
+	 * @param numCuenta Numero de cuenta asignado automaticamente
 	 * @param titularCuenta Nombre del titular de la cuenta a crear
 	 * @param saldoInicial El saldo con el que empieza esta cuenta
 	 * @param bloqueadoInicial Si la cuenta esta bloqueada(true) o no(false) en el momento de crearla
 	 */
-	public CuentaBanco(int numCuenta, String titularCuenta, double saldoInicial, boolean bloqueadoInicial) {
-		if (numCuenta > numeroMaximoCuentas) {
+	public CuentaBanco(String titularCuenta, double saldoInicial, boolean bloqueadoInicial) {
+		if (numeroActualCuenta > numeroMaximoCuentas) {
 			System.out.println("No es posible asignar ese numero de cuenta a una nueva cuenta, prueba que no esta repetido, o si se ha llegado al maximo.");
 		}
-		this.numero = "" + numCuenta;
-		this.titular = titularCuenta;
-		this.bloqueada = bloqueadoInicial;
-		
-		this.saldo = saldoInicial;
-		this.SumaSaldosCuentas+=saldoInicial;
+		else {
+			this.numero = "" + ++numeroActualCuenta;
+			this.titular = titularCuenta;
+			this.bloqueada = bloqueadoInicial;
+			this.saldo = saldoInicial;
+			this.SumaSaldosCuentas+=saldoInicial;
+		}
 	}
 
 	/**
