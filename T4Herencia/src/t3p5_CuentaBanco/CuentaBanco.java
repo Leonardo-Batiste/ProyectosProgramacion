@@ -35,7 +35,7 @@ public class CuentaBanco {
 	public static int numeroActualCuenta = 0;
 
 	/**
-	 * Cada
+	 * Propiedad static que va añadiendo/restando de cada cuenta para saber el saldo total.
 	 */
 	public static double SumaSaldosCuentas=0;
 	
