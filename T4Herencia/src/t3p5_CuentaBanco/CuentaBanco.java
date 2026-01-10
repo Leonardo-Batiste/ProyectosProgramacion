@@ -3,8 +3,7 @@ package t3p5_CuentaBanco;
 import java.util.*;
 
 /**
- * Cuenta bancaria con operaciones basicas
- * !Falta hacer las siguientes versions
+ * Cuenta bancaria con operaciones basicas !Falta hacer las siguientes versions
  */
 public class CuentaBanco {
 	/**
@@ -87,7 +86,9 @@ public class CuentaBanco {
 	}
 
 	/**
-	 * Ingresa X dinero a this.saldo si no esta bloqueada la cuenta
+	 * Ingresa X dinero a this.saldo si no esta bloqueada la cuenta El problema
+	 * pedia que consultarSaldo solo devolviese un double, necesita un syso para
+	 * imprimirlo
 	 * 
 	 * @param cantidad Cantidad que se añade
 	 */
