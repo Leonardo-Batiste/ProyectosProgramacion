@@ -4,6 +4,10 @@ import java.util.*;
 
 /**
  * Cuenta bancaria con operaciones basicas !Falta hacer las siguientes versions
+ * Este codigo tiene un problema, es que como no se lleva a cuenta las cuentas creadas, y como hay 2 constructores, 
+ * uno que asigna el numero de cuenta de forma automatica y otro de forma manual. Esto hace que, si se asigna un numero de forma manual (numCuenta), mayor al
+ * que se esta llevando el recuento (numeroActualCuenta), cuando se llegue de forma automatica a este, no se puede revisar que se haya creado o no.
+ * Pero si es al reves si que se tiene en cuenta. Asi que solo usar de forma manual en casos especificos.
  */
 public class CuentaBanco {
 	/**
@@ -45,7 +49,8 @@ public class CuentaBanco {
 
 	/**
 	 * Constructor que crea el objeto con el numero de cuenta y el titular
-	 * introducidos manualmente
+	 * introducidos manualmente. Tambien comprueba que este disponible ese numero, sino pone el siguiente disponible.
+	 * Cuidado con el error explicado de arriba del codigo!
 	 * 
 	 * @param numCuenta     Numero de cuenta introducida manualmente
 	 * @param titularCuenta El nombre del titular de la cuenta bloqueada = Las
@@ -53,7 +58,15 @@ public class CuentaBanco {
 	 *                      cuentas empiezan con $0 de saldo
 	 */
 	public CuentaBanco(int numCuenta, String titularCuenta) {
-		this.numero = "" + numCuenta;
+		
+		if (numCuenta<=numeroActualCuenta) {
+				this.numero=""+numeroActualCuenta;
+				System.out.println("El numero introducido para la cuenta, ya esta en uso. Asignado el siguiente disponible.");
+		}
+		else {
+			this.numero = "" + numCuenta;
+		}
+
 		this.titular = titularCuenta;
 		this.bloqueada = false;
 		this.saldo = 0.0;
@@ -67,35 +80,36 @@ public class CuentaBanco {
 	 *                      cuentas estan desbloqueadas al crearse saldo = Las
 	 *                      cuentas empiezan con $0 de saldo
 	 */
-	public CuentaBanco(String titularCuenta) {
+	public CuentaBanco(String titularCuenta, double saldoInicial, boolean bloqueadoInicial) {
 		if (numeroActualCuenta > numeroMaximoCuentas) {
 			System.out.println("No se pueden crear mas cuentas, se ha alcanzado el maximo.");
 		}
 		this.numero = "" + ++numeroActualCuenta;
 		this.titular = titularCuenta;
-		this.bloqueada = false;
-		this.saldo = 0.0;
+		this.bloqueada = bloqueadoInicial;
+		this.saldo = saldoInicial;
+		this.SumaSaldosCuentas+=saldoInicial;
 	}
 	
 	/**
 	 * Constructor que recibe: Numero de cuenta, nombre titular, saldo inicial, y estado de bloqueo
-	 * @param numCuenta Numero de cuenta asignado automaticamente
 	 * @param titularCuenta Nombre del titular de la cuenta a crear
 	 * @param saldoInicial El saldo con el que empieza esta cuenta
 	 * @param bloqueadoInicial Si la cuenta esta bloqueada(true) o no(false) en el momento de crearla
 	 */
-	public CuentaBanco(String titularCuenta, double saldoInicial, boolean bloqueadoInicial) {
-		if (numeroActualCuenta > numeroMaximoCuentas) {
-			System.out.println("No es posible asignar ese numero de cuenta a una nueva cuenta, prueba que no esta repetido, o si se ha llegado al maximo.");
+	public CuentaBanco(int numCuenta, String titularCuenta, double saldoInicial, boolean bloqueadoInicial) {
+			if (numCuenta<=numeroActualCuenta) {
+				this.numero=""+numeroActualCuenta;
+				System.out.println("El numero introducido para la cuenta, ya esta en uso. Asignado el siguiente disponible.");
 		}
 		else {
-			this.numero = "" + ++numeroActualCuenta;
+			this.numero = "" + numCuenta;
+		}
 			this.titular = titularCuenta;
 			this.bloqueada = bloqueadoInicial;
 			this.saldo = saldoInicial;
 			this.SumaSaldosCuentas+=saldoInicial;
 		}
-	}
 
 	/**
 	 * Metodos de la clase CuentaBanco
