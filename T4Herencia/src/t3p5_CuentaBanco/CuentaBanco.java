@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * Cuenta bancaria con operaciones basicas !Falta hacer las siguientes versions
- * Este codigo tiene un problema, es que como no se lleva a cuenta las cuentas creadas, y como hay 2 constructores, 
+ * []Este codigo tiene un problema, es que como no se lleva a cuenta las cuentas creadas, y como hay 2 constructores, 
  * uno que asigna el numero de cuenta de forma automatica y otro de forma manual. Esto hace que, si se asigna un numero de forma manual (numCuenta), mayor al
  * que se esta llevando el recuento (numeroActualCuenta), cuando se llegue de forma automatica a este, no se puede revisar que se haya creado o no.
  * Pero si es al reves si que se tiene en cuenta. Asi que solo usar de forma manual en casos especificos.
@@ -73,12 +73,11 @@ public class CuentaBanco {
 	}
 
 	/**
-	 * Este constructor genera el numero de la cuenta de forma automatica, solo se
-	 * necesita introducir el nombre para el titular de la cuenta
+	 * Este constructor genera el numero de la cuenta de forma automatica
 	 * 
-	 * @param titularCuenta El nombre del titular de la cuenta bloqueada = Las
-	 *                      cuentas estan desbloqueadas al crearse saldo = Las
-	 *                      cuentas empiezan con $0 de saldo
+	 * @param titularCuenta El nombre del titular de la cuenta bloqueada 
+	 * @param saldoInicial El saldo con el que empieza esta cuenta
+	 * @param bloqueadoInicial Si la cuenta esta bloqueada(true) o no(false) en el momento de crearla
 	 */
 	public CuentaBanco(String titularCuenta, double saldoInicial, boolean bloqueadoInicial) {
 		if (numeroActualCuenta > numeroMaximoCuentas) {
@@ -92,7 +91,8 @@ public class CuentaBanco {
 	}
 	
 	/**
-	 * Constructor que recibe: Numero de cuenta, nombre titular, saldo inicial, y estado de bloqueo
+	 * Constructor que recibe: Numero de cuenta, nombre titular, saldo inicial, y estado de bloqueoç
+	 * Cuidado con el error explicado de arriba del codigo!
 	 * @param titularCuenta Nombre del titular de la cuenta a crear
 	 * @param saldoInicial El saldo con el que empieza esta cuenta
 	 * @param bloqueadoInicial Si la cuenta esta bloqueada(true) o no(false) en el momento de crearla
@@ -177,6 +177,9 @@ public class CuentaBanco {
 		}
 	}
 
+	/**
+	 * Comprueba que este bloqueada e imprime mensaje de error.
+	 */
 	public void bloquear() {
 		if (this.bloqueada) {
 			System.out.println("No puedes bloquear la cuenta, ya esta bloqueada.");
