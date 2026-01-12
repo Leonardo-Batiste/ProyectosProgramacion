@@ -8,6 +8,8 @@ import java.util.*;
  * uno que asigna el numero de cuenta de forma automatica y otro de forma manual. Esto hace que, si se asigna un numero de forma manual (numCuenta), mayor al
  * que se esta llevando el recuento (numeroActualCuenta), cuando se llegue de forma automatica a este, no se puede revisar que se haya creado o no.
  * Pero si es al reves si que se tiene en cuenta. Asi que solo usar de forma manual en casos especificos.
+ * 
+ * [] Falta cambiar el imprimir datos con toStrings.
  */
 public class CuentaBanco {
 	/**
