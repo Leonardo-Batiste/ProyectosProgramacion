@@ -1,4 +1,4 @@
-package t3p5_CuentaBanco;
+package t4p3_HerenciaCuenta;
 
 import java.util.*;
 
@@ -11,7 +11,7 @@ import java.util.*;
  * 
  * [] Falta cambiar el imprimir datos con toStrings.
  */
-public class CuentaBanco {
+public class Cuenta {
 	/**
 	 * Propiedades de los objetos
 	 */
@@ -59,7 +59,7 @@ public class CuentaBanco {
 	 *                      cuentas estan desbloqueadas al crearse saldo = Las
 	 *                      cuentas empiezan con $0 de saldo
 	 */
-	public CuentaBanco(int numCuenta, String titularCuenta) {
+	public Cuenta(int numCuenta, String titularCuenta) {
 		
 		if (numCuenta<=numeroActualCuenta) {
 				this.numero=""+numeroActualCuenta;
@@ -81,7 +81,7 @@ public class CuentaBanco {
 	 * @param saldoInicial El saldo con el que empieza esta cuenta
 	 * @param bloqueadoInicial Si la cuenta esta bloqueada(true) o no(false) en el momento de crearla
 	 */
-	public CuentaBanco(String titularCuenta, double saldoInicial, boolean bloqueadoInicial) {
+	public Cuenta(String titularCuenta, double saldoInicial, boolean bloqueadoInicial) {
 		if (numeroActualCuenta > numeroMaximoCuentas) {
 			System.out.println("No se pueden crear mas cuentas, se ha alcanzado el maximo.");
 		}
@@ -99,7 +99,7 @@ public class CuentaBanco {
 	 * @param saldoInicial El saldo con el que empieza esta cuenta
 	 * @param bloqueadoInicial Si la cuenta esta bloqueada(true) o no(false) en el momento de crearla
 	 */
-	public CuentaBanco(int numCuenta, String titularCuenta, double saldoInicial, boolean bloqueadoInicial) {
+	public Cuenta(int numCuenta, String titularCuenta, double saldoInicial, boolean bloqueadoInicial) {
 			if (numCuenta<=numeroActualCuenta) {
 				this.numero=""+numeroActualCuenta;
 				System.out.println("El numero introducido para la cuenta, ya esta en uso. Asignado el siguiente disponible.");
