@@ -82,6 +82,8 @@ public class Coche {
             this.consumomedio100km=7.5;
             this.velocidadMaxima=180;
         }
+        
+        //No se si hace falta poner aqui  los metodos que definen la clase
         this.maxLitrosReserva=maxLitrosDeposito*0.15;
     }
 
@@ -178,8 +180,9 @@ public class Coche {
     }
     
     public void arrancarMotor(){
-        if(){
-        
+        if(numLitrosActual>0){
+            System.out.println(encabezado()+" ha arrancado.");
+            this.motorArrancado=true;
         }
     }
     
