@@ -139,7 +139,8 @@ public class CuentaBanco {
     }
     
     /**
-     * @return Numero de cuenta+Titular+Saldo*Si esta bloqueada 
+     * @return Devuelve un string con los valores de las propiedades de las
+     * cuentas.
      */
     @Override
     public String toString(){
