@@ -179,26 +179,157 @@ public class Coche {
         return "El coche con matricula "+this.matricula;
     }
     
+    /**
+     * Alterna entre motor encendido y apagado
+     * Tambien comprueba:
+     * <ul>
+     * <li>si tiene suficiente combustible (numLitrosActual)</li>
+     * <li>Si esta en reserva.</li>
+     * <li></li>
+     * </ul>
+     */
     public void arrancarMotor(){
         if(numLitrosActual>0){
             System.out.println(encabezado()+" ha arrancado.");
             this.motorArrancado=true;
         }
+        else if (numLitrosActual<=0){
+            System.out.println(encabezado()+" no puede arrancar el motor porque"
+                    + "                     se ha queado sin combustible");
+        }
+        else if(motorArrancado==true){
+            System.out.println(encabezado()+" no puede arrancar el motor porque"
+                    + "                     ya esta arrancado.");
+        }
+        
+        if (estaEnReserva){
+            System.out.println(encabezado()+" esta en reserva de combustible.");
+        }
     }
     
+    /**
+     * Establece motorArrancado a false, si era true
+     */
     public void pararMotor(){
-    
+        if(motorArrancado){
+            setMotorArrancado(false);
+            System.out.println(encabezado()+" ha parado el motor.");
+        }
     }
     
+    /**
+     * Si se rebasa la capacidad del tanque muestra un mensaje
+     * Muestra despues de cada repostaje cuantos litros se tienen actualmente
+     * Comprueba que litros sea positivo
+     * @param litros Cuantos litros se van a añadir al tanque
+     */
     public void repostar(double litros){
-    
+        if (litros>0){
+            if (this.numLitrosActual+litros>maxLitrosDeposito){
+                System.out.println(encabezado()+" ha rebosado el deposito y tiene "+numLitrosActual+"l en el deposito.");
+            }
+            else{
+                numLitrosActual+=litros;
+                System.out.println(encabezado()+" tiene "+numLitrosActual+"l de combustible");
+            }  
+        }    
     }
-    
+    /**
+     * Solo funciona si el motor esta arrancado, sino muestra un mensaje
+     * Si se pasa la velocidad maxima se asigna esta
+     * Si velocidad es menor que cero, se para el coche
+     * @param velocidad double que asigna cuanta velocidad se pondra el coche
+     */
     public void fijarVelocidad(double velocidad){
-    
+        if (motorArrancado){
+            if (velocidad>velocidadMaxima){
+                velocidadActual=velocidadMaxima;
+                System.out.println(encabezado()+" habia sido asignado una "
+                        + "mayor a la velocidad maxima del coche, asi que se ha"
+                        + "asignado esta ultima.");
+            }
+            else if (velocidad<0){
+                this.velocidadActual=0;
+                System.out.println(encabezado()+" Se ha introducido una "
+                        + "velocidad menor que cero, se le ha asignado una "
+                        + "velocidad de cero.");
+            }
+            else{
+                this.velocidadActual=velocidad;
+                System.out.println(encabezado()+" se le ha asignado una "
+                        + "velocidad de "+velocidad+"kmh.");
+            }
+        }
+        else{
+            System.out.println(encabezado()+" no puede fijar velocidad porque"
+                    + "el motor no esta arrancado.");
+        }
     }
     
+    /**
+     * <ul>
+     * <li>Comprueba que el motor este arrancado</li>
+     * <li>Comprueba que la velocidad actual no sea cero</li>
+     * </ul>
+     * @param kilometros double que asigna cuantos km recorrera el coche
+     */
     public void recorrerDistancia(double kilometros){
+        if (!motorArrancado){
+            System.out.println(encabezado()+" no ha recorrido distancia,"
+                    + "porque el motor esta apagado.");
+        }
+        else if (velocidadActual==0){
+            System.out.println(encabezado()+" no ha recorrido distancia "
+                    + "porque la velocidad actual es cero");
+        }
+        else if (kilometros<=0){
+            System.out.println(encabezado()+" no ha recorrido distancia "
+                    + "porque la distancia a recorrer es negativa o cero.");
+        }
+        else{
+            if (litrosNecesarios(kilometros)<=numLitrosActual){
+                this.numLitrosActual-=litrosNecesarios(kilometros);
+                this.kilometraje+=kilometros;
+                System.out.println(encabezado()+" ha recorrido "+kilometros+
+                        "km.");
+                
+            }
+            else {
+                System.out.println(encabezado()+" ha recorrido "+distanciaReal()+"km.");
+                System.out.println(encabezado()+" esta sin combustible.");
+                System.out.println(encabezado()+" esta parado.");
+                this.numLitrosActual=0;
+                this.kilometraje+=distanciaReal();
+            }
+            if (numLitrosActual<maxLitrosReserva){
+                    estaEnReserva = true;
+                    System.out.println(encabezado()+" esta en reserva.");
+            }
+        }
+    }
     
+    /**
+     * 
+     * @return un double con lo que consume el coche. Ej: 7.5l
+     */
+    private double consumoInstantaneo(){
+        return consumomedio100km * (1 + (velocidadActual - 100 ) / 100);
+    }
+    
+    /**
+     * Litros necesarios para recorrer una distancia
+     * @param distancia la distancia en km a recorrer
+     * @return double con la distancia en km a recorrer
+     */
+    private double litrosNecesarios(double distancia){
+        return distancia * consumoInstantaneo() / 100;
+    }
+    
+    /**
+     * Distancia que recorreria el coche si no tiene suficiente combustible para recorrer todo los kilometros indicados
+     * @return double que representa los km que recorre en realidad
+     */
+    private double distanciaReal(){
+        return 100*numLitrosActual/consumoInstantaneo();
     }
 }
