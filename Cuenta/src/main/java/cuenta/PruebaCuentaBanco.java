@@ -10,13 +10,18 @@ package cuenta;
  */
 public class PruebaCuentaBanco {
     public static void main(String[] args) {
-        CuentaBanco c = new CuentaBanco(12345, "Fernando");
+        CuentaBanco c = new CuentaBanco(1,"alebrto", 1000,false);
+        CuentaBanco c2 = new CuentaBanco(1,"jose", 1000,false);
+        CuentaBanco c3 = new CuentaBanco(1,"chiquibai", 1000,false);
         
-        c.imprimirDatos();
-        
-        c.ingresarDinero(500);
-        c.retirarDinero(100);
-        
-        System.out.println("Saldo disponible: "+c.consultarSaldo());
+       System.out.println(CuentaBanco.getNumeroTotalCuentas());
+       System.out.println(CuentaBanco.getSumaSaldosCuentas());
+       
+       c.retirarDinero(100);
+       c2.retirarDinero(100);
+       c3.retirarDinero(100);
+       
+       System.out.println(CuentaBanco.getNumeroTotalCuentas());
+       System.out.println(CuentaBanco.getSumaSaldosCuentas());
     }
 }

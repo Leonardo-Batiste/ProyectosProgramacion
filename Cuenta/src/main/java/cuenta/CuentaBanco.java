@@ -27,6 +27,10 @@ public class CuentaBanco {
      */
     public boolean bloqueada;
     
+    private static int NumeroTotalCuentas=0;
+    
+    private static double SumaSaldosCuentas=0;
+    
     /**
      * Constructor de la clase, crea la cuenta desbloqueada y con saldo $0
      */
@@ -35,6 +39,14 @@ public class CuentaBanco {
         this.titular=titularC;
         this.saldo=0;
         this.bloqueada=false;
+    }
+    
+    public CuentaBanco(int numC, String titularC, double saldo, boolean estadoBloqueo) {
+    	this.numero=String.valueOf(numC);
+    	this.titular=titularC;
+    	this.saldo=saldo;
+    	SumaSaldosCuentas+=saldo;
+    	this.bloqueada=estadoBloqueo;
     }
     
     /**
@@ -52,6 +64,7 @@ public class CuentaBanco {
     
     /**
      * No funciona si esta bloqueada la cuenta (bloqueada=true)
+     * Suma el saldo añadido al Saldo total de todas las clases
      * @param cantidad Cantidad a ingresar a la cuenta
      */
     public void ingresarDinero(double cantidad){
@@ -63,12 +76,14 @@ public class CuentaBanco {
             this.saldo+=cantidad;
             System.out.println("Se han ingresado $"+cantidad+" a tu cuenta "+""
                     +this.numero);
+            this.SumaSaldosCuentas+=cantidad;
         }
     }
     
     /**
      * Retira x dinero (cantidad) de tu saldo disponible (saldo)
      * No funciona si esta bloqueada la cuenta (bloqueada=true)
+     * Resta el saldo añadido al saldo total de todas las cuentas
      * @param cantidad Cantidad de dinero a retirar
      */
     public void retirarDinero(double cantidad){
@@ -86,6 +101,7 @@ public class CuentaBanco {
                 System.out.println("Se han retirado $" +
                         cantidad+" de tu cuenta " +
                         this.numero);
+                SumaSaldosCuentas-=cantidad;
             }
         }
     }
@@ -158,4 +174,13 @@ public class CuentaBanco {
     public void imprimirDatos(){
         System.out.println(this.toString());
     }
+    
+    public static int getNumeroTotalCuentas() {
+    	return NumeroTotalCuentas;
+    }
+    
+    public static double getSumaSaldosCuentas() {
+    	return SumaSaldosCuentas;
+    }
+    
 }
