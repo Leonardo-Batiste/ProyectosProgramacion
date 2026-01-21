@@ -4,19 +4,21 @@
  */
 package cuenta;
 
+import java.util.*;
+
 /**
  *
  * @author Alumno
  */
 public class PruebaCuentaBanco {
     public static void main(String[] args) {
-        CuentaBanco c = new CuentaBanco(12345, "Fernando");
-        
-        c.imprimirDatos();
-        
-        c.ingresarDinero(500);
-        c.retirarDinero(100);
-        
-        System.out.println("Saldo disponible: "+c.consultarSaldo());
+    	CuentaCorriente cc1 = new CuentaCorriente("001");
+    	CuentaCorriente cc2 = new CuentaCorriente("002");
+    	
+    	cc1.ingresaEfectivo(100);
+    	cc2.ingresaEfectivo(350);
+    	
+    	System.out.println(cc1.visualiza());
+    	System.out.println(cc2.visualiza());
     }
 }
