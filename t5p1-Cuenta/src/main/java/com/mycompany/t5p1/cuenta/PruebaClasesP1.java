@@ -12,22 +12,10 @@ public class PruebaClasesP1 {
     public static void main(String[] args) {
         Cuenta c = new Cuenta("001", "Alberto");
         
-        c.bloquear();
-        
-        try{
-            c.ingresarDinero(2000);
-        }
-        catch(CuentaBloqueadaException e) {
-            System.out.println(e.getMessage());
-        }
-        
-        c.desbloquear();
-        
         try{
             c.ingresarDinero(2000);
             c.retirarDinero(100);
-            c.imprimirSaldo();
-            c.retirarDinero(3000);
+            System.out.println(c.imprimirSaldo());
         }
         catch(CuentaBloqueadaException e){
             System.out.println(e.getMessage());

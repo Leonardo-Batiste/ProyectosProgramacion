@@ -39,6 +39,7 @@ public class Cuenta {
         }
         else{
             this.saldo+=cantidad;
+            System.out.println("Se ha ingresado saldo");
         }
     }
     
@@ -50,6 +51,7 @@ public class Cuenta {
             throw new SaldoInsuficienteException("No tienes saldo suficiente, no puedes retirar dinero.");
         }
         this.saldo-=cantidad;
+        System.out.println("Se ha retirado dinero");
     }
     
     public void bloquear(){
@@ -66,7 +68,7 @@ public class Cuenta {
     
     @Override
     public String toString(){
-        return this.numero + this.titular + this.saldo + this.bloqueada;
+        return ""+this.saldo;
     }
     
     public String imprimirSaldo(){
