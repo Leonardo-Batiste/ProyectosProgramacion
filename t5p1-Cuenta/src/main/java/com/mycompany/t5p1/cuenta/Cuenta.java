@@ -33,28 +33,23 @@ public class Cuenta {
      * 
      * @param cantidad 
      */
-    public void ingresarDinero(double cantidad){
-        try {
+    public void ingresarDinero(double cantidad) throws CuentaBloqueadaException{
+        if (this.bloqueada){
+            throw new CuentaBloqueadaException("La cuenta esta bloqueada no puedes ingresar dinero");
+        }
+        else{
             this.saldo+=cantidad;
-            System.out.println("Se ha ingresado $"+cantidad+" a tu cuenta "+numero);
         }
-        catch(CuentaBloqueadaException e){
-            System.out.println("La cuenta esta bloqueada no puedes ingresar dinero.");
-        }
-        
     }
     
-    public void retirarDinero(double cantidad){
-        try {
-            this.saldo-=cantidad;
-            System.out.println("Se ha retirado $"+cantidad+" a tu cuenta "+numero);
-        }
-        catch(CuentaBloqueadaException e) {
-            System.out.println("La cuenta esta bloqueada no puedes retirar dinero");
+    public void retirarDinero(double cantidad) throws SaldoInsuficienteException, CuentaBloqueadaException{
+        if (this.bloqueada){
+            throw new CuentaBloqueadaException("La cuenta esta bloqueada, no puedes retirar dinero");
         }
         if (cantidad>this.saldo){
-            throw new SaldoInsuficienteException("nose");
+            throw new SaldoInsuficienteException("No tienes saldo suficiente, no puedes retirar dinero.");
         }
+        this.saldo-=cantidad;
     }
     
     public void bloquear(){
@@ -67,6 +62,15 @@ public class Cuenta {
     
     public boolean estaBloqueada(){
         return this.bloqueada;
+    }
+    
+    @Override
+    public String toString(){
+        return this.numero + this.titular + this.saldo + this.bloqueada;
+    }
+    
+    public String imprimirSaldo(){
+        return this.toString();
     }
 
     /**
