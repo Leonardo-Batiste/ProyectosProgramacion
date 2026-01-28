@@ -143,7 +143,7 @@ public class Coche {
     } 
     
     public void pararMotor(){
-        if (motorArrancado=true){
+        if (motorArrancado){
             motorArrancado = false;
             System.out.println("El coche con matricula " + this.matricula + " ha parado el motor");
         }
