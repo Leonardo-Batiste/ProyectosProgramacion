@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package com.mycompany.t5p1.cuenta;
+package t5p2_CuentaException;
 
 /**
  *
@@ -35,7 +35,7 @@ public class Cuenta {
      */
     public void ingresarDinero(double cantidad) throws CuentaBloqueadaException{
         if (this.bloqueada){
-            throw new CuentaBloqueadaException("La cuenta esta bloqueada no puedes ingresar dinero");
+            throw new CuentaBloqueadaException();
         }
         else{
             this.saldo+=cantidad;
@@ -45,10 +45,10 @@ public class Cuenta {
     
     public void retirarDinero(double cantidad) throws SaldoInsuficienteException, CuentaBloqueadaException{
         if (this.bloqueada){
-            throw new CuentaBloqueadaException("La cuenta esta bloqueada, no puedes retirar dinero");
+            throw new CuentaBloqueadaException();
         }
         if (cantidad>this.saldo){
-            throw new SaldoInsuficienteException("No tienes saldo suficiente, no puedes retirar dinero.");
+            throw new SaldoInsuficienteException();
         }
         this.saldo-=cantidad;
         System.out.println("Se ha retirado dinero");

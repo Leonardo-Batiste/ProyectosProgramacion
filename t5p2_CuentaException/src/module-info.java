@@ -4,5 +4,5 @@
 /**
  * 
  */
-module t4 {
+module t5p2_CuentaException {
 }
