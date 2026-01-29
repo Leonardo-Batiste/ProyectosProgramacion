@@ -7,40 +7,41 @@ package trafico;
 public class Coche {
     //Propiedades
     private String matricula;
-    
-    private double  maxLitrosDeposito, 
+
+    private double  maxLitrosDeposito,
                     maxLitrosReserva,
                     velocidadMaxima, //Debe ser mayor o igual a cero y se mide en km/h
-                    consumoMedio100km, //Litros que consume el coche a una velocidad de 100 km/h en un recorrido de 100 km. 
-                    numLitrosActual, 
+                    consumoMedio100km, //Litros que consume el coche a una velocidad de 100 km/h en un recorrido de 100 km.
+                    numLitrosActual,
                     velocidadActual, //Debe ser mayor o igual a cero y se mide en km/h
-                    kilometraje; 
-            
-    private boolean motorArrancado, 
+                    kilometraje;
+
+    private boolean motorArrancado,
                     estaEnReserva;
-    
+
     private Persona propietario;
-    
+
     //Constructor
-    public Coche(String mat, 
-                double maxLitrosDeposito, 
+    public Coche(String mat,
+                double maxLitrosDeposito,
                 double consumoMedio,
-                double velocidadMax) 
-    
+                double velocidadMax)
     {
         if (maxLitrosDeposito>0 && consumoMedio>0 && velocidadMax>0){
            this.maxLitrosDeposito=maxLitrosDeposito;
            this.consumoMedio100km=consumoMedio;
            this.velocidadMaxima=velocidadMax;
-        } else {
+        } 
+        else {
             this.maxLitrosDeposito=50;
             this.consumoMedio100km=7.5;
             this.velocidadMaxima=180;
         }
+        
         this.matricula = mat;
         maxLitrosReserva=maxLitrosDeposito*0.15;
     }
-    
+
     //Getter y setters
     public String getMatricula() {
         return matricula;
@@ -121,27 +122,27 @@ public class Coche {
     public void setEstaEnReserva(boolean estaEnReserva) {
         this.estaEnReserva = estaEnReserva;
     }
-    
+
     //metodos-comportamientos
     public void arrancarMotor(){
         if (numLitrosActual>0){
             System.out.println("El coche con matricula "+this.matricula+" ha arrancado");
             motorArrancado = true;
-            
+
             if (estaEnReserva==true){
                 System.out.println("El coche con matricula "+this.matricula+" esta en reserva de combustible");
             }
         }
-        
+
         else if (numLitrosActual<=0){
             System.out.println("El coche con matricula "+this.matricula+" no tiene combustible");
         }
-        
+
         else if (motorArrancado==true){
             System.out.println("El coche con matricula " + this.matricula +" ya esta arrancado");
         }
-    } 
-    
+    }
+
     public void pararMotor(){
         if (motorArrancado){
             motorArrancado = false;
@@ -153,13 +154,13 @@ public class Coche {
         if ((numLitrosActual+litros)>maxLitrosDeposito){
             this.numLitrosActual=this.maxLitrosDeposito;
             System.out.println("El coche con matricula " + this.matricula + " ha rebosado el deposito");
-        } 
+        }
         else {
             this.numLitrosActual+=litros;
             System.out.println("El coche con matricula " + this.matricula + " tiene "+numLitrosActual+" litros de combustible");
         }
     }
-    
+
     public void fijarVelocidad (double velocidad){
         if (this.motorArrancado==true){
             if (velocidad>this.velocidadMaxima){
@@ -178,7 +179,7 @@ public class Coche {
             System.out.println("El coche con matricula " + this.matricula + " no puede fijar la velocidad, porque no esta arrancado");
         }
     }
-    
+
     /*
 
     */
@@ -187,12 +188,12 @@ public class Coche {
         consumoInstantaneo=this.consumoMedio100km * (1 + (this.velocidadActual-100 ) / 100);
         return consumoInstantaneo;
     }
-    
+
     private double litrosNecesarios(double distancia){
        double litrosNecesarios=0;
-        return litrosNecesarios=distancia*consumoInstantaneo()/100; 
+        return litrosNecesarios=distancia*consumoInstantaneo()/100;
     }
-    
+
     public void recorrerDistancia (double kilometros){
         //Este primer if, es para ver si el coche tiene velocidad y los kilometros son positivos
         if (this.velocidadActual==0){
@@ -201,7 +202,7 @@ public class Coche {
         else if (kilometros<=0){
             System.out.println("El coche con matricula " + this.matricula + " Error, el coche no puede recorrer distancias negativas");
         }
-        
+
         //Este segundo if es para calcular si se queda o no con combustible despues de recorrer esos km
         if (this.numLitrosActual-consumoInstantaneo()<=0) {
             System.out.println("El coche con matricula " + this.matricula + " no puede recorrer "+kilometros+"km, porque se quedaria sin combustible");
@@ -212,7 +213,7 @@ public class Coche {
             System.out.println("El coche con matricula " + this.matricula + " ha recorrido "+kilometros+"km");
         }
     }
-    
+
     public boolean poseePropietario(){
         if(this.propietario!=null){
             return true;
@@ -221,11 +222,11 @@ public class Coche {
             return false;
         }
     }
-    
+
     public Persona getPropietario(){
         return this.propietario;
     }
-    
+
     public void setPropietario(Persona p){
         this.propietario=p;
     }
