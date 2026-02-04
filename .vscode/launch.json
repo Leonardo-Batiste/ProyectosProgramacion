@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "PruebaClasesP3 (t4p3_CuentaAhorro)",
+            "request": "launch",
+            "mainClass": "PruebaClasesP3",
+            "projectName": "t4p3_CuentaAhorro",
+            "cwd": "${workspaceFolder}/t4p3_CuentaAhorro",
+            "classPaths": ["${workspaceFolder}/t4p3_CuentaAhorro"]
+        }
+    ]
+}

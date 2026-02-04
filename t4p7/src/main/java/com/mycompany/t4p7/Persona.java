@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.t4p7;
 
 /**
@@ -11,27 +7,25 @@ package com.mycompany.t4p7;
 public class Persona {
 
     private String nombre;
-
     private String apellidos;
-
     private String dni;
 
     /**
      * Rango 0-9
      */
-    private Coche[] coches;
+    private Vehiculo[] vehiculos;
 
     /**
      * Rango 0 a 10
      */
-    private int numeroCochesActual = 0;
+    private int numeroVehiculosActual = 0;
 
     /**
      * Rango -1 a 9
-     * -1 No tiene ningun coche en uso
-     * 0-9 posibles posiciones para los objetos coches
+     * -1 No tiene ningun vehiculo en uso
+     * 0-9 posibles posiciones para los objetos vehiculos
      */
-    private int cocheEnUso = -1;
+    private int vehiculoEnUso = -1;
 
     /**
      * Constructor de persona
@@ -43,40 +37,40 @@ public class Persona {
         this.nombre = nom;
         this.apellidos = apellidos;
         this.dni = dni;
-        coches = new Coche[10];
+        vehiculos = new Vehiculo[10];
     }
 
     /**
-     * Metodo que comprueba que el objeto persona tenga 10 coches como maximo en su lista numeroCochesActual
-     * Aunque numeroCochesActual vaya del 0 al 10, este siempre va a estar 1 por detras, ya que coches[0-9]
+     * Metodo que comprueba que el objeto persona tenga 10 vehiculos como maximo en su lista numeroVehiculosActual
+     * Aunque numeroVehiculosActual vaya del 0 al 10, este siempre va a estar 1 por detras, ya que vehiculos[0-9]
      */
-    public void compraCoche(Coche c) {
-        if (numeroCochesActual < 10) {
-            //Añadir <Coche c a la primera posicion <0> de coches[]
-            this.coches[numeroCochesActual++]=c;
+    public void compraVehiculo(Vehiculo v) {
+        if (numeroVehiculosActual < 10) {
+            //Añadir <Vehiculo v a la primera posicion <0> de vehiculos[]
+            this.vehiculos[numeroVehiculosActual++] = v;
             
-            //Añado a ese coche añadido <c> un propietario
-            c.setPropietario(this);
+            //Añado a ese vehiculo añadido <v> un propietario
+            v.setPropietario(this);
         }
         else {
-            System.out.println("No puedes comprar mas coches, has alcanzado el maximo de 10 coches por persona.");
+            System.out.println("No puedes comprar mas vehiculos, has alcanzado el maximo de 10 vehiculos por persona.");
         }
     }
 
     /**
-     * Comprueba que se posea un coche
-     * Luego usa los metodos del objeto coche, llamando a cada coche que esta dentro del array coches[]
+     * Comprueba que se posea un vehiculo
+     * Luego usa los metodos del objeto vehiculo, llamando a cada vehiculo que esta dentro del array vehiculos[]
      */
-    public void usaCoche(double distancia, double velocidad) {
-        if (!poseeCoche()) {
+    public void usaVehiculo(double distancia, double velocidad) {
+        if (!poseeVehiculo()) {
             System.out.println(
-                "Error.No puedes usar el coche, porque actualmente no tienes ninguno."
+                "Error.No puedes usar el vehiculo, porque actualmente no tienes ninguno."
             );
         }
         else {
-            this.coches[cocheEnUso].arrancarMotor();
-            this.coches[cocheEnUso].fijarVelocidad(velocidad);
-            this.coches[cocheEnUso].recorrerDistancia(distancia);
+            this.vehiculos[vehiculoEnUso].arrancarMotor();
+            this.vehiculos[vehiculoEnUso].fijarVelocidad(velocidad);
+            this.vehiculos[vehiculoEnUso].recorrerDistancia(distancia);
         }
     }
 
@@ -86,27 +80,27 @@ public class Persona {
      * <li>DNI</li>
      * <li>Nombre</li>
      * <li>Apellidos</li>
-     * <li>Matriculas de los coches que tenga</li>
+     * <li>Matriculas de los vehiculos que tenga</li>
      * </ul>
      * Sino, muestra lo mismo, pero sustituye las matriculas por un mensaje de error
      */
     @Override
     public String toString() {
         //Parte que siempre muestra
-        final String datos = "Dni:"+this.dni+" "
-                +"Nombre: "+this.nombre+" "
-                +"Apellidos"+this.apellidos;
+        final String datos = "Dni:" + this.dni + " "
+                + "Nombre: " + this.nombre + " "
+                + "Apellidos" + this.apellidos;
                 
         //Ultima parte, o matriculas o mensaje de error
-        if (poseeCoche()){
-            String matriculas="Matriculas: ";
-            for (int i=0;i<numeroCochesActual;i++){
-                matriculas+=coches[i].getMatricula()+" ";
+        if (poseeVehiculo()){
+            String matriculas = "Matriculas: ";
+            for (int i = 0; i < numeroVehiculosActual; i++){
+                matriculas += vehiculos[i].getMatricula() + " ";
             }
-            return datos+matriculas;
+            return datos + matriculas;
         }
         else{
-            return datos+"Esta persona no posee ningun coche.";
+            return datos + "Esta persona no posee ningun vehiculo.";
         }
     }
 
@@ -114,16 +108,16 @@ public class Persona {
         System.out.println(toString());
     }
 
-    public Coche[] getCoches() {
-        return this.coches;
+    public Vehiculo[] getVehiculos() {
+        return this.vehiculos;
     }
 
     /**
-     * Sirve para comprobar si esta persona tiene asociada un coche
+     * Sirve para comprobar si esta persona tiene asociada un vehiculo
      * @return boolean
      */
-    public boolean poseeCoche() {
-        if (this.numeroCochesActual > 0) {
+    public boolean poseeVehiculo() {
+        if (this.numeroVehiculosActual > 0) {
             return true;
         }
         else {
@@ -132,17 +126,16 @@ public class Persona {
     }
 
     /**
-     * Cambia el objeto coche que usara el objeto persona del array coches[]
-     * Rango para seleccionar un coche 0-9
+     * Cambia el objeto vehiculo que usara el objeto persona del array vehiculos[]
+     * Rango para seleccionar un vehiculo 0-9
      */
-    public void eligeCocheEnUso(int n) {
-        if (n >= 0 && n<numeroCochesActual){
-            this.cocheEnUso = n;
+    public void eligeVehiculoEnUso(int n) {
+        if (n >= 0 && n < numeroVehiculosActual){
+            this.vehiculoEnUso = n;
         }
         else {
             System.out.println("Error.Has elegido un rango que no es 0-9.");
         }
-        
     }
     
     public String getDni(){
