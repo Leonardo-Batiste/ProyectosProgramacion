@@ -1,4 +1,4 @@
-import com.mycompany.t4p7.Vehiculo;
+package com.mycompany.t4p7;
 
 public class Radar {
     /**
@@ -29,7 +29,7 @@ public class Radar {
      * Si se supera la velocidad, invoca el metodo imponeMulta()
      * @param v clase Vehiculo
      */
-    public pasaVehiculo(Vehiculo v){
+    public void pasaVehiculo(Vehiculo v){
         if(v.getVelocidadActua()>this.velocidadLimite+15){
             imponeMulta(v);
         }
@@ -44,7 +44,7 @@ public class Radar {
     }
 
     private void imponeMulta(Vehiculo v){
-        System.out.println("Velocidad maxima permitida de "+getUbicacion()+": "+v.velocidadLimite+" km/h.");
+        System.out.println("Velocidad maxima permitida de "+getUbicacion()+": "+this.velocidadLimite+" km/h.");
 
         System.out.println("Velocidad del vehiculo "+v.getMatricula()+": "+v.getVelocidadActua()+" km/h.");
         

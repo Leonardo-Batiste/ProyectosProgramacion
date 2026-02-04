@@ -3,12 +3,21 @@
     "configurations": [
         {
             "type": "java",
+            "name": "T4p7",
+            "request": "launch",
+            "mainClass": "com.mycompany.t4p7.T4p7",
+            "projectName": ""
+        },
+        {
+            "type": "java",
             "name": "PruebaClasesP3 (t4p3_CuentaAhorro)",
             "request": "launch",
             "mainClass": "PruebaClasesP3",
             "projectName": "t4p3_CuentaAhorro",
             "cwd": "${workspaceFolder}/t4p3_CuentaAhorro",
-            "classPaths": ["${workspaceFolder}/t4p3_CuentaAhorro"]
+            "classPaths": [
+                "${workspaceFolder}/t4p3_CuentaAhorro"
+            ]
         }
     ]
 }
