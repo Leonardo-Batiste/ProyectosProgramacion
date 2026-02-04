@@ -15,9 +15,9 @@ public class T4p7 {
 
         Persona alberto=new Persona("Alberto", "ApellidoDeAlberto", "98765432B");
 
-        Coche vectra=new Coche("0001", 60, 7.5, 180);
+        Vehiculo vectra=new Coche("0001", 60, 7.5, 180);
 
-        Camion volvo=new Camion("0032", 100, 10.0, 100, 1000);
+        Vehiculo volvo=new Camion("0032", 100, 10.0, 100, 1000);
 
         Radar rd=new Radar("Calle1", 60);
 
