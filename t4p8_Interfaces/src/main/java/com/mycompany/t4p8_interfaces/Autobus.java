@@ -4,20 +4,24 @@
  */
 package com.mycompany.t4p8_interfaces;
 
-import java.util.ArrayList;
-
-import com.mycompany.ejemploarraylist.Persona;
+import java.util.*;
 
 /**
  *
  * @author Alumno
  */
 public class Autobus extends Vehiculo implements TransportaPasajeros{
-    private int numPlazas;
+    /**
+     * Numero de plazas maxima del bus
+     */
+	private int numPlazas;
     
     private int numPasajerosActual;
     
-    ArrayList<Persona> asientos = new ArrayList<Persona>;
+    /**
+     * El arrayList se usa tambien para saber el numero de pasajeros actual, mediante asientos.size()
+     */
+    ArrayList<Persona> asientos = new ArrayList<Persona>();
     
     /**
      * Constructor clase
@@ -80,7 +84,7 @@ public class Autobus extends Vehiculo implements TransportaPasajeros{
     @Override
     protected double consumoInstantaneo() {
         double consumoInstantaneo = 0;
-        consumoInstantaneo = (2-((this.numPlazas-this.numPasajerosActual)/this.numPlazas))
+        consumoInstantaneo = (2-((this.numPlazas-asientos.size())/this.numPlazas))
                                 *this.consumoMedio100km 
                                 * (1 + (this.velocidadActual - 100) / 100);
         return consumoInstantaneo;
@@ -92,23 +96,26 @@ public class Autobus extends Vehiculo implements TransportaPasajeros{
      */
     @Override
     public boolean subirPasajero(Persona p) {
-    	if((p.getVehiculos()[p.getVehiculoEnUso()].getVelocidadActua())==0) {
-    		/* el arrayList asientos, va aumentando conforme se añade objetos persona, osea que mientras su size(cuantas personas hay)
-    		* sea menor que las plazas, significa que habra plazas disponibles
-    		*/
-    		if (asientos.size()<=this.numPlazas) {
-    			//!Revisar que esta funcion no tiene que añadir al array creo, tiene que devolver un boolean	
-    			asientos.add(p);
-    		}
-    		else {
-    			System.out.println("Error. No se puede subir mas pasajeros, todas las plazas estan ocupadas.");
-    		}
-    	}
-    	else {
-    		//mirar como se puede imprimir un mensaje y que devuelva falso?
-    		System.out.println("Error subirPasajero(). El coche esta en movimiento.");
+    	if (estaEnMovimiento(p)) {
+    		System.out.println("Error subirPasajero(). El vehiculo esta en movimeinto.");
     		return false;
     	}
+    	if (this.getNumPlazasLibres()==0) {
+    		System.out.println("Error subirPasajero(). El vehiculo no tiene plazas libres");
+    		return false;
+    	}
+    	
+    	asientos.add(p);
+    	return true;
+    }
+    
+    /**
+     * 
+     * @param p Clase persona
+     * @return True si esta en movimiento, o false si esta quieto
+     */
+    public boolean estaEnMovimiento(Persona p) {
+    	return this.getVelocidadActua() > 0;
     }
     
     @Override
@@ -122,17 +129,13 @@ public class Autobus extends Vehiculo implements TransportaPasajeros{
     }
     
     @Override
-    public int getNumActualPasajeros() {
-    	return 0;
-    }
-    
-    @Override
     public int getNumMaximoPasajeros() {
-    	return 0;
+    	return this.numPlazas;
     }
     
     @Override
     public int getNumPlazasLibres() {
-    	return 0;
+    	int plazasLibres=this.numPlazas-asientos.size();
+    	return plazasLibres;
     }
 }

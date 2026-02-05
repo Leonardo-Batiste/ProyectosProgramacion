@@ -15,7 +15,7 @@ public interface TransportaPasajeros {
     
     public Persona[] getEstadoOcupacion();
     
-    public int getNumActualPasajeros();
+    // Como he usado un arrayList esto ya no se usa - public int getNumActualPasajeros();
     
     public int getNumMaximoPasajeros();
     
