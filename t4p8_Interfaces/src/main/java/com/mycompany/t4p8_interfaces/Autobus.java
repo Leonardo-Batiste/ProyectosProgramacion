@@ -133,6 +133,8 @@ public class Autobus extends Vehiculo implements TransportaPasajeros{
     	return this.numPlazas;
     }
     
+    //Prueba lazygit
+    
     @Override
     public int getNumPlazasLibres() {
     	int plazasLibres=this.numPlazas-asientos.size();
