@@ -149,4 +149,8 @@ public class Persona {
     public String getApellidos(){
         return this.apellidos;
     }
+    
+    public int getVehiculoEnUso() {
+    	return this.vehiculoEnUso;
+    }
 }

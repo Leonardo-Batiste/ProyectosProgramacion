@@ -4,6 +4,10 @@
  */
 package com.mycompany.t4p8_interfaces;
 
+import java.util.ArrayList;
+
+import com.mycompany.ejemploarraylist.Persona;
+
 /**
  *
  * @author Alumno
@@ -13,7 +17,7 @@ public class Autobus extends Vehiculo implements TransportaPasajeros{
     
     private int numPasajerosActual;
     
-    private Persona[] asientos;
+    ArrayList<Persona> asientos = new ArrayList<Persona>;
     
     /**
      * Constructor clase
@@ -40,7 +44,7 @@ public class Autobus extends Vehiculo implements TransportaPasajeros{
         	this.numPlazas=10;
         }
         
-        Persona p; //Revisar si dejar esto como array o arraylist
+        //Como uso un arraylist en teoria no haria falta iniciarlizarlo aqui con numPlazas?
         
     }
     
@@ -82,9 +86,29 @@ public class Autobus extends Vehiculo implements TransportaPasajeros{
         return consumoInstantaneo;
     }
     
+    /**
+     * Permite que se suba un pasajero sólo si la velocidad del vehículo es cero y hay algún asiento libre. 
+     * En caso contrario se emite un mensaje describiendo la situación y se devuelve falso.
+     */
     @Override
     public boolean subirPasajero(Persona p) {
-    	return false;
+    	if((p.getVehiculos()[p.getVehiculoEnUso()].getVelocidadActua())==0) {
+    		/* el arrayList asientos, va aumentando conforme se añade objetos persona, osea que mientras su size(cuantas personas hay)
+    		* sea menor que las plazas, significa que habra plazas disponibles
+    		*/
+    		if (asientos.size()<=this.numPlazas) {
+    			//!Revisar que esta funcion no tiene que añadir al array creo, tiene que devolver un boolean	
+    			asientos.add(p);
+    		}
+    		else {
+    			System.out.println("Error. No se puede subir mas pasajeros, todas las plazas estan ocupadas.");
+    		}
+    	}
+    	else {
+    		//mirar como se puede imprimir un mensaje y que devuelva falso?
+    		System.out.println("Error subirPasajero(). El coche esta en movimiento.");
+    		return false;
+    	}
     }
     
     @Override
