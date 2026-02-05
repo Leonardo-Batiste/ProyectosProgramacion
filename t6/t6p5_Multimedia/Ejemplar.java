@@ -18,9 +18,9 @@ public abstract class Ejemplar {
     public abstract int getDiasPrestamo();
 
     public String toString() {
-    	return "Codigo ejemplar: "+this.codigo+
-    			"Titulo ejemplar: "+this.titulo+
-    			"Esta prestado?"+this.estaPrestado;
+    	return "Codigo ejemplar: "+this.codigo+"\n"+
+    			"Titulo ejemplar: "+this.titulo+"\n"+
+    			"Esta prestado?"+this.estaPrestado+"\n";
     }
     
     public void prestarEjemplar() {

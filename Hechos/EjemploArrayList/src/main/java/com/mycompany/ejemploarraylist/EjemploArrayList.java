@@ -16,6 +16,7 @@ public class EjemploArrayList {
         
         /**
          * Manera de crear un arraylist de tipo de una clase
+         * Empieza en la posicion cero
          */
         ArrayList<Persona> personas = new ArrayList<Persona>;
         
