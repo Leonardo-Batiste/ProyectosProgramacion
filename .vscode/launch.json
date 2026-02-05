@@ -3,6 +3,12 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Main"
+        },
+        {
+            "type": "java",
             "name": "T4p7",
             "request": "launch",
             "mainClass": "com.mycompany.t4p7.T4p7",
