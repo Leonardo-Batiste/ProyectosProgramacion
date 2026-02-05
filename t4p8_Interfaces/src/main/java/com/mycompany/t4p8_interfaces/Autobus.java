@@ -40,7 +40,7 @@ public class Autobus extends Vehiculo implements TransportaPasajeros{
         	this.numPlazas=10;
         }
         
-        Persona p; //Revisar si dejar esto como array o pas
+        Persona p; //Revisar si dejar esto como array o arraylist
         
     }
     
@@ -69,7 +69,46 @@ public class Autobus extends Vehiculo implements TransportaPasajeros{
                     + "ha recorrido " + kilometros + "km");
         }
     }
+    
+    /**
+     * Depende del número de pasajeros que lleva el autobús
+     */
+    @Override
+    protected double consumoInstantaneo() {
+        double consumoInstantaneo = 0;
+        consumoInstantaneo = (2-((this.numPlazas-this.numPasajerosActual)/this.numPlazas))
+                                *this.consumoMedio100km 
+                                * (1 + (this.velocidadActual - 100) / 100);
+        return consumoInstantaneo;
     }
     
+    @Override
+    public boolean subirPasajero(Persona p) {
+    	return false;
+    }
     
+    @Override
+    public boolean bajarPasajero(Persona p) {
+    	return false;
+    }
+    
+    @Override
+    public Persona[] getEstadoOcupacion() {
+    	return null;
+    }
+    
+    @Override
+    public int getNumActualPasajeros() {
+    	return 0;
+    }
+    
+    @Override
+    public int getNumMaximoPasajeros() {
+    	return 0;
+    }
+    
+    @Override
+    public int getNumPlazasLibres() {
+    	return 0;
+    }
 }

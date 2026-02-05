@@ -9,5 +9,15 @@ package com.mycompany.t4p8_interfaces;
  * @author Alumno
  */
 public interface TransportaPasajeros {
+    public boolean subirPasajero(Persona p);
     
+    public boolean bajarPasajero(Persona p);
+    
+    public Persona[] getEstadoOcupacion();
+    
+    public int getNumActualPasajeros();
+    
+    public int getNumMaximoPasajeros();
+    
+    public int getNumPlazasLibres();
 }
