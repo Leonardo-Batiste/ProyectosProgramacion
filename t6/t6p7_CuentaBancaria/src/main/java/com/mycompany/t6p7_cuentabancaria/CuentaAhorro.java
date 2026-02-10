@@ -16,7 +16,7 @@ public class CuentaAhorro extends CuentaBancaria implements Transaccion {
     public CuentaAhorro(int codigo, String titular, double saldo, double tasaInteres){
         super(codigo, titular, saldo);
         this.tasaInteres=tasaInteres;
-        this.numMeses=12;
+        this.numMeses=0;
     }
     
     /**
