@@ -59,8 +59,13 @@ public class CuentaCorriente extends CuentaBancaria implements Transaccion {
     }
     
     @Override
+    public String toString(){
+        return super.toString() + " | Límite Riesgo CuentaCorriente: " + this.limiteRiesgo;
+    }
+    
+    @Override
     public String consultarSaldo(){
-        return "Saldo de la cuenta es"+this.saldo;
+        return "Saldo de la cuentaCorriente es"+this.saldo;
     }
     
 }

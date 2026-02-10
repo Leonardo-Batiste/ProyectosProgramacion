@@ -82,8 +82,14 @@ public class CuentaAhorro extends CuentaBancaria implements Transaccion {
     }
     
     @Override
+    public String toString(){
+        return super.toString() + " | tasa interes CuentaAhorro: " + this.tasaInteres
+                +"numero de meses"+this.numMeses;
+    }
+    
+    @Override
     public String consultarSaldo(){
-        return "Saldo de la cuenta es"+this.saldo;
+        return "Saldo de la cuentaAhorro es"+this.saldo;
     }
     
 }

@@ -21,21 +21,23 @@ public class PruebaClasesp7 {
         Random rd = new Random();
         
         Scanner prompt = new Scanner(System.in);
-    
-        int condicionDoWhile=0;
         
-        do {
+        int tamañoArray=2;
             
-            
-            
-            for (int x=0;x<10;x++){
+        nombres.add("afawfaw");
+        
+        nombres.add("apepepepepepe");
+        
+            /*Llenar el array de nombres
+            for (int x=0;x<tamañoArray;x++){
                 System.out.println("Introduce el nombre "+x);
                 nombres.add(prompt.nextLine());
             }
+            */
         
-            for (int i=0;i<10;i++){
+            //Llenar el array de cuentas
+            for (int i=0;i<tamañoArray;i++){
                 int numeroAl=rd.nextInt(2);
-                prompt.nextLine();
 
                 if (numeroAl==0){
                     cuentas.add(new CuentaCorriente(i, nombres.get(i), 500, 1000));
@@ -44,12 +46,28 @@ public class PruebaClasesp7 {
                     cuentas.add(new CuentaAhorro(i, nombres.get(i), 500, 2.5));
                 }
             }
-            
-            System.out.println("Quieres continuar?: (0/1)");
-            condicionDoWhile=prompt.nextInt();
-            prompt.nextLine();
-            
-        } while (condicionDoWhile==0);
 
+            for (int y=0;y<tamañoArray;y++){
+                System.out.println(cuentas.get(y).consultarSaldo());
+                 
+            }
+            
+            //Listar
+            for (int y=0;y<tamañoArray;y++){
+                 System.out.println(cuentas.get(y));
+            }
+
+            cuentas.get(0).depositar(1000);
+            
+            cuentas.get(0).retirar(100);
+            
+            if (cuentas.get(0).transferir(500,cuentas.get(1))){
+                System.out.println("Se ha completado con exito");
+            }
+            else{
+                System.out.println("Ha habido un error.");
+            }
+            
+            
     }
 }

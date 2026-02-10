@@ -8,7 +8,7 @@ package com.mycompany.t6p7_cuentabancaria;
  *
  * @author AluDAM
  */
-public abstract class CuentaBancaria {
+public abstract class CuentaBancaria implements Transaccion{
     
     protected int codigo;
     
@@ -30,4 +30,15 @@ public abstract class CuentaBancaria {
     public abstract boolean depositar(double cantidad);
     
     public abstract boolean retirar(double cantidad);
+    
+    @Override
+    public abstract boolean transferir(double importe, CuentaBancaria codigoCuentaAEnviar);
+    
+    @Override 
+    public String toString(){
+        return "Codigo de la cuenta "+this.codigo+" "
+                +"Titular de la cuenta "+this.titular+" "
+                +"Saldo de la cuenta "+this.saldo;
+    }
+    
 }
