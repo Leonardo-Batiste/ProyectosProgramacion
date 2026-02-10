@@ -8,7 +8,7 @@ package com.mycompany.t6p7_cuentabancaria;
  *
  * @author AluDAM
  */
-public class CuentaBancaria {
+public abstract class CuentaBancaria {
     
     protected int codigo;
     
@@ -16,12 +16,18 @@ public class CuentaBancaria {
     
     protected double saldo;
     
-    public void depositar(){
-    
+    public CuentaBancaria(int codigo, String titular, double saldo){
+        this.codigo=codigo;
+        this.titular=titular;
+        this.saldo=saldo;
     }
     
-    public void retirar(){
     
-    }
+    /**
+     * Devuelve un boolean de si se ha podido realizar la operacion o no
+     * @return boolean
+     */
+    public abstract boolean depositar(double cantidad);
     
+    public abstract boolean retirar(double cantidad);
 }
