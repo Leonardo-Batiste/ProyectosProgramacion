@@ -8,8 +8,10 @@ package com.mycompany.t5p6_2_datos;
  *
  * @author AluDAM
  */
-public class PalabraException extends Exception {
-    public PalabraException(){
-        super("Propiedad palabra es incorrecto porque: ");
+public class CantidadException extends Exception {
+    public CantidadException(String mensaje){
+        super(mensaje);
     }
+    
+    public CantidadException(){}
 }

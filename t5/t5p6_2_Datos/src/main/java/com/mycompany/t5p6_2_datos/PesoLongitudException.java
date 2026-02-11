@@ -10,6 +10,6 @@ package com.mycompany.t5p6_2_datos;
  */
 public class PesoLongitudException extends PesoException{
     public PesoLongitudException(){
-        
+        super("la longitud tiene que ser entre 2 y 25"):
     }
 }

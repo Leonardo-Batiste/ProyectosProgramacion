@@ -13,7 +13,11 @@ public class Dato {
 	 * @param palabra
 	 * @param peso
 	 */
-	public Dato(int cantidad, String palabra, float peso) throws CantidadInferiorCeroException{
+	public Dato(int cantidad, String palabra, float peso) throws CantidadException {
+            if (cantidad<0) {
+                throw new CantidadInferiorCeroException("La cantidad da error porque es inferior a 0.");
+            }
+            
             this.cantidad=cantidad;
             this.palabra=palabra;
             this.peso=peso;

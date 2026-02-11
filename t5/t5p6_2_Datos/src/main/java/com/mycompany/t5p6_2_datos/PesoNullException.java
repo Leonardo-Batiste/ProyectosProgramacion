@@ -10,6 +10,6 @@ package com.mycompany.t5p6_2_datos;
  */
 public class PesoNullException extends PesoException {
     public PesoNullException(){
-        
+        super("el peso no puede ser nulo.");
     }
 }
