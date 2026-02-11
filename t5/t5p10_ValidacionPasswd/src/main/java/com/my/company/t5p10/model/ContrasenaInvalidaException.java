@@ -8,6 +8,13 @@ package com.my.company.t5p10.model;
  *
  * @author AluDAM
  */
-public class ContrasenaInvalidaException {
+public class ContrasenaInvalidaException extends Exception{
     
+    /**
+     * No se si hacerlo asi, o añadir una Contraseña exception arriba y que esta herede de esa
+     * @param mensajeError 
+     */
+    public ContrasenaInvalidaException(String mensajeError){
+        super(mensajeError);
+    }
 }

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package com.mycompany.t5p10_validacionpasswd;
+package com.mycompany.t5p10_validacioncontrasena;
 
 /**
  *

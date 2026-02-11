@@ -10,4 +10,17 @@ package com.my.company.t5p10.model;
  */
 public class ValidarContrasena {
     
+    /**
+     * Debe:
+     * <ul>
+     * <li>tener al menos 8 caracteres</li>
+     * <li>incluir al menos un número</li>
+     * <li>incluir el carácter ‘$’</li>
+     * <li>No puede tener espacios en blanco</li>
+     * <li>Si no se cumple, lanza una excepción personalizada ContrasenaInvalidaException</li>
+     * @param contraseña String
+     */
+    public void validarContrasena(String contraseña)throws ContrasenaInvalidaException{
+        
+    }
 }
