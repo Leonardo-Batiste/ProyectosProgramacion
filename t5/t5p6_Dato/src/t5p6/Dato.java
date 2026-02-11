@@ -14,10 +14,10 @@ public class Dato {
 	 * @param peso
 	 */
 	public Dato(int cantidad, String palabra, float peso) throws CantidadInferiorCeroException, 
-																	PesoNoEsCorrectoException, 
-																	PalabraNulaException,
-																	PalabraNumeroCaracteresException,
-																	PalabraCaracterEspecialException{
+                                                                        PesoNoEsCorrectoException, 
+									PalabraNulaException,
+									PalabraNumeroCaracteresException,
+									PalabraCaracterEspecialException{
 		if (cantidad<=0) {
 			throw new CantidadInferiorCeroException();
 		}
@@ -45,8 +45,4 @@ public class Dato {
 		this.palabra=palabra;
 		this.peso=peso;
 	}
-	
-	
-	
-	
 }
