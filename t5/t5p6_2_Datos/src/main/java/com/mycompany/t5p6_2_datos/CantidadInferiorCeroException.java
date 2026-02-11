@@ -1,4 +1,4 @@
-package t5p6;
+package com.mycompany.t5p6_2_datos;
 
 public class CantidadInferiorCeroException extends Exception {
 	public CantidadInferiorCeroException() {
