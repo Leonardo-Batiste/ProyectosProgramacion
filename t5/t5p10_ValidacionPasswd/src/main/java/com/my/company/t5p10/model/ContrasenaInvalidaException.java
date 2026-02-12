@@ -12,9 +12,9 @@ public class ContrasenaInvalidaException extends Exception{
     
     /**
      * No se si hacerlo asi, o añadir una Contraseña exception arriba y que esta herede de esa
-     * @param mensajeError 
+     * @param motivoError 
      */
-    public ContrasenaInvalidaException(String mensajeError){
-        super(mensajeError);
+    public ContrasenaInvalidaException(String motivoError){
+        super("Error. La contraseña"+motivoError);
     }
 }

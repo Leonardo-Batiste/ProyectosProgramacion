@@ -8,7 +8,7 @@ package com.mycompany.t5p10_validacioncontrasena;
  *
  * @author AluDAM
  */
-public class T5p10_ValidacionPasswd {
+public class Main {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");

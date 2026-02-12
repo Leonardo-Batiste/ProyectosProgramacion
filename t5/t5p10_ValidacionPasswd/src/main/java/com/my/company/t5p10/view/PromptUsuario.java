@@ -14,4 +14,5 @@ public class PromptUsuario {
      * Aqui iria el JOption pane para pedirle la contraseña al usuario 
      * y devolverle el error o confirmacion
      */
+    
 }
