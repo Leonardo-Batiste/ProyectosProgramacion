@@ -15,4 +15,11 @@ public class PromptUsuario {
      * !No estoy seguro de si deberia de estar en un metodo o no
      */   
     String contraseñaIntroducida = JOptionPane.showInputDialog("Introduce tu contraseña para comprobarla: ");
+    
+    /*
+    public String contraseñaIntroducida(){
+        String contraseñaIntroducida = JOptionPane.showInputDialog("Introduce tu contraseña para comprobarla: ");
+        return contraseñaIntroducida; 
+    }
+    */
 }

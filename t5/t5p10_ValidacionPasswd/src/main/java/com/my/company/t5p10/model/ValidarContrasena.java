@@ -17,12 +17,12 @@ public class ValidarContrasena {
      * Aunque se podria hacer con <w> en vez de <.>,
      * <.> es mas generico
      */
-    private static final Pattern alm8Car = Pattern.compile("\\.{8,}");
+    private static final Pattern alm8Char = Pattern.compile("\\.{8,}");
     
     /**
      * Si fuese "$" solo, seria al final de la cadena
      */
-    private static final Pattern almCar$ = Pattern.compile("\\$");
+    private static final Pattern almChar$ = Pattern.compile("\\$");
     
     /**
      * Aunque queramos comprobar que no haya espacios en blanco
@@ -45,9 +45,9 @@ public class ValidarContrasena {
         
         Matcher encaja_alm1Num = alm1Num.matcher(contraseña);
         
-        Matcher encaja_alm8Car = alm8Car.matcher(contraseña);
+        Matcher encaja_alm8Car = alm8Char.matcher(contraseña);
         
-        Matcher encaja_almCar$ = almCar$.matcher(contraseña);
+        Matcher encaja_almCar$ = almChar$.matcher(contraseña);
         
         Matcher encaja_noEspBlanc = noEspBlanc.matcher(contraseña);
         
