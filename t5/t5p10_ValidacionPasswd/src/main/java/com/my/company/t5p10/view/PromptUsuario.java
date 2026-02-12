@@ -11,8 +11,8 @@ import javax.swing.JOptionPane;
  */
 public class PromptUsuario {
     /**
-     * Aqui iria el JOption pane para pedirle la contraseña al usuario 
-     * y devolverle el error o confirmacion
-     */
-    
+     * Contraseña que introduce el usuario
+     * !No estoy seguro de si deberia de estar en un metodo o no
+     */   
+    String contraseñaIntroducida = JOptionPane.showInputDialog("Introduce tu contraseña para comprobarla: ");
 }

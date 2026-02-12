@@ -10,10 +10,6 @@ package com.my.company.t5p10.model;
  */
 public class ContrasenaInvalidaException extends Exception{
     
-    /**
-     * No se si hacerlo asi, o añadir una Contraseña exception arriba y que esta herede de esa
-     * @param motivoError 
-     */
     public ContrasenaInvalidaException(String motivoError){
         super("Error. La contraseña"+motivoError);
     }
