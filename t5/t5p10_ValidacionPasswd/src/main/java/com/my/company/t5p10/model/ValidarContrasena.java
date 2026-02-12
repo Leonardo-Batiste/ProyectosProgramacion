@@ -31,7 +31,7 @@ public class ValidarContrasena {
     private static final Pattern noEspBlanc = Pattern.compile("\\s");
     
     /**
-     * Debe:
+     * La contraseña debe:
      * <ul>
      * <li>incluir al menos un número</li>
      * <li>tener al menos 8 caracteres</li> 
