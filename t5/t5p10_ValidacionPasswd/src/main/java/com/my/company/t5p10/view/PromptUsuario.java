@@ -10,16 +10,10 @@ import javax.swing.JOptionPane;
  * @author AluDAM
  */
 public class PromptUsuario {
-    /**
-     * Contraseña que introduce el usuario
-     * !No estoy seguro de si deberia de estar en un metodo o no
-     */   
-    String contraseñaIntroducida = JOptionPane.showInputDialog("Introduce tu contraseña para comprobarla: ");
     
-    /*
     public String contraseñaIntroducida(){
         String contraseñaIntroducida = JOptionPane.showInputDialog("Introduce tu contraseña para comprobarla: ");
         return contraseñaIntroducida; 
     }
-    */
+    
 }

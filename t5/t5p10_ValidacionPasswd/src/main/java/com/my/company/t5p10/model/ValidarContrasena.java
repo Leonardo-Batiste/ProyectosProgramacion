@@ -17,7 +17,7 @@ public class ValidarContrasena {
      * Aunque se podria hacer con <w> en vez de <.>,
      * <.> es mas generico
      */
-    private static final Pattern alm8Char = Pattern.compile("\\.{8,}");
+    private static final Pattern alm8Char = Pattern.compile(".{8,}");
     
     /**
      * Si fuese "$" solo, seria al final de la cadena
@@ -41,7 +41,7 @@ public class ValidarContrasena {
      * </ul>
      * @param contraseña String
      */
-    public void validarContrasena(String contraseña) throws ContrasenaInvalidaException{
+    public boolean validarContrasena(String contraseña) throws ContrasenaInvalidaException{
         
         Matcher encaja_alm1Num = alm1Num.matcher(contraseña);
         
@@ -68,7 +68,8 @@ public class ValidarContrasena {
         if (encaja_noEspBlanc.find()){
             throw new ContrasenaInvalidaException("no debe tener espacios en blanco.");
         }
-        
+     
+        return true;
     }
     
 }

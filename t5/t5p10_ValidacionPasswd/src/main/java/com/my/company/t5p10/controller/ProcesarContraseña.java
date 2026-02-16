@@ -12,5 +12,16 @@ import com.my.company.t5p10.view.PromptUsuario;
  * @author AluDAM
  */
 public class ProcesarContraseña {
-    
+    public void ejecutarValidacion(){
+        PromptUsuario vista = new PromptUsuario();
+        ValidarContrasena model = new ValidarContrasena();
+        
+        try{
+            model.validarContrasena(vista.contraseñaIntroducida());
+        }
+        catch(ContrasenaInvalidaException e){
+            //Como pongo aqui el mensjae para que salga? osea en la excepcion tengo: public ContrasenaInvalidaException(String motivoError){
+            //super("Error. La contraseña"+motivoError);
+        }
+    }
 }
