@@ -20,8 +20,7 @@ public class ProcesarContraseña {
             model.validarContrasena(vista.contraseñaIntroducida());
         }
         catch(ContrasenaInvalidaException e){
-            //Como pongo aqui el mensjae para que salga? osea en la excepcion tengo: public ContrasenaInvalidaException(String motivoError){
-            //super("Error. La contraseña"+motivoError);
+            e.getMessage();
         }
     }
 }

@@ -41,7 +41,7 @@ public class ValidarContrasena {
      * </ul>
      * @param contraseña String
      */
-    public boolean validarContrasena(String contraseña) throws ContrasenaInvalidaException{
+    public void validarContrasena(String contraseña) throws ContrasenaInvalidaException{
         
         Matcher encaja_alm1Num = alm1Num.matcher(contraseña);
         
@@ -69,7 +69,7 @@ public class ValidarContrasena {
             throw new ContrasenaInvalidaException("no debe tener espacios en blanco.");
         }
      
-        return true;
+        //return true;
     }
     
 }

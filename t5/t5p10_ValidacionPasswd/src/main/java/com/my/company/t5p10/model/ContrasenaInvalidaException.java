@@ -11,6 +11,6 @@ package com.my.company.t5p10.model;
 public class ContrasenaInvalidaException extends Exception{
     
     public ContrasenaInvalidaException(String motivoError){
-        super("Error. La contraseña"+motivoError);
+        super("Error. La contraseña "+motivoError);
     }
 }
