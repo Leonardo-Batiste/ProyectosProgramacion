@@ -27,6 +27,7 @@ public class T7p202 {
         ArrayList<String> cadenasOriginales=new ArrayList<>();
         ArrayList<String> cadenasElegidas=new ArrayList<>();
         LinkedList<String> cadenasEnlazadas=new LinkedList<>();
+        
         Random rand=new Random();
         
         //LLenamos el array de las posibles palabras
@@ -48,17 +49,37 @@ public class T7p202 {
         //Recorrer ArrayList cadenasElegidas mediante iterador
         System.out.println("-----Recorrer ArrayList cadenasElegidas mediante iterador-----");
         for (String s: cadenasElegidas){
-            System.out.println(s+" ");
+            System.out.print(s+" ");
         }
+        System.out.println("\n");
         
         //Recorrer arraylist cadenasElegidas por indice
         System.out.println("-----Recorrer arraylist cadenasElegidas por indice-----");
         for (int i=0;i<cadenasElegidas.size();i++){
             System.out.print(i+" "+cadenasElegidas.get(i)+" ");
         }
+        System.out.println("\n");
         
+        //imprimir arraylist mediante toString()
+        System.out.println("-----imprimir arraylist mediante toString()-----");
+        System.out.print(cadenasElegidas);
         
+        System.out.print("\n"+"\n");
         
+        //Imprimir linkedlists
+        for (String s:cadenasEnlazadas){
+            System.out.print(s+" ");
+        }
+        
+        System.out.println("\n");
+        
+        for (int i=0;i<cadenasEnlazadas.size();i++){
+            System.out.print(cadenasEnlazadas.get(i));
+        }
+        
+        System.out.println("\n");
+        
+        System.out.print(cadenasEnlazadas);
         
     }
 }
