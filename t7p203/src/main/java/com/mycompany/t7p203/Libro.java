@@ -44,4 +44,24 @@ public class Libro {
         }
     }
     
+    /**
+     * !!!Falta indicar el precio con 2
+     * @return 
+     */
+    @Override
+    public String toString(){
+        return "ISBN: "+this.isbn+"\n "
+                + "Titulo: "+this.titulo+"\n "
+                + "Escritor: "+this.escritor+"\n "
+                + "Año: "+this.añoPublicacion+"\n "
+                + "Numero de Unidades: "+numeroUnidadesStock+"\n "
+                + "Precio: "+this.precio;
+    }
+    
+    public String mostrarDatosLibro(){
+        return toString();
+    }
+    
+    
+    
 }
