@@ -8,6 +8,6 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>24</maven.compiler.release>
-        <exec.mainClass>com.mycompany.t7p203.T7p203</exec.mainClass>
+        <exec.mainClass>com.mycompany.t7p203.Main</exec.mainClass>
     </properties>
 </project>

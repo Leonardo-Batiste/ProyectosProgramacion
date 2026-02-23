@@ -29,7 +29,7 @@ public class Libro {
      */
     protected double precio;
     
-    public Libro(String isbn, String titulo, String escritor, int año, int numUnidades, double precio){
+    public Libro(String isbn, String titulo, String escritor, int año, int numUnidades, double precio) throws IsbnIncorrectoException{
         this.titulo=titulo;
         this.escritor=escritor;
         this.añoPublicacion=año;
@@ -40,7 +40,7 @@ public class Libro {
             this.isbn=isbn;
         }
         else {
-            //Excepcion??
+            //Excepcion con: "Ya existe otro libro con ese ISBN en la lista"
         }
     }
     
