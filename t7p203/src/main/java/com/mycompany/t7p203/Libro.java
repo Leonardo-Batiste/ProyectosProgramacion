@@ -40,7 +40,7 @@ public class Libro {
             this.isbn=isbn;
         }
         else {
-            //Excepcion con: "Ya existe otro libro con ese ISBN en la lista"
+            throw new IsbnIncorrectoException("ISBN ya esta añadido");
         }
     }
     

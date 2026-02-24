@@ -43,8 +43,12 @@ public class Main {
                     String numUnidadesLibroIntroducir=JOptionPane.showInputDialog("Introduce el numero de unidades:");
                     String precioLibroIntroducir=JOptionPane.showInputDialog("Introduce el precio del libro:");
                     
-                    
-                    
+                    try {
+                        Libro nuevoLibro=new Libro(isbnLibroIntroducir, añoLibroIntroducir, añoLibroIntroducir, opcionMenu, opcionMenu, opcionMenu);
+                    }
+                    catch (IsbnIncorrectoException e){
+                        JOptionPane.showMessageDialog(null, e.getMessage());
+                    }
                     break;
                 
                 case 2:

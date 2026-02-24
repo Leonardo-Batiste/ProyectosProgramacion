@@ -10,6 +10,6 @@ package com.mycompany.t7p203;
  */
 public class IsbnIncorrectoException extends Exception {
     public IsbnIncorrectoException(String mensajeError){
-        super(mensajeError);
+        super("Error de "+mensajeError);
     }
 }
