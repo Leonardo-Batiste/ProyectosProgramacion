@@ -45,6 +45,7 @@ public class Main {
                     
                     try {
                         Libro nuevoLibro=new Libro(isbnLibroIntroducir, añoLibroIntroducir, añoLibroIntroducir, opcionMenu, opcionMenu, opcionMenu);
+                        JOptionPane.showMessageDialog(null, "Se ha insertado el libro en la lista.");
                     }
                     catch (IsbnIncorrectoException e){
                         JOptionPane.showMessageDialog(null, e.getMessage());
@@ -52,6 +53,15 @@ public class Main {
                     break;
                 
                 case 2:
+                    String libroEliminar=JOptionPane.showInputDialog("Introduce el ISBN del libro a eliminar.");
+                    
+                    if (Libro.eliminarISBN(libroEliminar)){
+                        JOptionPane.showMessageDialog(null, "Se ha eliminado el libro de la lista.");
+                    }
+                    else{
+                        throw noContieneIsbnException;
+                    }
+                    
                     break;
                 
                 case 3:

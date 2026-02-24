@@ -40,7 +40,7 @@ public class Libro {
             this.isbn=isbn;
         }
         else {
-            throw new IsbnIncorrectoException("ISBN ya esta añadido");
+            throw new IsbnIncorrectoException("ya existe otro libro con ese ISBN en la lista.");
         }
     }
     
@@ -62,6 +62,8 @@ public class Libro {
         return toString();
     }
     
-    
+    public static boolean eliminarISBN(String isbn){
+        return listaISBN.remove(isbn);
+    }
     
 }
