@@ -99,7 +99,7 @@ public class Main {
                     
                     break;
 
-                    
+                //!!!Cuando se ejecuta, no hace nada y termina, probablemente por el if, osea va directamente al break
                 case 4:
                     int indiceCase4=0;
                     try {
@@ -127,7 +127,7 @@ public class Main {
                 case 6:
                     break;
                     
-                //Falta la opcion en caso de que no sea =0 <=6
+                //Falta el case ninguno de estos
             }
             
         } while(condicionWhile);
