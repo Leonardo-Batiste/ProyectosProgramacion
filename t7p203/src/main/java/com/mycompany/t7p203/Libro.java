@@ -5,6 +5,7 @@
 package com.mycompany.t7p203;
 
 import java.util.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -62,8 +63,13 @@ public class Libro {
         return toString();
     }
     
-    public static boolean eliminarISBN(String isbn){
-        return listaISBN.remove(isbn);
+    public static void eliminarISBN(String isbnEliminar) throws noContieneIsbnException{
+        if (listaISBN.remove(isbnEliminar)){
+            JOptionPane.showMessageDialog(null, "Se ha eliminado el libro de la lista.");
+        }
+        else{
+            throw new noContieneIsbnException("no se puede eliminar porque no existe en la lista.");            
+        }
     }
     
 }

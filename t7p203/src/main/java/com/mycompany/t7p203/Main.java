@@ -53,13 +53,13 @@ public class Main {
                     break;
                 
                 case 2:
-                    String libroEliminar=JOptionPane.showInputDialog("Introduce el ISBN del libro a eliminar.");
+                    try {
+                        String libroEliminar=JOptionPane.showInputDialog("Introduce el ISBN del libro a eliminar.");
                     
-                    if (Libro.eliminarISBN(libroEliminar)){
-                        JOptionPane.showMessageDialog(null, "Se ha eliminado el libro de la lista.");
+                        Libro.eliminarISBN(libroEliminar);
                     }
-                    else{
-                        throw noContieneIsbnException;
+                    catch (noContieneIsbnException e){
+                        JOptionPane.showMessageDialog(null, e.getMessage());
                     }
                     
                     break;
