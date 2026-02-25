@@ -65,7 +65,32 @@ public class Main {
                     break;
                 
                 case 3:
+                    
+                    try{
+                        String libroConsultar=JOptionPane.showInputDialog("Introduce el ISBN del libro a consultar:");
+
+                        Libro libroEncontrado=null;
+
+                        for (Libro libro : listaLibros ){
+                            if (libro.equals(libroConsultar)){
+                                libroEncontrado=libro;
+                                break;
+                            }
+                        }
+
+                        if (libroEncontrado != null){
+                           JOptionPane.showMessageDialog(null, libroEncontrado.mostrarDatosLibro());
+                        }
+                        else{
+                            throw new noContieneIsbnException("No existe ningún libro con ese ISBN en la lista.");
+                        } 
+                    }
+                    catch (noContieneIsbnException e){
+                        JOptionPane.showMessageDialog(null, e.getMessage());
+                    }
+                    
                     break;
+
                     
                 case 4:
                     break;

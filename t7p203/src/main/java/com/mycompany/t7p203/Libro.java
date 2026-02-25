@@ -72,4 +72,8 @@ public class Libro {
         }
     }
     
+    public static void consultarLibro(){
+        
+    }
+    
 }
