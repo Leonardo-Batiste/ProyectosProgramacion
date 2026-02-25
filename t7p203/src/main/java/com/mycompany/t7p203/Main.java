@@ -39,12 +39,18 @@ public class Main {
                     String isbnLibroIntroducir=JOptionPane.showInputDialog("Introduce el ISBN:");
                     String tituloLibroIntroducir=JOptionPane.showInputDialog("Introduce el titulo:");
                     String escritorLibroIntroducir=JOptionPane.showInputDialog("introduce el autor:.");
-                    String añoLibroIntroducir=JOptionPane.showInputDialog("Introduce el año de publicacion:");
-                    String numUnidadesLibroIntroducir=JOptionPane.showInputDialog("Introduce el numero de unidades:");
-                    String precioLibroIntroducir=JOptionPane.showInputDialog("Introduce el precio del libro:");
+                    int añoLibroIntroducir=Integer.parseInt(JOptionPane.showInputDialog("Introduce el año de publicacion:"));
+                    int numUnidadesLibroIntroducir=Integer.parseInt(JOptionPane.showInputDialog("Introduce el numero de unidades:"));
+                    double precioLibroIntroducir=Double.parseDouble(JOptionPane.showInputDialog("Introduce el precio del libro:"));
+                            
                     
                     try {
-                        Libro nuevoLibro=new Libro(isbnLibroIntroducir, añoLibroIntroducir, añoLibroIntroducir, opcionMenu, opcionMenu, opcionMenu);
+                        Libro nuevoLibro=new Libro(isbnLibroIntroducir, 
+                                                    tituloLibroIntroducir, 
+                                                    escritorLibroIntroducir, 
+                                                    añoLibroIntroducir, 
+                                                    numUnidadesLibroIntroducir,
+                                                    precioLibroIntroducir);
                         listaLibros.add(nuevoLibro);
                         JOptionPane.showMessageDialog(null, "Se ha insertado el libro en la lista.");
                     }
@@ -98,7 +104,6 @@ public class Main {
                     try {
                         if (listaLibros.size()>0){
                             for (Libro libro : listaLibros){
-                                
                                 System.out.print(indiceCase4+++" ");
                                 libro.mostrarDatosLibro();
                             }
