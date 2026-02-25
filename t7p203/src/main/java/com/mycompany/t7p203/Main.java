@@ -64,6 +64,7 @@ public class Main {
                         String libroEliminar=JOptionPane.showInputDialog("Introduce el ISBN del libro a eliminar.");
                     
                         Libro.eliminarISBN(libroEliminar);
+                        listaLibros.remove(libroEliminar); // !!!no se si esto esta bien?
                     }
                     catch (noContieneIsbnException e){
                         JOptionPane.showMessageDialog(null, e.getMessage());
