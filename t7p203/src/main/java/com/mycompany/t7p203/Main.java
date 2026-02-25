@@ -45,6 +45,7 @@ public class Main {
                     
                     try {
                         Libro nuevoLibro=new Libro(isbnLibroIntroducir, añoLibroIntroducir, añoLibroIntroducir, opcionMenu, opcionMenu, opcionMenu);
+                        listaLibros.add(nuevoLibro);
                         JOptionPane.showMessageDialog(null, "Se ha insertado el libro en la lista.");
                     }
                     catch (IsbnIncorrectoException e){
@@ -72,7 +73,7 @@ public class Main {
                         Libro libroEncontrado=null;
 
                         for (Libro libro : listaLibros ){
-                            if (libro.equals(libroConsultar)){
+                            if (libro.getIsbn().equals(libroConsultar)){
                                 libroEncontrado=libro;
                                 break;
                             }
@@ -93,6 +94,25 @@ public class Main {
 
                     
                 case 4:
+                    int indiceCase4=0;
+                    try {
+                        if (listaLibros.size()>0){
+                            for (Libro libro : listaLibros){
+                                
+                                System.out.print(indiceCase4+++" ");
+                                libro.mostrarDatosLibro();
+                            }
+                        }
+                        else{
+                            throw new ListaVaciaException("No hay libros en la lista.");
+                        }
+                    }
+                    catch (ListaVaciaException e){
+                        JOptionPane.showMessageDialog(null, e.getMessage());
+                    }
+                    
+                    
+                    
                     break;
                 
                 case 5:

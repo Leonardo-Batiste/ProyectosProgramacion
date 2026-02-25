@@ -75,5 +75,10 @@ public class Libro {
     public static void consultarLibro(){
         
     }
+
+    public String getIsbn() {
+        return isbn;
+    }
+    
     
 }
