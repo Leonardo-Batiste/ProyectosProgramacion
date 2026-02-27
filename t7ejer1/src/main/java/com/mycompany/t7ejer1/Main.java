@@ -67,9 +67,7 @@ public class Main {
         }
         
         //Mostramos los datos de todos los animales
-        for (Animal animal: listaAnimales){
-            JOptionPane.showMessageDialog(null, animal);
-        }
+        Animal.mostrarTodosDatos(listaAnimales);
         
     }
 }
