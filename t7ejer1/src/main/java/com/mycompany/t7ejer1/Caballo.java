@@ -16,7 +16,7 @@ public class Caballo extends Animal {
     @Override
     public String toString(){
         return "Nombre caballo: " + this.nombre + "\n "
-                + "Raza caballo: " + this.raza+"\n"
+                + "Raza de caballo: " + this.raza+"\n"
                 + "Cuidado diario: " + cuidadoDiario(); 
     }
     

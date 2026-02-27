@@ -16,19 +16,19 @@ public class Main {
     public static void main(String[] args) {
         Collection<Animal> listaAnimales = new HashSet<>();
         
-        boolean condicionWhile = true;
+        boolean condicionWhileCrearAnimales = true;
         
         //Este while sirve para simplemente crear los animales
-        while (condicionWhile){
-            int animalACrear=Integer.parseInt(JOptionPane.showInputDialog("Que animal deseas crear?"+"\n"
+        while (condicionWhileCrearAnimales){
+            int opcionAnimalParaCrear=Integer.parseInt(JOptionPane.showInputDialog("Que animal deseas crear?"+"\n"
                                                             + "0 - Ninguno"+"\n"
                                                             + "1 - Perro"+"\n"
                                                             + "2 - Gato"+"\n"
                                                             + "3 - Caballo"));
 
-            switch (animalACrear){
+            switch (opcionAnimalParaCrear){
                 case 0:
-                    condicionWhile=false;
+                    condicionWhileCrearAnimales=false;
                     break;
 
                 case 1:
@@ -65,14 +65,31 @@ public class Main {
             }
         }
         
-        //Mostramos los datos de todos los animales
-        Animal.mostrarTodosDatos(listaAnimales);
+        boolean condicionWhileEliminarAnimales=true;
         
-        //Eliminar animal introducido
-        String animalParaEliminar=JOptionPane.showInputDialog(null, "Introduce un animal para borrarlo.");
-        
-        Animal.eliminarAnimal(listaAnimales, animalParaEliminar);
-        
-        System.out.println(listaAnimales);
+        while (condicionWhileEliminarAnimales){
+            
+            int opcionSiQuiereEliminar=Integer.parseInt(JOptionPane.showInputDialog("Que desea hacer?:"+"\n"
+                                                                    + "0 - No eliminar"+"\n"
+                                                                    + "1 - Eliminar un animal"));
+            
+            switch (opcionSiQuiereEliminar){
+                case 0:
+                    condicionWhileEliminarAnimales=false;
+                    break;
+                
+                case 1:
+                    //Mostramos los datos de todos los animales
+                    Animal.mostrarTodosDatos(listaAnimales);
+
+                    //Eliminar animal introducido
+                    String animalParaEliminar=JOptionPane.showInputDialog(null, "Introduce un animal para borrarlo.");
+
+                    Animal.eliminarAnimal(listaAnimales, animalParaEliminar);
+
+                    System.out.println(listaAnimales);
+                    break;
+            }
+        }
     }
 }
