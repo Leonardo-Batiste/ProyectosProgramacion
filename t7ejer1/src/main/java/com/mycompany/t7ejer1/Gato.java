@@ -18,7 +18,7 @@ public class Gato extends Animal implements Parlanchin{
         return "Nombre gato: " + this.nombre + "\n "
                 + "Raza gato: " + this.raza+"\n"
                 + "Cuidado diario: "+cuidadoDiario()+"\n"
-                + this.nombre + "quiere decir algo: "+habla();
+                + this.nombre + " quiere decir algo: "+habla();
     }
     
     @Override

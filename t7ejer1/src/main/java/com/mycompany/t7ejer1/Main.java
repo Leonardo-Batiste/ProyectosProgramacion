@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 public class Main {
 
     public static void main(String[] args) {
-        Collection<Animal> listaAnimales = new ArrayList<>();
+        Collection<Animal> listaAnimales = new HashSet<>();
         
         boolean condicionWhile = true;
         
@@ -62,12 +62,17 @@ public class Main {
                     JOptionPane.showMessageDialog(null, "Has introducido la creacion de un animal que no es correcto, vuelve a intentarlo.");
                     break;
                     
-                //!!!Falta aqui creo? introducirlos en el ArrayList, o sacarlos fuera del while?
             }
         }
         
         //Mostramos los datos de todos los animales
         Animal.mostrarTodosDatos(listaAnimales);
         
+        //Eliminar animal introducido
+        String animalParaEliminar=JOptionPane.showInputDialog(null, "Introduce un animal para borrarlo.");
+        
+        Animal.eliminarAnimal(listaAnimales, animalParaEliminar);
+        
+        System.out.println(listaAnimales);
     }
 }

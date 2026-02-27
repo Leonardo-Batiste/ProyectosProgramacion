@@ -32,6 +32,34 @@ public abstract class Animal {
             posicionAnimal++;
         }
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+    
+    
+    
+    public static void eliminarAnimal(Collection<Animal> coleccionAnimales, String nombreAnimal){
+        boolean seHaEliminado=false;
+        
+        Iterator<Animal> it = coleccionAnimales.iterator();
+
+        while (it.hasNext()) {        // 1. ¿Hay más elementos?
+            Animal indiceAnimal = it.next(); // 2. AVANZA y COGE el actual
+    
+            if (indiceAnimal.getNombre().equals(nombreAnimal)) {
+                it.remove();           // 3. Elimina el ÚLTIMO que cogió (el de línea 2)
+                seHaEliminado=true;
+            }
+        }
+        
+        if (seHaEliminado){
+            JOptionPane.showMessageDialog(null, "Se ha eliminado el animal llamado "+nombreAnimal);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "No se ha eliminado ningun animal, porque no se ha encontrado.");
+        }
+    }
     
     
 }
