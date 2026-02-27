@@ -16,7 +16,9 @@ public class Perro extends Animal implements Parlanchin {
     @Override
     public String toString(){
         return "Nombre perro: " + this.nombre + "\n "
-                + "Raza perro: " + this.raza; 
+                + "Raza perro: " + this.raza+"\n"
+                + "Cuidado diario: "+cuidadoDiario()+"\n"
+                + this.nombre + "quiere decir algo: "+habla(); 
     }
     
     @Override
