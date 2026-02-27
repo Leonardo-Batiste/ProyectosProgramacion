@@ -4,6 +4,9 @@
 
 package com.mycompany.t7p203;
 
+import com.mycompany.t7p203.Excepciones.noContieneIsbnException;
+import com.mycompany.t7p203.Excepciones.ListaVaciaException;
+import com.mycompany.t7p203.Excepciones.IsbnIncorrectoException;
 import java.util.*;
 import javax.swing.JOptionPane;
 
@@ -105,7 +108,7 @@ public class Main {
                     try {
                         if (listaLibros.size()>0){
                             for (Libro libro : listaLibros){
-                                System.out.print(indiceCase4+++" ");
+                                System.out.print(indiceCase4++ +" ");
                                 libro.mostrarDatosLibro();
                             }
                         }

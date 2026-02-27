@@ -4,6 +4,8 @@
  */
 package com.mycompany.t7p203;
 
+import com.mycompany.t7p203.Excepciones.noContieneIsbnException;
+import com.mycompany.t7p203.Excepciones.IsbnIncorrectoException;
 import java.util.*;
 import javax.swing.JOptionPane;
 
