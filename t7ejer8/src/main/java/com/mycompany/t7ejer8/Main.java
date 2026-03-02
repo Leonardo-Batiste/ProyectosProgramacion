@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 public class Main {
 
     public static void main(String[] args) {
-        List<Contacto> lista = new LinkedList<>();
+        List<Contacto> agendaContactos = new LinkedList<>();
         
         //Este for crea X contactos
         int cantidadContactos = Integer.parseInt(JOptionPane.showInputDialog("Introduce cantidad de contactos"));
@@ -49,32 +49,32 @@ public class Main {
             //Constructor con solo nombre
             if (numeroContacto == 0 && emailContacto.equals("")){
                 Contacto contacto = new Contacto(nombreContacto, null, null);
-                lista.add(contacto);
+                agendaContactos.add(contacto);
                 break;
             }
             
             //Constructor con numero
             else if (numeroContacto!=0){
                 Contacto contacto = new Contacto(nombreContacto, numeroContacto, null);
-                lista.add(contacto);
+                agendaContactos.add(contacto);
                 break;
             }
             
             //Constructor con email
             else if (!emailContacto.equals("")){
                 Contacto contacto = new Contacto(nombreContacto, null, emailContacto);
-                lista.add(contacto);
+                agendaContactos.add(contacto);
                 break;
             }
             
             //Constructor con numero y email de contacto
             else {
                 Contacto contacto = new Contacto(nombreContacto, numeroContacto, emailContacto);
-                lista.add(contacto);
+                agendaContactos.add(contacto);
             }
         }
         
-        
+        Collections.sort(agendaContactos);
         
     }
 }
