@@ -45,10 +45,7 @@ public class T7ejer7 {
                 JOptionPane.showMessageDialog(null, "DNI no es correcto.");
             }
             else{
-                if (dni.equals("")){
-                mostrarSet(set);
-                }
-                else if (set.add(dni)){
+                if (set.add(dni)){
                     conteo++;
                 }
 
