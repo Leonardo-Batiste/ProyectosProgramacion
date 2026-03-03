@@ -37,9 +37,10 @@ public class Contacto {
     
     @Override
     public String toString(){
-        return "Nombre: "+this.nombre+"\n"
-                + "Numero"+this.numero+"\n"
-                + "Email"+this.email+"\n";
+        return  "\n---Datos del contacto---"
+                +"Nombre: "+this.nombre+"\n"
+                + "Numero: "+this.numero+"\n"
+                + "Email: "+this.email+"\n";
     }
 
     public String getNombre() {

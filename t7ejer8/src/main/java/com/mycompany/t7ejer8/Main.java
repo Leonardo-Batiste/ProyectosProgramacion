@@ -95,11 +95,11 @@ public class Main {
                     if (c.getNumero()==null){
                         it.remove();
                         JOptionPane.showMessageDialog(null, "Se ha borrado al contacto"+c.getNombre());
-                    }
-                    
-                    for (Contacto contactoInformacion : agendaContactos){
+                    }    
+                }
+                
+                for (Contacto contactoInformacion : agendaContactos){
                         System.out.println(contactoInformacion);
-                    }
                 }
                 
             case "2":
@@ -108,8 +108,13 @@ public class Main {
                     
                     if (c.getEmail()==null){
                         it.remove();
+                        JOptionPane.showMessageDialog(null, "Se ha borrado al contacto"+c.getNombre());
                     }
-                    
+                }
+                
+                System.out.println("-----Contactos restantes-----");
+                for (Contacto contactoInformacion : agendaContactos){
+                        System.out.println(contactoInformacion);
                 }
                 
             case "3":
