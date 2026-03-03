@@ -20,36 +20,41 @@ public class Main {
         int cantidadContactos = Integer.parseInt(JOptionPane.showInputDialog("Introduce cantidad de contactos"));
         
         for (int i=0;i<cantidadContactos;i++){
+            //inicializar las variables
             String nombreContacto = JOptionPane.showInputDialog("Añade el nombre del contacto");
             Integer numeroContacto = 0;
             String emailContacto = "";
             
             //Numero del contacto
-            String añadirNumero = JOptionPane.showInputDialog("Quieres añadir numero al contacto? (s/n)");
-            switch (añadirNumero){
-                case "s":
-                    numeroContacto = Integer.parseInt(JOptionPane.showInputDialog("Introduce el numero del contacto"));
-                    
-                default:
+            String añadirNumero = JOptionPane.showInputDialog("Quieres añadir numero al contacto? (Introduce el numero, o n para saltarlo)");
+            String patronNumero = "\\d+"; //Aqui es muy general pero porque no es importante que sea correcto el numero de tlfn, con que sea digito 0-9 me sirve
+            
+            if (añadirNumero.matches(patronNumero)){
+                numeroContacto = Integer.parseInt(añadirNumero);
             }
+            else if (añadirNumero.equals("n")){
+                numeroContacto=null;
+            }
+            //!!!A lo mejor faltaria un else tambien, pero no es importante
             
             //Email contacto
-            String añadirEmail = JOptionPane.showInputDialog("Quieres añadir email al contacto? (s/n)");
-            switch (añadirEmail) {
-                case "s":
-                    emailContacto = JOptionPane.showInputDialog("Introduce el email del contacto");
-                    
-                default:
+            String añadirEmail = JOptionPane.showInputDialog("Quieres añadir email al contacto? (Introduce el email o n para saltarlo)");
+            //!!!Faltaria a lo mejor un pattern y matcher pero no importa
+            if (añadirEmail.equals("n")){
+                emailContacto=null;
+            }
+            else{
+                emailContacto=añadirEmail;
             }
 
             //Constructor con solo nombre
-            if (numeroContacto == 0 && emailContacto.equals("")){
+            if (numeroContacto==null && emailContacto==null){
                 Contacto contacto = new Contacto(nombreContacto, null, null);
                 agendaContactos.add(contacto);
             }
             
             //Constructor con numero
-            else if (numeroContacto!=0){
+            else if (numeroContacto!=null){
                 Contacto contacto = new Contacto(nombreContacto, numeroContacto, null);
                 agendaContactos.add(contacto);
             }
