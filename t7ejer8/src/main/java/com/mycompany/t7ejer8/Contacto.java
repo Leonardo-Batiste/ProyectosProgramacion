@@ -41,6 +41,20 @@ public class Contacto {
                 + "Numero"+this.numero+"\n"
                 + "Email"+this.email+"\n";
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public Integer getNumero() {
+        return numero;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+    
+    
     
     
 }
