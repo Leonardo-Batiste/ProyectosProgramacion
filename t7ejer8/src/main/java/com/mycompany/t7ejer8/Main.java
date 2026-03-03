@@ -29,10 +29,8 @@ public class Main {
             switch (añadirNumero){
                 case "s":
                     numeroContacto = Integer.parseInt(JOptionPane.showInputDialog("Introduce el numero del contacto"));
-                    break;
                     
                 default:
-                    break;
             }
             
             //Email contacto
@@ -40,31 +38,26 @@ public class Main {
             switch (añadirEmail) {
                 case "s":
                     emailContacto = JOptionPane.showInputDialog("Introduce el email del contacto");
-                    break;
                     
                 default:
-                    break;
             }
 
             //Constructor con solo nombre
             if (numeroContacto == 0 && emailContacto.equals("")){
                 Contacto contacto = new Contacto(nombreContacto, null, null);
                 agendaContactos.add(contacto);
-                break;
             }
             
             //Constructor con numero
             else if (numeroContacto!=0){
                 Contacto contacto = new Contacto(nombreContacto, numeroContacto, null);
                 agendaContactos.add(contacto);
-                break;
             }
             
             //Constructor con email
             else if (!emailContacto.equals("")){
                 Contacto contacto = new Contacto(nombreContacto, null, emailContacto);
                 agendaContactos.add(contacto);
-                break;
             }
             
             //Constructor con numero y email de contacto
@@ -74,7 +67,11 @@ public class Main {
             }
         }
         
-        Collections.sort(agendaContactos);
+        Collections.sort(agendaContactos, new ComparadorNombre());
+        
+        for (Contacto c : agendaContactos){
+            System.out.println(c);
+        }
         
     }
 }
