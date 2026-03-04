@@ -13,7 +13,14 @@ public class Plato {
     /**
      * Será un númeroentre 1 y 3.Siendo 1 primer plato, 2 segundo y 3 postre
      */
-    protected int descripcion;
+    protected int tipo;
+    
+    protected String descripcion;
+    
+    public Plato(int tipoPlato, String descripcionPlato){
+        this.tipo=tipoPlato;
+        this.descripcion=descripcionPlato;
+    }
     
     
     
