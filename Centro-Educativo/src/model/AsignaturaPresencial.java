@@ -52,8 +52,17 @@ public class AsignaturaPresencial extends Asignatura {
         }
     }
 
-    public void mediaAprobados(LinkedList<Float> notas){
+    public float getNotaMedia(LinkedList<Float> notas){
+        float sumaNotas = 0;
+        int tamañoLista=notas.size();
 
+        for (Float nota : notas){
+            sumaNotas+=nota;
+        }
+
+        return sumaNotas/tamañoLista;
     }
+
+
 
 }
