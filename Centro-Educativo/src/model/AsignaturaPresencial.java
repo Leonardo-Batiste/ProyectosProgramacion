@@ -8,61 +8,81 @@ public class AsignaturaPresencial extends Asignatura {
      */
     protected int numeroPracticas;
 
-
     /**
      * Rango(1.0-10.0)
      */
-    List<Float> notas = new LinkedList<>();
-
+    private List<Float> notas = new LinkedList<>();
 
     /**
-     *
      * @param id Código de 4 caracteres. Debe empezar por una letra (no número).
      * @param nombre Entre 1 y 20 caracteres.
      * @param numeroPracticas Rango(1-14)
-     * @param notas float, Rango(1.0-10.0)
-     * Criterio aprobado Media de todas las prácticas >= 5 Y ninguna práctica inferior a 4.
+     * @param notas LinkedList<Float>, Rango(1.0-10.0)
      */
-    public AsignaturaPresencial(String id, String nombre, int numeroPracticas, LinkedList<Float>notas) throws NombreInvalidoException,
-                                                                                                    IdInvalidoException,
-                                                                                                    numeroPracticasException,
-                                                                                                    notasInvalidasException{
+    public AsignaturaPresencial(String id, String nombre, int numeroPracticas, LinkedList<Float> notas)
+            throws NombreInvalidoException, IdInvalidoException,
+            numeroPracticasException, notasInvalidasException {
+
         super(id, nombre);
 
-        if (numeroPracticas<1 || numeroPracticas>14){
-            throw new numeroPracticasException("el numero de practicas introducido, tiene que ser en un rango de: 1-14");
+        if (numeroPracticas < 1 || numeroPracticas > 14) {
+            throw new numeroPracticasException("El número de prácticas introducido tiene que estar en un rango de 1-14");
         }
-        else{
-            this.numeroPracticas=numeroPracticas;
-        }
+        this.numeroPracticas = numeroPracticas;
 
-        boolean notasEsCorrecto=true;
-        for (Float nota : notas){
-            if (nota<1 || nota>10 || nota==null){
-                notasEsCorrecto=false;
-                break;
+        // Validar que las notas estén en el rango permitido (1-10) y no sean null
+        if (!notasEnRangoValido(notas)) {
+            throw new notasInvalidasException("Las notas deben estar en el rango 1-10 y no contener valores null");
+        }
+        this.notas = new LinkedList<>(notas);
+    }
+
+    /**
+     * Comprueba que las notas individuales de la lista estén en el rango 1-10 y no sean null.
+     * @param notas LinkedList<Float>
+     * @return boolean
+     */
+    private boolean notasEnRangoValido(LinkedList<Float> notas) {
+        for (Float nota : notas) {
+            if (nota == null || nota < 1 || nota > 10) {
+                return false;
             }
         }
-
-        if (notasEsCorrecto){
-            this.notas=notas;
-        }
-        else {
-            throw new notasInvalidasException("en el rango de las notas, tiene que ser una nota de: 1-10");
-        }
+        return true;
     }
 
-    public float getNotaMedia(LinkedList<Float> notas){
+    /**
+     * Calcula la nota media de la colección.
+     * @return float con la nota media
+     */
+    public float getNotaMedia() {
         float sumaNotas = 0;
-        int tamañoLista=notas.size();
-
-        for (Float nota : notas){
-            sumaNotas+=nota;
+        for (Float nota : notas) {
+            sumaNotas += nota;
         }
-
-        return sumaNotas/tamañoLista;
+        return sumaNotas / notas.size();
     }
 
+    /**
+     * Comprueba si alguna nota es inferior a 4.
+     * @return true si todas las notas son >= 4, false en caso contrario
+     */
+    private boolean todasLasNotasSuperanCuatro() {
+        for (Float nota : notas) {
+            if (nota < 4) {
+                return false;
+            }
+        }
+        return true;
+    }
 
-
+    /**
+     * Criterio de aprobado: Media de todas las prácticas >= 5 Y ninguna práctica inferior a 4.
+     * @return boolean
+     */
+    public boolean mediaHaAprobado() {
+        float notaMedia = getNotaMedia();
+        boolean sinNotasInferioresACuatro = todasLasNotasSuperanCuatro();
+        return notaMedia >= 5 && sinNotasInferioresACuatro;
+    }
 }
