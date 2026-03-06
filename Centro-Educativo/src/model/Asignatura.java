@@ -32,4 +32,12 @@ public class Asignatura {
             throw new NombreInvalidoException("el nombre, debe tener entre 1 y 20 caracteres.");
         }
     }
+
+    public String getNombre(){
+        return this.nombre;
+    }
+
+    public String getID(){
+        return this.id;
+    }
 }

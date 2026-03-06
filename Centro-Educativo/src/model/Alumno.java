@@ -25,7 +25,7 @@ public class Alumno {
      * Una colección de objetos Asignatura. Podrán mezclarse presenciales y no
      * presenciales. No se permiten duplicados (mismo ID).
      */
-    protected TreeSet<Asignatura> asignaturas = new TreeSet<>();
+    protected TreeSet<Asignatura> asignaturas = new TreeSet<>(new AsignaturaNombreComparator());
 
     /**
      *
@@ -79,6 +79,10 @@ public class Alumno {
             }
         }
         return true;
+    }
+
+    public String getNombre(){
+        return this.nombre;
     }
 
 }
