@@ -25,7 +25,7 @@ public class Alumno {
      * Una colección de objetos Asignatura. Podrán mezclarse presenciales y no
      * presenciales. No se permiten duplicados (mismo ID).
      */
-    protected TreeSet<Asignatura> asignaturas = new TreeSet<>(new AsignaturaNombreComparator());
+    protected TreeSet<Asignatura> asignaturas;
 
     /**
      *
@@ -33,18 +33,21 @@ public class Alumno {
      * @param asignaturasAlumno
      */
     public Alumno(String nombreAlumno, TreeSet<Asignatura>asignaturasAlumno)
-        throws nombreAlumnoException, asignaturasException
+        throws NombreAlumnoException, AsignaturasException
     {
 
         if (!nombreAlumnoValido(nombreAlumno)){
-            throw new nombreAlumnoException("el nombre del alumno, tiene que estar en el rango permitido y no puede ser null");
+            throw new NombreAlumnoException("el nombre del alumno, tiene que estar en el rango permitido y no puede ser null");
         }
         this.nombre=nombreAlumno;
 
         if (!asignaturasValido(asignaturasAlumno)){
-            throw new asignaturasException("el treeSet de asignaturas no puede ser null.");
+            throw new AsignaturasException("el treeSet de asignaturas no puede ser null.");
         }
-        this.asignaturas=new TreeSet<>(asignaturasAlumno);
+        this.asignaturas = new TreeSet<>(new AsignaturaNombreComparator());
+        for (Asignatura al : asignaturasAlumno){
+            this.asignaturas.add(al);
+        }
 
 
         //Como este crea el autoincremental, lo dejo el ultimo por si los demas dan error, que este no se salte numeros

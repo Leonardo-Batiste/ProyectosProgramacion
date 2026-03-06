@@ -1,5 +1,4 @@
 package model;
-import java.util.*;
 import exceptions.*;
 
 public class AsignaturaEmpresa extends Asignatura{
@@ -11,17 +10,17 @@ public class AsignaturaEmpresa extends Asignatura{
     protected float notaFinal;
 
     public AsignaturaEmpresa(String id, String nombre, String nombreDeEmpresa, float notaFinal)
-        throws IdInvalidoException, NombreInvalidoException, nombreEmpresaException, notaFinalException
+        throws IdInvalidoException, NombreInvalidoException, NombreEmpresaException, NotaFinalException
     {
         super(id, nombre);
 
         if (!nombreDeEmpresaValido(nombreDeEmpresa)){
-            throw new nombreEmpresaException("el nombre de la empresa es invalido (vacio o null).");
+            throw new NombreEmpresaException("el nombre de la empresa es invalido (vacio o null).");
         }
         this.nombreDeEmpresa=nombreDeEmpresa;
 
         if (!rangoNotaFinalCorrecto(notaFinal)){
-            throw new notaFinalException("la nota tiene que estar en un rango de 1-10");
+            throw new NotaFinalException("la nota tiene que estar en un rango de 1-10");
         }
         this.notaFinal=notaFinal;
 

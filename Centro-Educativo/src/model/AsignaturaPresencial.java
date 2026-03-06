@@ -14,25 +14,25 @@ public class AsignaturaPresencial extends Asignatura {
     private List<Float> notas = new LinkedList<>();
 
     /**
-     * @param id Código de 4 caracteres. Debe empezar por una letra (no número).
-     * @param nombre Entre 1 y 20 caracteres.
+     * @param id String.Código de 4 caracteres. Debe empezar por una letra (no número).
+     * @param nombre String.Entre 1 y 20 caracteres.
      * @param numeroPracticas Rango(1-14)
      * @param notas LinkedList<Float>, Rango(1.0-10.0)
      */
     public AsignaturaPresencial(String id, String nombre, int numeroPracticas, LinkedList<Float> notas)
             throws NombreInvalidoException, IdInvalidoException,
-            numeroPracticasException, notasInvalidasException {
+            NumeroPracticasException, NotasInvalidasException {
 
         super(id, nombre);
 
         if (numeroPracticas < 1 || numeroPracticas > 14) {
-            throw new numeroPracticasException("El número de prácticas introducido tiene que estar en un rango de 1-14");
+            throw new NumeroPracticasException("El número de prácticas introducido tiene que estar en un rango de 1-14");
         }
         this.numeroPracticas = numeroPracticas;
 
         // Validar que las notas estén en el rango permitido (1-10) y no sean null
         if (!notasEnRangoValido(notas)) {
-            throw new notasInvalidasException("Las notas deben estar en el rango 1-10 y no contener valores null");
+            throw new NotasInvalidasException("Las notas deben estar en el rango 1-10 y no contener valores null");
         }
         this.notas = new LinkedList<>(notas);
     }
