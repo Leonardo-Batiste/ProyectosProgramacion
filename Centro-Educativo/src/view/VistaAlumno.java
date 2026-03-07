@@ -25,17 +25,12 @@ public class VistaAlumno {
             switch (opcionMenu){
                 case "1":
                     try {
+                        //Aqui Pido cada valor del constructor para asignatura
                         String idAsignatura = JOptionPane.showInputDialog("Introduce el id de la asignatura");
                         String nombreAsignatura = JOptionPane.showInputDialog("Introduce el nombre de la asignatura");
                         int numeroPracticas = Integer.parseInt(JOptionPane.showInputDialog("Introduce el numero de practicas"));
-                        LinkedList<Float> notasPracticas = new LinkedList<>();
-                        JOptionPane.showMessageDialog(null, "Hay un total de "+numeroPracticas+" a asignar nota.");
-                        for (int i=0;i<numeroPracticas;i++){
-                            Float nota = Float.parseFloat(JOptionPane.showInputDialog("Introduce la nota de la practica " + (i+1)));
-                            notasPracticas.add(nota);
-                        }
 
-                        Asignatura as = new AsignaturaPresencial(idAsignatura, nombreAsignatura, numeroPracticas, notasPracticas);
+                        Asignatura as = new AsignaturaPresencial(idAsignatura, nombreAsignatura, numeroPracticas);
                         asignaturasAlumno.add(as);
                     }
                     catch (NombreInvalidoException | IdInvalidoException | NumeroPracticasException |
@@ -50,9 +45,8 @@ public class VistaAlumno {
                         String idAsignatura = JOptionPane.showInputDialog("Introduce el id de la asignatura");
                         String nombreAsignatura = JOptionPane.showInputDialog("Introduce el nombre de la asignatura");
                         String nombreEmpresa = JOptionPane.showInputDialog("Introduce el nombre de la empresa.");
-                        Float notaFinal = Float.parseFloat(JOptionPane.showInputDialog("Introduce la nota final de las practicas en empresa."));
 
-                        AsignaturaEmpresa as = new AsignaturaEmpresa(idAsignatura, nombreAsignatura, nombreEmpresa, notaFinal);
+                        AsignaturaEmpresa as = new AsignaturaEmpresa(idAsignatura, nombreAsignatura, nombreEmpresa);
                         asignaturasAlumno.add(as);
                     }
                     catch (IdInvalidoException | NombreInvalidoException | NombreEmpresaException | NotaFinalException e){

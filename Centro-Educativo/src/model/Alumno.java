@@ -88,4 +88,12 @@ public class Alumno {
         return this.nombre;
     }
 
+    public String getExpediente(){
+        return this.expediente;
+    }
+
+    public TreeSet<Asignatura> getAsignaturas(){
+        return this.asignaturas;
+    }
+
 }

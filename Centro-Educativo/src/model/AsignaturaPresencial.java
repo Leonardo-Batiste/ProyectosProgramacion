@@ -10,16 +10,16 @@ public class AsignaturaPresencial extends Asignatura {
 
     /**
      * Rango(1.0-10.0)
+     * !!!Esto a lo mejor seria un mapa? Ya que cada practica tiene una nota?
      */
-    private List<Float> notas = new LinkedList<>();
+    private LinkedList<Float> notas;
 
     /**
      * @param id String.Código de 4 caracteres. Debe empezar por una letra (no número).
      * @param nombre String.Entre 1 y 20 caracteres.
      * @param numeroPracticas Rango(1-14)
-     * @param notas LinkedList<Float>, Rango(1.0-10.0)
      */
-    public AsignaturaPresencial(String id, String nombre, int numeroPracticas, LinkedList<Float> notas)
+    public AsignaturaPresencial(String id, String nombre, int numeroPracticas)
             throws NombreInvalidoException, IdInvalidoException,
             NumeroPracticasException, NotasInvalidasException {
 
@@ -30,11 +30,9 @@ public class AsignaturaPresencial extends Asignatura {
         }
         this.numeroPracticas = numeroPracticas;
 
-        // Validar que las notas estén en el rango permitido (1-10) y no sean null
-        if (!notasEnRangoValido(notas)) {
-            throw new NotasInvalidasException("Las notas deben estar en el rango 1-10 y no contener valores null");
-        }
-        this.notas = new LinkedList<>(notas);
+
+        //!!!Mirar si LinkedList las ordena por insercion
+        this.notas = new LinkedList<>();
     }
 
     /**
@@ -84,5 +82,13 @@ public class AsignaturaPresencial extends Asignatura {
         float notaMedia = getNotaMedia();
         boolean sinNotasInferioresACuatro = todasLasNotasSuperanCuatro();
         return notaMedia >= 5 && sinNotasInferioresACuatro;
+    }
+
+    public void añadirNota(Float notaAñadir){
+        this.notas.add(notaAñadir);
+    }
+
+    public int getNumeroPracticas(){
+        return this.numeroPracticas;
     }
 }

@@ -7,9 +7,9 @@ public class AsignaturaEmpresa extends Asignatura{
     /**
      * Rango(0-10.0)
      */
-    protected float notaFinal;
+    protected Float notaFinal;
 
-    public AsignaturaEmpresa(String id, String nombre, String nombreDeEmpresa, float notaFinal)
+    public AsignaturaEmpresa(String id, String nombre, String nombreDeEmpresa)
         throws IdInvalidoException, NombreInvalidoException, NombreEmpresaException, NotaFinalException
     {
         super(id, nombre);
@@ -18,11 +18,6 @@ public class AsignaturaEmpresa extends Asignatura{
             throw new NombreEmpresaException("el nombre de la empresa es invalido (vacio o null).");
         }
         this.nombreDeEmpresa=nombreDeEmpresa;
-
-        if (!rangoNotaFinalCorrecto(notaFinal)){
-            throw new NotaFinalException("la nota tiene que estar en un rango de 1-10");
-        }
-        this.notaFinal=notaFinal;
 
     }
 
@@ -51,6 +46,8 @@ public class AsignaturaEmpresa extends Asignatura{
         return nota>=0 && nota<=10;
     }
 
-
+    public Float setNotaFinal(Float x){
+        return this.notaFinal=x;
+    }
 
 }
