@@ -28,46 +28,101 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        TextoPrueba = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        miEtiqueta = new javax.swing.JLabel();
+        cambiarColor = new javax.swing.JButton();
+        green = new javax.swing.JTextField();
+        red = new javax.swing.JTextField();
+        blue = new javax.swing.JTextField();
+        redLabel = new javax.swing.JLabel();
+        greenLabel = new javax.swing.JLabel();
+        blueLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        TextoPrueba.setBackground(new java.awt.Color(102, 102, 255));
-        TextoPrueba.setForeground(new java.awt.Color(51, 204, 0));
-        TextoPrueba.setText("Vacio");
-        TextoPrueba.setOpaque(true);
+        miEtiqueta.setBackground(new java.awt.Color(102, 102, 255));
+        miEtiqueta.setForeground(new java.awt.Color(51, 204, 0));
+        miEtiqueta.setText("Vacio");
+        miEtiqueta.setOpaque(true);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(this::jButton1ActionPerformed);
+        cambiarColor.setText("Pulsame");
+        cambiarColor.addActionListener(this::cambiarColorActionPerformed);
+
+        green.addActionListener(this::greenActionPerformed);
+
+        redLabel.setText("R");
+
+        greenLabel.setText("G");
+
+        blueLabel.setText("B");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(124, 124, 124)
-                .addComponent(TextoPrueba, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
-                .addComponent(jButton1)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(red, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(redLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(92, 92, 92)
+                                .addComponent(greenLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(green, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(17, 17, 17)))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(blueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(blue, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(126, 126, 126)
+                        .addComponent(miEtiqueta, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(70, 70, 70)
+                        .addComponent(cambiarColor)))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(65, 65, 65)
+                .addGap(114, 114, 114)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TextoPrueba)
-                    .addComponent(jButton1))
-                .addContainerGap(212, Short.MAX_VALUE))
+                    .addComponent(miEtiqueta)
+                    .addComponent(cambiarColor))
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(redLabel)
+                    .addComponent(blueLabel)
+                    .addComponent(greenLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(green, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(red, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(blue, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void cambiarColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarColorActionPerformed
+        Integer colorRojo = Integer.parseInt(red.getText());
+        Integer colorVerde = Integer.parseInt(green.getText());
+        Integer colorAzul = Integer.parseInt(blue.getText());
+        
+        miEtiqueta.setBackground(new java.awt.Color(colorRojo, colorVerde, colorAzul));
+        
+    }//GEN-LAST:event_cambiarColorActionPerformed
+
+    private void greenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_greenActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_greenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -95,7 +150,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel TextoPrueba;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField blue;
+    private javax.swing.JLabel blueLabel;
+    private javax.swing.JButton cambiarColor;
+    private javax.swing.JTextField green;
+    private javax.swing.JLabel greenLabel;
+    private javax.swing.JLabel miEtiqueta;
+    private javax.swing.JTextField red;
+    private javax.swing.JLabel redLabel;
     // End of variables declaration//GEN-END:variables
 }

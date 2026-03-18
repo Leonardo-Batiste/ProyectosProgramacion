@@ -11,6 +11,7 @@ package com.mycompany.pruebagui;
 public class PruebaGUI {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        VentanaPrincipal.main(new String[0]);
+        
     }
 }
