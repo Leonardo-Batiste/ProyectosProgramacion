@@ -41,7 +41,10 @@
               <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="labelColorActual" min="-2" max="-2" attributes="0"/>
-                  <Component id="colorActual" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                      <Component id="colorActual" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -60,7 +63,7 @@
                   <Component id="botonAzul" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botonAmarillo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="49" max="32767" attributes="0"/>
+              <EmptySpace pref="33" max="32767" attributes="0"/>
               <Component id="labelColorActual" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="colorActual" min="-2" max="-2" attributes="0"/>
@@ -103,6 +106,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="colorActual">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ninguno"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="labelColorActual">
       <Properties>
