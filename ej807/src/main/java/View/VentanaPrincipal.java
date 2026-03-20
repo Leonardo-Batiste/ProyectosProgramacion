@@ -11,13 +11,13 @@ public class VentanaPrincipal {
         
     }
     
-    JFrame mainFrame;
+    private JFrame mainFrame;
     
-    JPanel mainPanel;
+    private JPanel mainPanel;
     
-    JButton altaCocheBtn;
+    private JButton altaCocheBtn;
     
-    JButton finBtn;
+    private JButton finBtn;
     
     private void initComponents(){
         
@@ -25,9 +25,9 @@ public class VentanaPrincipal {
         
         mainPanel = new JPanel(new FlowLayout());
         
-        altaCocheBtn.setText("Alta coche");
+        altaCocheBtn = new JButton("Alta coche");
         
-        finBtn.setText("Fin");
+        finBtn = new JButton("Fin");
         
         mainPanel.add(altaCocheBtn);
         
@@ -37,9 +37,27 @@ public class VentanaPrincipal {
         
         mainFrame.pack();
         
-        mainFrame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+        mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        
+    }
+
+    public JButton getAltaCocheBtn() {
+        return altaCocheBtn;
+    }
+
+    public JButton getFinBtn() {
+        return finBtn;
+    }
+    
+    public void show(){
         
         mainFrame.setVisible(true);
+        
+    }
+    
+    public void hide(){
+        
+        mainFrame.setVisible(false);
         
     }
     
