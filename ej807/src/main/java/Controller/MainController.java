@@ -1,6 +1,7 @@
 package Controller;
 
 import View.*;
+import Model.*;
 
 public class MainController {
     
@@ -36,7 +37,17 @@ public class MainController {
     
     private void onAlta(){
         
+        String matriculaCoche = altaCocheVentana.getMatricula().getText();
         
+        String modeloCoche = altaCocheVentana.getModelo().getText();
+        
+        Double precioCoche = Double.parseDouble(altaCocheVentana.getPrecio().getText());
+        
+        Coche coche = new Coche(matriculaCoche, modeloCoche, precioCoche);
+        
+        Coche.añadirCoche(coche);
+        
+        //!!!Falta mensaje aqui, aunque no se si iria aqui o en view.
         
     }
     

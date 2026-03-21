@@ -147,6 +147,18 @@ public class AltaCoche {
         return volver;
         
     }
+
+    public JTextField getMatricula() {
+        return matricula;
+    }
+
+    public JTextField getModelo() {
+        return modelo;
+    }
+
+    
+    
+    
     
     public void showFrame(){
         

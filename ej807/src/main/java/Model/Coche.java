@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.*;
+
 public class Coche {
     
     protected static int incrementativo = 0;
@@ -9,6 +11,8 @@ public class Coche {
     protected String matricula;
     
     protected String modelo;
+    
+    protected static ArrayList<Coche> listaCoches;
     
     /**
      * !!!atributo precio es con impuestos incluidos?
@@ -32,6 +36,18 @@ public class Coche {
         this.aLaVenta = true;
         
     }
+
+    public static ArrayList<Coche> getListaCoches() {
+        return listaCoches;
+    }
+
+    public static void añadirCoche(Coche cocheParaAñadir){
+        
+        listaCoches.add(cocheParaAñadir);
+        
+    }
+    
+    
     
     
 }
