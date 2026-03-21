@@ -156,8 +156,36 @@ public class AltaCoche {
         return modelo;
     }
 
+    public JTextField getPrecio() {
+        return precio;
+    }
+
+    JDialog mensajeAltaCorrecta;
     
+    public void altaCorrecta(JFrame parent){
+        
+        mensajeAltaCorrecta = new JDialog(parent, "Se ha realizado el alta correctamente", true);
+        
+        mensajeAltaCorrecta.pack();
+        
+        mensajeAltaCorrecta.setLocationRelativeTo(parent);
+        
+        mensajeAltaCorrecta.setVisible(true);
+        
+    }
+
+    public JFrame getAltaCocheFrame() {
+        return altaCocheFrame;
+    }
     
+    public void limpiarFormulario(){
+        
+        matricula.setText("");
+        modelo.setText("");
+        precio.setText("");
+        
+        
+    }
     
     
     public void showFrame(){

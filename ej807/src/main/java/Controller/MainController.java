@@ -47,13 +47,15 @@ public class MainController {
         
         Coche.añadirCoche(coche);
         
-        //!!!Falta mensaje aqui, aunque no se si iria aqui o en view.
+        altaCocheVentana.altaCorrecta(altaCocheVentana.getAltaCocheFrame());
+        
+        altaCocheVentana.limpiarFormulario();
         
     }
     
     private void onLimpiar(){
         
-        
+        altaCocheVentana.limpiarFormulario();
         
     }
     
