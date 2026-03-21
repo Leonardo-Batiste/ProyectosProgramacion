@@ -61,7 +61,7 @@ public class MainController {
     
     private void onVolver(){
         
-        
+        System.exit(0); //!!!Puede ser que esto en vez de cerrar altaCoche, cierre el programa
         
     }
     

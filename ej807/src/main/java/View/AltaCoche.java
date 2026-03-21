@@ -27,7 +27,6 @@ public class AltaCoche {
         initSouth();
         
         
-        
         altaCocheFrame.add(altaCochePanel);
         
         altaCocheFrame.pack();
@@ -84,6 +83,8 @@ public class AltaCoche {
         
         enVenta = new JRadioButton(); //!!! Esto tiene que estar true por defecto
         
+        center.add(codigo);
+        
         center.add(enVenta);
         
         center.add(enVentaL);
@@ -121,13 +122,13 @@ public class AltaCoche {
         
         volver = new JButton("VOLVER");
         
-        south.add(volver);
+        south.add(alta);
         
         south.add(limpiarFormulario);
         
-        south.add(alta);
-        
-        altaCochePanel.add(south);
+        south.add(volver);
+
+        altaCochePanel.add(south, BorderLayout.SOUTH);
     }
     
     public JButton getAltaBoton(){
@@ -183,7 +184,6 @@ public class AltaCoche {
         matricula.setText("");
         modelo.setText("");
         precio.setText("");
-        
         
     }
     
