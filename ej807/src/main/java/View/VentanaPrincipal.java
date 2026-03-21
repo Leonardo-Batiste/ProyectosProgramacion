@@ -37,6 +37,8 @@ public class VentanaPrincipal {
         
         mainFrame.pack();
         
+        mainFrame.setLocationRelativeTo(null);
+        
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
     }
@@ -49,13 +51,13 @@ public class VentanaPrincipal {
         return finBtn;
     }
     
-    public void show(){
+    public void showFrame(){
         
         mainFrame.setVisible(true);
         
     }
     
-    public void hide(){
+    public void hideFrame(){
         
         mainFrame.setVisible(false);
         

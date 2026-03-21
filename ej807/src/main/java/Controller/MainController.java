@@ -5,9 +5,7 @@ import View.*;
 public class MainController {
     
     private VentanaPrincipal view;
-    
-    private AltaCoche AltaCocheVentana;
-    
+
     public MainController(){
         
         view = new VentanaPrincipal();
@@ -16,16 +14,41 @@ public class MainController {
         
         view.getFinBtn().addActionListener(e -> onFin());
         
-        
-        view.show();
+        view.showFrame();
         
     }
     
+    private AltaCoche altaCocheVentana;
+    
     private void onAltaCoche(){
         
-        AltaCocheVentana = new AltaCoche();
+        altaCocheVentana = new AltaCoche();
         
-        AltaCocheVentana.showFrame();
+        altaCocheVentana.getAltaBoton().addActionListener(e -> onAlta());
+        
+        altaCocheVentana.getLimpiarFormularioBoton().addActionListener(e -> onLimpiar());
+        
+        altaCocheVentana.getVolverBoton().addActionListener(e -> onVolver());
+        
+        altaCocheVentana.showFrame();
+        
+    }
+    
+    private void onAlta(){
+        
+        
+        
+    }
+    
+    private void onLimpiar(){
+        
+        
+        
+    }
+    
+    private void onVolver(){
+        
+        
         
     }
     

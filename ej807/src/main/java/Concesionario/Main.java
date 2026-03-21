@@ -1,16 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package Concesionario;
 
-/**
- *
- * @author leona
- */
-public class Main {
+import Controller.*;
 
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
+public class Main {
+    public static void main(String[] args) { 
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            new MainController();
+        });
     }
 }
