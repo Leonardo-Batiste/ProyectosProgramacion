@@ -2,7 +2,8 @@ package Controller;
 
 import View.*;
 import Model.*;
-import java.util.Set;
+import java.util.*;
+import javax.swing.JOptionPane;
 
 public class MainController {
     
@@ -15,6 +16,8 @@ public class MainController {
         view.getAltaCocheBtn().addActionListener(e -> onAltaCoche());
         
         view.getFinBtn().addActionListener(e -> onFin());
+        
+        view.getListarBtn().addActionListener(e -> onListar());
         
         view.showFrame();
         
@@ -75,6 +78,22 @@ public class MainController {
     private void onFin(){
         
         System.exit(0);
+        
+    }
+    
+    private void onListar(){
+        
+        ArrayList<Coche> coches = Coche.getListaCoches();
+        
+        String imprimirCoches = "";
+        
+        for (Coche c : coches){
+            
+            imprimirCoches += c + "\n";
+            
+        }
+        
+        JOptionPane.showMessageDialog(null, imprimirCoches);
         
     }
     
