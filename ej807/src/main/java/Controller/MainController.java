@@ -2,6 +2,7 @@ package Controller;
 
 import View.*;
 import Model.*;
+import java.util.Set;
 
 public class MainController {
     
@@ -61,7 +62,13 @@ public class MainController {
     
     private void onVolver(){
         
-        System.exit(0); //!!!Puede ser que esto en vez de cerrar altaCoche, cierre el programa
+        altaCocheVentana.getAltaCocheFrame().dispose();
+        
+    }
+    
+    public AltaCoche getFrame(){
+        
+        return this.altaCocheVentana;
         
     }
     

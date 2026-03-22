@@ -12,28 +12,38 @@ public class Coche {
     
     protected String modelo;
     
-    protected static ArrayList<Coche> listaCoches;
+    protected static ArrayList<Coche> listaCoches = new ArrayList<>();
     
     /**
      * !!!atributo precio es con impuestos incluidos?
      */
-    protected double precio;
+    protected Double precio;
     
     protected boolean aLaVenta;
    
     protected final double iva = 0.20;
     
-    public Coche(String matriculaCoche, String modeloCoche, double precioCocheSinImpuestos){
+    public Coche(String matriculaCoche, String modeloCoche, Double precioCocheSinImpuestos){
         
-        this.codigo = "2021-" + ++incrementativo;
+        this.codigo = generarCodigo();
         
         this.matricula = matriculaCoche;
         
         this.modelo = modeloCoche;
         
-        this.precio += precioCocheSinImpuestos * this.iva;
+        this.precio = precioCocheSinImpuestos + (precioCocheSinImpuestos * this.iva);
         
         this.aLaVenta = true;
+        
+        
+        
+    }
+    
+    private String generarCodigo(){
+        
+        String codigo = "2021-" + incrementativo++;
+        
+        return codigo;
         
     }
 
@@ -47,7 +57,10 @@ public class Coche {
         
     }
     
-    
-    
+    public static String getProximoCodigo(){
+        
+        return "2021-" + incrementativo;
+        
+    }
     
 }

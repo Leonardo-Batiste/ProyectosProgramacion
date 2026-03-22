@@ -2,6 +2,7 @@ package View;
 
 import java.awt.*;
 import javax.swing.*;
+import Model.*;
 
 public class AltaCoche {
     
@@ -61,11 +62,13 @@ public class AltaCoche {
     
     private void initCenter(){
         
-        center = new JPanel(new GridLayout(4, 2));
+        center = new JPanel(new GridLayout(5, 2));
         
         codigoL = new JLabel("CODIGO");
         
-        codigo = new JTextField(); //!!!Esto tiene que estar deshabilitado? pero no se como
+        codigo = new JTextField(Coche.getProximoCodigo()); 
+        
+        codigo.setEditable(false);
         
         matriculaL = new JLabel("MATRICULA");
         
@@ -81,27 +84,29 @@ public class AltaCoche {
         
         enVentaL = new JLabel("EN VENTA");
         
-        enVenta = new JRadioButton(); //!!! Esto tiene que estar true por defecto
+        enVenta = new JRadioButton("", true);
+        
+        enVenta.setEnabled(false);
+        
+        center.add(codigoL);
         
         center.add(codigo);
         
-        center.add(enVenta);
-        
-        center.add(enVentaL);
-        
-        center.add(precio);
-        
-        center.add(precioL);
-        
-        center.add(modelo);
-        
-        center.add(modeloL);
+        center.add(matriculaL);
         
         center.add(matricula);
         
-        center.add(matriculaL);
+        center.add(modeloL);
         
-        center.add(codigoL);
+        center.add(modelo);
+        
+        center.add(precioL);
+        
+        center.add(precio);
+        
+        center.add(enVentaL);
+        
+        center.add(enVenta);
         
         altaCochePanel.add(center, BorderLayout.CENTER);
         
@@ -161,6 +166,21 @@ public class AltaCoche {
         return precio;
     }
 
+    public JTextField getCodigo() {
+        return codigo;
+    }
+    
+    public JFrame getAltaCocheFrame() {
+        return altaCocheFrame;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo.setText(codigo);
+    }
+    
+    
+    
+
     JDialog mensajeAltaCorrecta;
     
     public void altaCorrecta(JFrame parent){
@@ -175,8 +195,11 @@ public class AltaCoche {
         
     }
 
-    public JFrame getAltaCocheFrame() {
-        return altaCocheFrame;
+    
+    private void cambiarCodigo(){
+        
+        setCodigo(Coche.getProximoCodigo());
+        
     }
     
     public void limpiarFormulario(){
@@ -184,6 +207,7 @@ public class AltaCoche {
         matricula.setText("");
         modelo.setText("");
         precio.setText("");
+        cambiarCodigo();
         
     }
     
