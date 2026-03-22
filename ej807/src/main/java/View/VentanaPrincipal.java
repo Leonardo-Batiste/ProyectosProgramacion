@@ -16,6 +16,7 @@ public class VentanaPrincipal {
     private JButton altaCocheBtn;
     private JButton finBtn;
     private JButton listar;
+    private JButton modificar;
     
     private void initComponents(){
         
@@ -27,13 +28,18 @@ public class VentanaPrincipal {
         
         finBtn = new JButton("Fin");
         
-        listar = new JButton("Listar Coches");
+        listar = new JButton("Listar coches");
+        
+        modificar = new JButton("Modificar coche");
         
         mainPanel.add(altaCocheBtn);
         
         mainPanel.add(finBtn);
         
         mainPanel.add(listar);
+        
+        mainPanel.add(modificar);
+        
         
         mainFrame.add(mainPanel);
         
@@ -56,6 +62,12 @@ public class VentanaPrincipal {
     public JButton getListarBtn(){
         
         return this.listar;
+        
+    }
+    
+    public JButton getModificarBtn(){
+        
+        return this.modificar;
         
     }
     

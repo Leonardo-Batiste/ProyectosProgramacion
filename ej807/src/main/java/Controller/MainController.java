@@ -19,6 +19,8 @@ public class MainController {
         
         view.getListarBtn().addActionListener(e -> onListar());
         
+        view.getModificarBtn().addActionListener(e -> onModificar());
+        
         view.showFrame();
         
     }
@@ -94,6 +96,12 @@ public class MainController {
         }
         
         JOptionPane.showMessageDialog(null, imprimirCoches);
+        
+    }
+    
+    private void onModificar(){
+        
+        
         
     }
     
