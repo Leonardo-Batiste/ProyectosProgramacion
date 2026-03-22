@@ -69,6 +69,8 @@ public class MainController {
         
         altaCocheVentana.getAltaCocheFrame().dispose();
         
+        //!!!Aqui puedo añadir un if, y que coja dependiendo de si es AltaCoche o modificarCoche con isntanceOf?
+        
     }
     
     public AltaCoche getFrame(){
@@ -99,7 +101,23 @@ public class MainController {
         
     }
     
+    private ModificarCoche modificarCocheFrame;
+    
     private void onModificar(){
+        
+        modificarCocheFrame = new ModificarCoche();
+        
+        modificarCocheFrame.getModificarBtn().addActionListener(e -> confirmarModificar());
+        
+        modificarCocheFrame.getLimpiarFormularioBtn().addActionListener(e -> onLimpiar());
+        
+        modificarCocheFrame.getVolverBtn().addActionListener(e -> onVolver());
+        
+        modificarCocheFrame.showFrame();
+        
+    }
+    
+    private void confirmarModificar(){
         
         
         
