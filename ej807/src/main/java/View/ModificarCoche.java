@@ -150,6 +150,12 @@ public class ModificarCoche {
         mainFrame.setVisible(false);
         
     }
+    
+    public void pulsadoTeclaEnter(){
+        
+        
+        
+    }
 
     public JButton getModificarBtn() {
         return modificarBtn;
@@ -192,9 +198,6 @@ public class ModificarCoche {
     public void setPrecio(JTextField precio) {
         this.precio = precio;
     }
-    
-    
-    
     
     
     

@@ -107,6 +107,8 @@ public class MainController {
         
         modificarCocheFrame = new ModificarCoche();
         
+        modificarCocheFrame.pulsadoTeclaEnter();
+        
         modificarCocheFrame.getModificarBtn().addActionListener(e -> confirmarModificar());
         
         modificarCocheFrame.getLimpiarFormularioBtn().addActionListener(e -> onLimpiar());
