@@ -107,7 +107,8 @@ public class MainController {
         
         modificarCocheFrame = new ModificarCoche();
         
-        modificarCocheFrame.pulsadoTeclaEnter();
+        //A lo mejor para esto, hace falta un setFocusable() o algo asi
+        modificarCocheFrame.añadirPulsadoTeclaEnter();
         
         modificarCocheFrame.getModificarBtn().addActionListener(e -> confirmarModificar());
         

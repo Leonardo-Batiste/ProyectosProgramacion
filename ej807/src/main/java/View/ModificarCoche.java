@@ -1,6 +1,7 @@
 package View;
 
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 public class ModificarCoche {
@@ -151,9 +152,41 @@ public class ModificarCoche {
         
     }
     
-    public void pulsadoTeclaEnter(){
+    /**
+     * Esto, simplemente, cambia el inputMap, y ActionMap de center, y cuando
+     * este metodo termine, los originales, cuando se presione la tecla enter
+     * el JPanel original "center", hara el setEnable.
+     */
+    public void añadirPulsadoTeclaEnter(){
         
+        //Se crea el keystroke
+        KeyStroke ks = KeyStroke.getKeyStroke("ENTER");
         
+        //Se copia el inputmap de center en im 
+        InputMap im = center.getInputMap();
+        
+        //Se crea la relacion de keystroke y teclapulsada
+        im.put(ks, "teclaPulsada");
+        
+        //Se crea la accion
+        Action miAccion = new AbstractAction() {
+        
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            
+                matricula.setEnabled(true);
+                modelo.setEnabled(true);
+                precio.setEnabled(true);
+                
+            }
+            
+        };
+        
+        //Se añade el actionmap de center a la variableam
+        ActionMap am = center.getActionMap();
+        
+        //Se crea la relacion de actionmap
+        am.put("teclaPulsada", miAccion);
         
     }
 
