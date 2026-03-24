@@ -56,5 +56,31 @@ public class VentanaPrincipal {
         mainFrame.setVisible(false);
         
     }
+
+    public JButton getAltaLibro() {
+        return altaLibro;
+    }
+
+    public void setAltaLibro(JButton altaLibro) {
+        this.altaLibro = altaLibro;
+    }
+
+    public JButton getAltaMultimedia() {
+        return altaMultimedia;
+    }
+
+    public void setAltaMultimedia(JButton altaMultimedia) {
+        this.altaMultimedia = altaMultimedia;
+    }
+
+    public JButton getFin() {
+        return fin;
+    }
+
+    public void setFin(JButton fin) {
+        this.fin = fin;
+    }
+    
+    
     
 }
