@@ -4,9 +4,9 @@ import View.*;
 import java.awt.event.*;
 
 
-public class mainController {
+public class MainController {
     
-    public mainController(){
+    public MainController(){
         
         start();
         
