@@ -226,7 +226,7 @@ public class ModificarCoche {
             
             if (codigoEnJTextField.equals(codigoCoche)){
                 
-                c.setPrecio(precioCoche);
+                c.setPrecio(precioCoche + (precioCoche * c.getIva()));
                 
                 c.setaLaVenta(estaEnVenta);
                 

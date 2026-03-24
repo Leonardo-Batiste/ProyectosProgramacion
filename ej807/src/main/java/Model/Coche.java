@@ -65,7 +65,8 @@ public class Coche {
     
     public String toString(){
         
-        return this.matricula; //!!!Aqui no se que hay que devolver la verdad
+        return "Matricula del coche: "+this.matricula+"\n"
+                + "Precio del coche: "+this.precio;
         
     }
 
@@ -103,6 +104,10 @@ public class Coche {
 
     public void setaLaVenta(boolean aLaVenta) {
         this.aLaVenta = aLaVenta;
+    }
+
+    public double getIva() {
+        return iva;
     }
     
     
