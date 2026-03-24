@@ -10,7 +10,7 @@ public abstract class Ejemplar {
      */
     protected String codigo;
     
-    protected static ArrayList<String> listaCodigos;
+    protected static ArrayList<String> listaCodigos = new ArrayList<>();
     
     /**
      * Maximo 30 caracteres
@@ -20,6 +20,8 @@ public abstract class Ejemplar {
     protected int diasPrestar;
     
     protected boolean estaPrestado;
+    
+    protected static ArrayList<Ejemplar> listaEjemplares = new ArrayList<>();
     
     public Ejemplar(String codigoIntroducido, String tituloIntroducido){
         
@@ -33,6 +35,8 @@ public abstract class Ejemplar {
             this.diasPrestar = getDiasPrestar();
             
             this.estaPrestado = false;
+            
+            listaEjemplares.add(this);
             
         }
         else{
