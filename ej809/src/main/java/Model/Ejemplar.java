@@ -44,29 +44,19 @@ public abstract class Ejemplar {
     
     private boolean comprobarCodigoIntroducido(String codigoIntroducido){
         
-        if (codigoIntroducido == null || listaCodigos.contains(codigoIntroducido)){
-            
-            return false;
-            
-        }
-        
         String patron = "^[a-zA-Z]+\\d{4}$";
         
-        return codigoIntroducido.matches(patron);
+        return codigoIntroducido != null 
+                && codigoIntroducido.matches(patron) 
+                && !listaCodigos.contains(codigoIntroducido);
         
     }
     
     private boolean comprobarTituloIntroducido(String tituloIntroducido){
         
-        if (tituloIntroducido == null) {
-            
-            return false;
-            
-        }
-        
         String patron = "^.{1,30}$";
         
-        return tituloIntroducido.matches(patron);
+        return tituloIntroducido != null && tituloIntroducido.matches(patron);
         
     }
     
