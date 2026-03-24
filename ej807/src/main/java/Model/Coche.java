@@ -68,5 +68,45 @@ public class Coche {
         return this.matricula; //!!!Aqui no se que hay que devolver la verdad
         
     }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public Double getPrecio() {
+        return precio;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
+
+    public void setaLaVenta(boolean aLaVenta) {
+        this.aLaVenta = aLaVenta;
+    }
+    
+    
+    
+    
     
 }

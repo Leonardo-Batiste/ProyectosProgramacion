@@ -1,7 +1,9 @@
 package View;
 
+import Model.Coche;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.*;
 import javax.swing.*;
 
 public class ModificarCoche {
@@ -163,7 +165,7 @@ public class ModificarCoche {
         KeyStroke ks = KeyStroke.getKeyStroke("ENTER");
         
         //Se copia el inputmap de center en im 
-        InputMap im = center.getInputMap();
+        InputMap im = center.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
         
         //Se crea la relacion de keystroke y teclapulsada
         im.put(ks, "teclaPulsada");
@@ -173,13 +175,30 @@ public class ModificarCoche {
         
             @Override
             public void actionPerformed(ActionEvent e) {
-            
-                matricula.setEnabled(true);
-                modelo.setEnabled(true);
-                precio.setEnabled(true);
                 
+                ArrayList<Coche> lista = Coche.getListaCoches();
+                
+                String codigoCoche = codigo.getText();    
+                
+                for (Coche c : lista){
+                    
+                    if (c.getCodigo().equals(codigoCoche)){
+                        
+                        matricula.setText(c.getMatricula());
+                        
+                        modelo.setText(c.getModelo());
+                        
+                        precio.setEditable(true);
+                        
+                        enVenta.setEnabled(true);
+                        
+                        modificarBtn.setEnabled(true);
+                        
+                        break;
+                        
+                    }
+                }
             }
-            
         };
         
         //Se añade el actionmap de center a la variableam
@@ -187,6 +206,29 @@ public class ModificarCoche {
         
         //Se crea la relacion de actionmap
         am.put("teclaPulsada", miAccion);
+        
+    }
+    
+    public void cambiarPrecioYVenta(){
+        
+        ArrayList<Coche> lista = Coche.getListaCoches();
+        
+        Double precioCoche = Double.parseDouble(precio.getText());
+        
+        boolean estaEnVenta = enVenta.isSelected();
+        
+        //Selecciona el coche, mediante el codigo que haya escrito el usuario en el JTextField codigo para buscarlo, y cambia sus datos
+        for (Coche c : lista){
+            
+            if (codigo.getText().equals(c.getCodigo())){
+                
+                c.setPrecio(precioCoche);
+                
+                c.setaLaVenta(estaEnVenta);
+                
+            }
+            
+        }
         
     }
 

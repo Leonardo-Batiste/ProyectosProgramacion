@@ -122,7 +122,7 @@ public class MainController {
     
     private void confirmarModificar(){
         
-        
+        modificarCocheFrame.cambiarPrecioYVenta();
         
     }
     
