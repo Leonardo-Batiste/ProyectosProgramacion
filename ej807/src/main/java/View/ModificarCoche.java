@@ -213,6 +213,8 @@ public class ModificarCoche {
         
         ArrayList<Coche> lista = Coche.getListaCoches();
         
+        String codigoEnJTextField = codigo.getText();
+        
         Double precioCoche = Double.parseDouble(precio.getText());
         
         boolean estaEnVenta = enVenta.isSelected();
@@ -220,15 +222,46 @@ public class ModificarCoche {
         //Selecciona el coche, mediante el codigo que haya escrito el usuario en el JTextField codigo para buscarlo, y cambia sus datos
         for (Coche c : lista){
             
-            if (codigo.getText().equals(c.getCodigo())){
+            String codigoCoche = c.getCodigo();
+            
+            if (codigoEnJTextField.equals(codigoCoche)){
                 
                 c.setPrecio(precioCoche);
                 
                 c.setaLaVenta(estaEnVenta);
                 
+                limpiarFormulario();
+                
+                precio.setEditable(false);
+                        
+                enVenta.setEnabled(false);
+                        
+                modificarBtn.setEnabled(false);
+                
             }
             
         }
+        
+    }
+    
+    public void limpiarFormulario(){
+        
+        codigo.setText("");
+        matricula.setText("");
+        modelo.setText("");
+        precio.setText("");
+        
+         precio.setEditable(false);
+                        
+        enVenta.setEnabled(false);
+                        
+        modificarBtn.setEnabled(false);
+        
+    }
+    
+    public JFrame getModificarCocheFrame(){
+        
+        return mainFrame;
         
     }
 
@@ -273,7 +306,6 @@ public class ModificarCoche {
     public void setPrecio(JTextField precio) {
         this.precio = precio;
     }
-    
     
     
     

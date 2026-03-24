@@ -65,11 +65,21 @@ public class MainController {
         
     }
     
+    private void onLimpiarModificarCoche(){
+        
+        modificarCocheFrame.limpiarFormulario();
+        
+    }
+    
     private void onVolver(){
         
         altaCocheVentana.getAltaCocheFrame().dispose();
         
-        //!!!Aqui puedo añadir un if, y que coja dependiendo de si es AltaCoche o modificarCoche con isntanceOf?
+    }
+    
+    private void onVolverModificarCoche(){
+        
+        modificarCocheFrame.getModificarCocheFrame().dispose();
         
     }
     
@@ -107,14 +117,13 @@ public class MainController {
         
         modificarCocheFrame = new ModificarCoche();
         
-        //A lo mejor para esto, hace falta un setFocusable() o algo asi
         modificarCocheFrame.añadirPulsadoTeclaEnter();
         
         modificarCocheFrame.getModificarBtn().addActionListener(e -> confirmarModificar());
         
-        modificarCocheFrame.getLimpiarFormularioBtn().addActionListener(e -> onLimpiar());
+        modificarCocheFrame.getLimpiarFormularioBtn().addActionListener(e -> onLimpiarModificarCoche());
         
-        modificarCocheFrame.getVolverBtn().addActionListener(e -> onVolver());
+        modificarCocheFrame.getVolverBtn().addActionListener(e -> onVolverModificarCoche());
         
         modificarCocheFrame.showFrame();
         
