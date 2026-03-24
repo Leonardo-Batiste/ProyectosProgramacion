@@ -19,7 +19,7 @@ public abstract class Ejemplar {
     
     public Ejemplar(String codigoIntroducido, String tituloIntroducido){
         
-        if (comprobarConstructor(codigoIntroducido, tituloIntroducido)){
+        if (comprobarEjemplar(codigoIntroducido, tituloIntroducido)){
             
             this.codigo = codigoIntroducido;
             listaCodigos.add(codigoIntroducido);
@@ -35,7 +35,7 @@ public abstract class Ejemplar {
         
     }
     
-    private boolean comprobarConstructor(String codigoIntroducido, String tituloIntroducido){
+    private boolean comprobarEjemplar(String codigoIntroducido, String tituloIntroducido){
         
         return comprobarCodigoIntroducido(codigoIntroducido) 
                 && comprobarTituloIntroducido(tituloIntroducido);
