@@ -36,4 +36,10 @@ public class Multimedia extends Ejemplar {
         
     }
     
+    protected int getDiasPrestar(){
+        
+        return 10;
+        
+    }
+    
 }

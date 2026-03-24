@@ -17,6 +17,8 @@ public abstract class Ejemplar {
      */
     protected String titulo;
     
+    protected int diasPrestar;
+    
     public Ejemplar(String codigoIntroducido, String tituloIntroducido){
         
         if (comprobarEjemplar(codigoIntroducido, tituloIntroducido)){
@@ -25,6 +27,8 @@ public abstract class Ejemplar {
             listaCodigos.add(codigoIntroducido);
             
             this.titulo = tituloIntroducido;
+            
+            this.diasPrestar = getDiasPrestar();
             
         }
         else{
@@ -59,5 +63,7 @@ public abstract class Ejemplar {
         return tituloIntroducido != null && tituloIntroducido.matches(patron);
         
     }
+    
+    protected abstract int getDiasPrestar();
     
 }

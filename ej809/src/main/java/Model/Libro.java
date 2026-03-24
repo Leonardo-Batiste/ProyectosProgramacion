@@ -50,4 +50,11 @@ public class Libro extends Ejemplar {
         
     }
     
+    @Override
+    protected int getDiasPrestar(){
+        
+        return 15;
+        
+    }
+    
 }
