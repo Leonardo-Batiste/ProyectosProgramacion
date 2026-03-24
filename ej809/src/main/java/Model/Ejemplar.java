@@ -19,6 +19,8 @@ public abstract class Ejemplar {
     
     protected int diasPrestar;
     
+    protected boolean estaPrestado;
+    
     public Ejemplar(String codigoIntroducido, String tituloIntroducido){
         
         if (comprobarEjemplar(codigoIntroducido, tituloIntroducido)){
@@ -29,6 +31,8 @@ public abstract class Ejemplar {
             this.titulo = tituloIntroducido;
             
             this.diasPrestar = getDiasPrestar();
+            
+            this.estaPrestado = false;
             
         }
         else{
