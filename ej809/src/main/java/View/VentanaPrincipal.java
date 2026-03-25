@@ -15,6 +15,7 @@ public class VentanaPrincipal {
     private JPanel panelPrincipal;
     private JButton altaLibro;
     private JButton altaMultimedia;
+    private JButton listarEjemplares;
     private JButton fin;
     
     private void initComponents(){
@@ -27,13 +28,18 @@ public class VentanaPrincipal {
         
         altaMultimedia = new JButton("Alta multimedia");
         
+        listarEjemplares = new JButton("Listar ejemplares");
+        
         fin = new JButton("Fin");
         
         panelPrincipal.add(altaLibro);
         
         panelPrincipal.add(altaMultimedia);
         
-        panelPrincipal.add(fin);
+        panelPrincipal.add(listarEjemplares);
+        
+        panelPrincipal.add(fin); 
+        
         
         mainFrame.add(panelPrincipal);
         
@@ -79,6 +85,10 @@ public class VentanaPrincipal {
 
     public void setFin(JButton fin) {
         this.fin = fin;
+    }
+
+    public JButton getListarEjemplares() {
+        return listarEjemplares;
     }
     
     

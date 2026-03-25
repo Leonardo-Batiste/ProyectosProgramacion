@@ -42,4 +42,10 @@ public class Multimedia extends Ejemplar {
         
     }
     
+    @Override
+    public String toString(){
+        String cadena = "Tipo ejemplar: " + tipoEjemplar;
+        return "\n" + super.toString() + cadena;
+    }
+    
 }

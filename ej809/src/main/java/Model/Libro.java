@@ -57,4 +57,11 @@ public class Libro extends Ejemplar {
         
     }
     
+    @Override
+    public String toString(){
+        String cadena = "Editorial: " + editorial + "\n"
+                + "numero de paginas: " + numeroPaginas;
+        return "\n" + super.toString() + cadena;
+    }
+    
 }

@@ -79,7 +79,21 @@ public abstract class Ejemplar {
         listaEjemplares.add(ejemplarAñadir);
         
     }
+
+    public static ArrayList<Ejemplar> getListaEjemplares() {
+        return listaEjemplares;
+    }
     
-    
+    @Override
+    public String toString(){
+        String cadena = "Codigo: " + this.codigo + "\n"
+                + "titulo: " + titulo + "\n"
+                + "dias prestar: " + diasPrestar + "\n"
+                + "esta prestado: " + estaPrestado;
+        
+        
+        return cadena;
+        
+    }
     
 }

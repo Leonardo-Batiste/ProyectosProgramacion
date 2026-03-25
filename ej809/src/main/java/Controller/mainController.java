@@ -40,6 +40,13 @@ public class mainController {
             
         });
         
+        ventana.getListarEjemplares().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                listarEjemplares();
+            }
+        });
+        
         ventana.getFin().addActionListener(new ActionListener(){
             
             @Override
@@ -100,9 +107,17 @@ public class mainController {
         
     }
     
+    private void listarEjemplares(){
+        
+        for (Ejemplar ej : Ejemplar.getListaEjemplares()){
+            System.out.println(ej);
+            
+        }
+        
+    }
+    
     private void botonFinPrograma(){
-        
-        
+        System.exit(0);
     }
     
     
