@@ -67,6 +67,18 @@ public class mainController {
             @Override
             public void actionPerformed(ActionEvent e){
                 
+                String codigoIntroducido = frameAltaLibro.getCodigoIntroducido().getText();
+                
+                String tituloIntroducido = frameAltaLibro.getTituloIntroducido().getText();
+                
+                String editorialIntroducida = frameAltaLibro.getEditorialIntroducida().getText();
+                
+                Integer numeroPaginasIntroducido = Integer.parseInt(frameAltaLibro.getNumeroPaginasIntroducido().getText());
+                
+                Ejemplar libroAñadir = new Libro(codigoIntroducido, tituloIntroducido, editorialIntroducida, numeroPaginasIntroducido);
+                
+                Ejemplar.añadirEjemplar(libroAñadir);
+                
             }
         });
         

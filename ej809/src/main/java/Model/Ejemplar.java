@@ -74,10 +74,12 @@ public abstract class Ejemplar {
     
     protected abstract int getDiasPrestar();
     
-    protected void añadirEjemplar(Ejemplar ejemplarAñadir){
+    public static void añadirEjemplar(Ejemplar ejemplarAñadir){
         
         listaEjemplares.add(ejemplarAñadir);
         
     }
+    
+    
     
 }

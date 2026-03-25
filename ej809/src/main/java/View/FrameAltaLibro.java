@@ -32,7 +32,7 @@ public class FrameAltaLibro {
         
         mainFrame.setLocationRelativeTo(null);
         
-        mainFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE); //!!!Cambiar esto, por do nothing, cuando haya añadido el boton de finalizar programa
+        mainFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         
     }
     
@@ -135,6 +135,22 @@ public class FrameAltaLibro {
 
     public JButton getSalirAltaLibro() {
         return salirAltaLibro;
+    }
+
+    public JTextField getCodigoIntroducido() {
+        return codigoIntroducido;
+    }
+
+    public JTextField getTituloIntroducido() {
+        return tituloIntroducido;
+    }
+
+    public JTextField getEditorialIntroducida() {
+        return editorialIntroducida;
+    }
+
+    public JTextField getNumeroPaginasIntroducido() {
+        return numeroPaginasIntroducido;
     }
     
     

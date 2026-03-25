@@ -12,7 +12,7 @@ public class Libro extends Ejemplar {
      */
     protected int numeroPaginas;
     
-    public Libro(String codigoIntroducido, String tituloIntroducido, String editorialIntroducida, int numeroPaginasIntroducido){
+    public Libro(String codigoIntroducido, String tituloIntroducido, String editorialIntroducida, Integer numeroPaginasIntroducido){
         
         super(codigoIntroducido, tituloIntroducido);
         
