@@ -1,5 +1,6 @@
 package View;
 
+import java.awt.*;
 import javax.swing.*;
 
 public class FrameAltaLibro {
@@ -10,13 +11,133 @@ public class FrameAltaLibro {
         
     }
     
+    JFrame mainFrame;
+    JPanel panelPrincipal; 
+    
     private void initComponents(){
         
-        JFrame mainFrame = new JFrame();
+        mainFrame = new JFrame();
         
+        panelPrincipal = new JPanel(new BorderLayout());
         
+        initNorth();
+        
+        initCenter();
+        
+        initSouth();
+        
+        mainFrame.add(panelPrincipal);
+        
+        mainFrame.pack();
+        
+        mainFrame.setLocationRelativeTo(null);
+        
+        mainFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE); //!!!Cambiar esto, por do nothing, cuando haya añadido el boton de finalizar programa
         
     }
+    
+    private JPanel north;
+    private JLabel encabezado;
+    
+    private void initNorth(){
+        north = new JPanel(new FlowLayout());
+        
+        encabezado = new JLabel("Alta Libro");
+        
+        north.add(encabezado);
+        
+        panelPrincipal.add(north, BorderLayout.NORTH);
+        
+    }
+    
+    private JPanel center;
+    private JLabel codigoIntroducidoL;
+    private JTextField codigoIntroducido;
+    private JLabel tituloIntroducidoL;
+    private JTextField tituloIntroducido;
+    private JLabel editorialIntroducidaL;
+    private JTextField editorialIntroducida;
+    private JLabel numeroPaginasIntroducidoL;
+    private JTextField numeroPaginasIntroducido;
+    
+    private void initCenter(){
+        center = new JPanel(new GridLayout(4, 2));
+        
+        codigoIntroducidoL = new JLabel("Codigo");
+        
+        codigoIntroducido = new JTextField();
+        
+        tituloIntroducidoL = new JLabel("Titulo");
+        
+        tituloIntroducido = new JTextField();
+        
+        editorialIntroducidaL = new JLabel("Editorial");
+        
+        editorialIntroducida = new JTextField();
+        
+        numeroPaginasIntroducidoL = new JLabel("Numero Paginas");
+        
+        numeroPaginasIntroducido = new JTextField();
+        
+        center.add(codigoIntroducidoL);
+        
+        center.add(codigoIntroducido);
+        
+        center.add(tituloIntroducidoL);
+        
+        center.add(tituloIntroducido);
+        
+        center.add(editorialIntroducidaL);
+        
+        center.add(editorialIntroducida);
+        
+        center.add(numeroPaginasIntroducidoL);
+        
+        center.add(numeroPaginasIntroducido);
+        
+        
+        
+        panelPrincipal.add(center, BorderLayout.CENTER);
+        
+    }
+    
+    JPanel south;
+    JButton confirmarAltaLibro;
+    JButton salirAltaLibro;
+    
+    private void initSouth(){
+        south = new JPanel(new FlowLayout());
+        
+        confirmarAltaLibro = new JButton("Confirmar alta");
+        
+        salirAltaLibro = new JButton("Salir");
+        
+        south.add(confirmarAltaLibro);
+        
+        south.add(salirAltaLibro);
+        
+        
+        panelPrincipal.add(south, BorderLayout.SOUTH);
+        
+    }
+    
+    public void showFrame(){
+        mainFrame.setVisible(true);
+    }
+    
+    public void hideFrame(){
+        mainFrame.setVisible(false);
+    }
+
+    public JButton getConfirmarAltaLibro() {
+        return confirmarAltaLibro;
+    }
+
+    public JButton getSalirAltaLibro() {
+        return salirAltaLibro;
+    }
+    
+    
     
     
 }

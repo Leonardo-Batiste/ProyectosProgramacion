@@ -12,9 +12,11 @@ public class mainController {
         
     }
     
+    VentanaPrincipal ventana;
+    
     private void start(){
         
-        VentanaPrincipal ventana = new VentanaPrincipal();
+        ventana = new VentanaPrincipal();
         
         ventana.getAltaLibro().addActionListener(new ActionListener() {
             
@@ -53,9 +55,30 @@ public class mainController {
         
     }
     
+    FrameAltaLibro frameAltaLibro;
+    
     private void botonAltaLibro(){
         
+        ventana.hideFrame();
         
+        frameAltaLibro = new FrameAltaLibro();
+        
+        frameAltaLibro.getConfirmarAltaLibro().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                
+            }
+        });
+        
+        frameAltaLibro.getSalirAltaLibro().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                ventana.showFrame();
+                frameAltaLibro.hideFrame();
+            }
+        });
+        
+        frameAltaLibro.showFrame();
         
     }
     
@@ -68,7 +91,8 @@ public class mainController {
     private void botonFinPrograma(){
         
         
-        
     }
+    
+    
     
 }
