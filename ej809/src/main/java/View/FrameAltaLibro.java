@@ -128,6 +128,14 @@ public class FrameAltaLibro {
     public void hideFrame(){
         mainFrame.setVisible(false);
     }
+    
+    public void limpiarFormulario(){
+        codigoIntroducido.setText("");
+        tituloIntroducido.setText("");
+        editorialIntroducida.setText("");
+        numeroPaginasIntroducido.setText("");
+        
+    }
 
     public JButton getConfirmarAltaLibro() {
         return confirmarAltaLibro;

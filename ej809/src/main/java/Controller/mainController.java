@@ -2,6 +2,7 @@ package Controller;
 import Model.*;
 import View.*;
 import java.awt.event.*;
+import javax.swing.JOptionPane;
 
 
 public class mainController {
@@ -86,6 +87,10 @@ public class mainController {
                 
                 Ejemplar.añadirEjemplar(libroAñadir);
                 
+                JOptionPane.showMessageDialog(null, "Se ha añadido el libro con el codigo: " + codigoIntroducido);
+                
+                frameAltaLibro.limpiarFormulario();
+                
             }
         });
         
@@ -117,6 +122,7 @@ public class mainController {
     }
     
     private void botonFinPrograma(){
+        JOptionPane.showMessageDialog(null, "Has seleccionado, salir del programa");
         System.exit(0);
     }
     
