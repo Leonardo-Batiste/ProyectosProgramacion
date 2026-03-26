@@ -11,6 +11,7 @@ public class FrameAltaLibro {
         
     }
     
+    // FIXME Esto en teoria deberia ser un JDialog con modal = true o algo asi.
     JFrame mainFrame;
     JPanel panelPrincipal; 
     
@@ -110,7 +111,7 @@ public class FrameAltaLibro {
         
         confirmarAltaLibro = new JButton("Confirmar alta");
         
-        salirAltaLibro = new JButton("Salir");
+        salirAltaLibro = new JButton("Volver");
         
         south.add(confirmarAltaLibro);
         
@@ -127,6 +128,11 @@ public class FrameAltaLibro {
     
     public void hideFrame(){
         mainFrame.setVisible(false);
+    }
+    
+    public void disposeFrame(){
+        mainFrame.dispose();
+        
     }
     
     public void limpiarFormulario(){

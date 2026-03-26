@@ -15,6 +15,7 @@ public class mainController {
     
     VentanaPrincipal ventana;
     
+    // FIXME Crear los listener en un metodo que se ejecute 1 sola vez en start, en vez de dentro de la accion de cada boton
     private void start(){
         
         ventana = new VentanaPrincipal();
@@ -63,13 +64,13 @@ public class mainController {
         
     }
     
-    FrameAltaLibro frameAltaLibro;
+    FrameAltaLibro frameAltaLibro = new FrameAltaLibro();
+    
+    // TODO Falta, que cuando se pulse el boton, o enter, compruebe si es correcto, para que no añade cosas en null
     
     private void botonAltaLibro(){
         
         ventana.hideFrame();
-        
-        frameAltaLibro = new FrameAltaLibro();
         
         frameAltaLibro.getConfirmarAltaLibro().addActionListener(new ActionListener(){
             @Override
@@ -84,8 +85,6 @@ public class mainController {
                 Integer numeroPaginasIntroducido = Integer.parseInt(frameAltaLibro.getNumeroPaginasIntroducido().getText());
                 
                 Ejemplar libroAñadir = new Libro(codigoIntroducido, tituloIntroducido, editorialIntroducida, numeroPaginasIntroducido);
-                
-                Ejemplar.añadirEjemplar(libroAñadir);
                 
                 JOptionPane.showMessageDialog(null, "Se ha añadido el libro con el codigo: " + codigoIntroducido);
                 
@@ -106,23 +105,22 @@ public class mainController {
         
     }
     
+    // TODO Lo mismo que crear un libro pero con ejemplares
     private void botonAltaMultimedia(){
-        
-        
-        
+        JOptionPane.showMessageDialog(null, "No esta disponible esta función.");
     }
     
     private void listarEjemplares(){
         
         for (Ejemplar ej : Ejemplar.getListaEjemplares()){
-            System.out.println(ej);
+            JOptionPane.showMessageDialog(null, ej);
             
         }
         
     }
     
     private void botonFinPrograma(){
-        JOptionPane.showMessageDialog(null, "Has seleccionado, salir del programa");
+        JOptionPane.showMessageDialog(null, "Saliendo del programa");
         System.exit(0);
     }
     
