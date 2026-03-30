@@ -15,7 +15,6 @@ public class mainController {
     
     VentanaPrincipal ventana;
     
-    // FIXME Crear los listener en un metodo que se ejecute 1 sola vez en start, en vez de dentro de la accion de cada boton
     private void start(){
         
         ventana = new VentanaPrincipal();
@@ -60,6 +59,8 @@ public class mainController {
             
         });
         
+        crearListenersFrameAltaLibro();
+        
         ventana.showFrame();
         
     }
@@ -67,11 +68,15 @@ public class mainController {
     FrameAltaLibro frameAltaLibro = new FrameAltaLibro();
     
     // TODO Falta, que cuando se pulse el boton, o enter, compruebe si es correcto, para que no añade cosas en null
-    
     private void botonAltaLibro(){
         
         ventana.hideFrame();
         
+        frameAltaLibro.showFrame();
+        
+    }
+    
+    private void crearListenersFrameAltaLibro(){
         frameAltaLibro.getConfirmarAltaLibro().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
@@ -99,8 +104,6 @@ public class mainController {
             }
         });
         
-        frameAltaLibro.showFrame();
-        
     }
     
     // TODO Lo mismo que crear un libro pero con ejemplares :(
@@ -110,11 +113,14 @@ public class mainController {
     
     private void listarEjemplares(){
         
-        for (Ejemplar ej : Ejemplar.getListaEjemplares()){
-            JOptionPane.showMessageDialog(null, ej);
-            
+        if (Ejemplar.getListaEjemplares().isEmpty()){
+            JOptionPane.showMessageDialog(null, "No se puede mostrar, ya que no existe ningun ejemplar.");
         }
-        
+        else {
+            for (Ejemplar ej : Ejemplar.getListaEjemplares()){
+                JOptionPane.showMessageDialog(null, ej);
+            }  
+        }
     }
     
     private void botonFinPrograma(){
