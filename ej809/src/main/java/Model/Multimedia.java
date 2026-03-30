@@ -1,5 +1,7 @@
 package Model;
 
+import javax.swing.JOptionPane;
+
 public class Multimedia extends Ejemplar {
     
     protected String tipoEjemplar;
@@ -15,7 +17,7 @@ public class Multimedia extends Ejemplar {
         }
         else{
             
-            //!!!Mostrar un mensaje con JDialog de error.
+            JOptionPane.showMessageDialog(null, "No se ha podido  crear multimedia, ha ocurrido un error:");
             
         }
         

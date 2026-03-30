@@ -1,5 +1,7 @@
 package Model;
 
+import javax.swing.JOptionPane;
+
 public class Libro extends Ejemplar {
     
     /**
@@ -22,10 +24,12 @@ public class Libro extends Ejemplar {
              
              this.numeroPaginas = numeroPaginasIntroducido;
              
+             JOptionPane.showMessageDialog(null, "Se ha añadido el libro con el codigo: " + codigoIntroducido);
+             
          }
          else{
              
-             //!!!Mostrar un mensaje con JDialog de error.
+             JOptionPane.showMessageDialog(null, "No se ha podido  crear el libro, ha ocurrido un error:");
              
          }
         
@@ -40,7 +44,7 @@ public class Libro extends Ejemplar {
     
     private boolean comprobarEditorialIntroducida(String editorialIntroducida){
         
-        return editorialIntroducida != null;
+        return editorialIntroducida.length() > 0 && editorialIntroducida != null;
 
     }
     

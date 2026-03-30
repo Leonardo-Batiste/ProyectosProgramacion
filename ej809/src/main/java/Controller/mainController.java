@@ -86,8 +86,6 @@ public class mainController {
                 
                 Ejemplar libroAñadir = new Libro(codigoIntroducido, tituloIntroducido, editorialIntroducida, numeroPaginasIntroducido);
                 
-                JOptionPane.showMessageDialog(null, "Se ha añadido el libro con el codigo: " + codigoIntroducido);
-                
                 frameAltaLibro.limpiarFormulario();
                 
             }
@@ -105,7 +103,7 @@ public class mainController {
         
     }
     
-    // TODO Lo mismo que crear un libro pero con ejemplares
+    // TODO Lo mismo que crear un libro pero con ejemplares :(
     private void botonAltaMultimedia(){
         JOptionPane.showMessageDialog(null, "No esta disponible esta función.");
     }

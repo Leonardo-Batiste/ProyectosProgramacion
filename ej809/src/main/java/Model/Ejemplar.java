@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.*;
+import javax.swing.JOptionPane;
 
 public abstract class Ejemplar {
     
@@ -40,8 +41,8 @@ public abstract class Ejemplar {
             
         }
         else{
-            
-            //!!!Mostrar un mensaje con JDialog de error.
+            //Aunque en teoria nunca se podra crear un ejemplar?
+            JOptionPane.showMessageDialog(null, "No se ha podido  crear el ejemplar, ha ocurrido un error:");
             
         }
         
