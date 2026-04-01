@@ -65,10 +65,12 @@ public class BajaDialog {
         nombreL = new JLabel("NOMBRE");
         
         nombre = new JTextField();
+        nombre.setEditable(false);
         
         cuotaL = new JLabel("CUOTA");
         
         cuota = new JTextField();
+        cuota.setEditable(false);
         
         center.add(codigoL);
         
@@ -86,20 +88,20 @@ public class BajaDialog {
     }
     
     private JPanel south;
-    private JButton confirmarAlta;
+    private JButton confirmarBaja;
     private JButton limpiarFormulario;
     private JButton volver;
     
     private void initSouth(){
         south = new JPanel(new FlowLayout());
         
-        confirmarAlta = new JButton("ALTA");
+        confirmarBaja = new JButton("BAJA");
         
         limpiarFormulario = new JButton("LIMPIAR FORMULARIO");
         
         volver = new JButton("VOLVER AL MENU PRINCIPAL");
         
-        south.add(confirmarAlta);
+        south.add(confirmarBaja);
         
         south.add(limpiarFormulario);
         
@@ -116,8 +118,8 @@ public class BajaDialog {
         mainAlta.setVisible(false);
     }
 
-    public JButton getConfirmarAlta() {
-        return confirmarAlta;
+    public JButton getConfirmarBaja() {
+        return confirmarBaja;
     }
 
     public JButton getLimpiarFormulario() {

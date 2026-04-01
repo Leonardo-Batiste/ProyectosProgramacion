@@ -48,7 +48,7 @@ public class MainController {
         mainWindow.getModificar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                
+                //TODO Falta crear el modificar un cliente existente
             }
         });
         
@@ -85,7 +85,7 @@ public class MainController {
         altaDialog.getLimpiarFormulario().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                limpiarFormulario();
+                limpiarFormulario(altaDialog);
             }
         });
         
@@ -113,13 +113,20 @@ public class MainController {
         }
         Cliente nuevoCliente = new Cliente(codigoCliente, nombreCliente, cuotaCliente);
         JOptionPane.showMessageDialog(null, "Se ha creado el cliente con exito.");
-        limpiarFormulario();
+        limpiarFormulario(altaDialog);
     }
     
-    public void limpiarFormulario(){
-        altaDialog.getCodigo().setText("");
-        altaDialog.getNombre().setText("");
-        altaDialog.getCuota().setText("");
+    public void limpiarFormulario(Object dialog){
+        if (dialog instanceof AltaDialog){
+            altaDialog.getCodigo().setText("");
+            altaDialog.getNombre().setText("");
+            altaDialog.getCuota().setText("");
+        }
+        else if (dialog instanceof BajaDialog){
+        bajaDialog.getCodigo().setText("");
+        bajaDialog.getNombre().setText("");
+        bajaDialog.getCuota().setText(""); 
+        }
     }
     
     private void bajaPressed(){
@@ -129,11 +136,90 @@ public class MainController {
     }
     
     private void crearListenersBajaDialog(){
+        bajaDialog.getConfirmarBaja().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                confirmarBaja();
+            }
+        });
         
+        bajaDialog.getLimpiarFormulario().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                limpiarFormulario(bajaDialog);
+            }
+        });
+        
+        bajaDialog.getVolver().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                bajaDialog.hideDialog();
+                
+                mainWindow.showFrame();
+            }
+        });
+    }
+    
+    //FIXME Funciona, pero hace todo muy rapido, y no da tiempo a mirar los datos del cliente introducido por ejemplo.
+    private void confirmarBaja(){
+        String codigoBajaIntroducido = bajaDialog.getCodigo().getText();
+
+        String nombreCliente = "";
+        
+        Float cuotaCliente = 0.0f;
+        
+        boolean existeCliente = false;
+        
+        ArrayList<Cliente> listaClientes = Cliente.getListaClientes();
+        
+        if (codigoBajaIntroducido.length() <= 0){
+            JOptionPane.showMessageDialog(null, "Tienes que introducir un codigo para buscarlo.");
+            limpiarFormulario(bajaDialog);
+            bajaDialog.getCodigo().setEditable(true);
+            return;
+        }
+        
+        bajaDialog.getCodigo().setEditable(false);
+        
+        for (Cliente c : listaClientes){
+            if (c.getCodigo().equals(codigoBajaIntroducido)){
+                nombreCliente = c.getNombre();
+                cuotaCliente = c.getCuota();
+                existeCliente = true;
+                break;
+            }
+        }
+        
+        if (!existeCliente){
+            JOptionPane.showMessageDialog(null, "No se ha encontrado ese codigo de cliente.");
+            limpiarFormulario(bajaDialog);
+            bajaDialog.getCodigo().setEditable(true);
+            return;
+        }
+        
+        bajaDialog.getNombre().setText(nombreCliente);
+        
+        bajaDialog.getCuota().setText(cuotaCliente + "");
+        
+        for (Cliente c : listaClientes){
+            if (c.getCodigo().equals(codigoBajaIntroducido)){
+                listaClientes.remove(c);
+                break;
+            }
+        }
+        
+        JOptionPane.showMessageDialog(null, "Se ha borrado el cliente con exito.");
+        
+        limpiarFormulario(bajaDialog);
+        bajaDialog.getCodigo().setEditable(true);
     }
     
     private void listadoPressed(){
         ArrayList<Cliente> listadoClientes = Cliente.getListaClientes();
+        
+        if (listadoClientes.isEmpty()){
+            JOptionPane.showMessageDialog(null, "No existen clientes actualmente.");
+        }
         
         for (Cliente c : listadoClientes){
             JOptionPane.showMessageDialog(null, c.toString());
