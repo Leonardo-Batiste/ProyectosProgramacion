@@ -12,6 +12,7 @@ public class MainController {
     
     MainWindow mainWindow;
     AltaDialog altaDialog;
+    BajaDialog bajaDialog;
     
     private void start(){
         mainWindow = new MainWindow();
@@ -21,6 +22,10 @@ public class MainController {
         altaDialog = new AltaDialog();
         
         crearListenersAltaDialog();
+        
+        bajaDialog = new BajaDialog();
+        
+        crearListenersBajaDialog();
         
         mainWindow.showFrame();
     }
@@ -99,40 +104,16 @@ public class MainController {
         
         String nombreCliente = altaDialog.getNombre().getText();
         
-        Float cuotaCliente = Float.parseFloat(altaDialog.getCuota().getText());
+        Float cuotaCliente = Float.parseFloat(altaDialog.getCuota().getText().trim());
         
-        if (comprobadorCliente(codigoCliente, nombreCliente, cuotaCliente)){
-            Cliente nuevoCliente = new Cliente(codigoCliente, nombreCliente, cuotaCliente);
-            JOptionPane.showMessageDialog(null, "Se ha creado el cliente correctamente");
-            limpiarFormulario();
+        if (!Cliente.booleanComprobadorCliente(codigoCliente, nombreCliente, cuotaCliente)){
+            
+            JOptionPane.showMessageDialog(null, "No se ha podido crear el Cliente.");
+            return;
         }
-        else{
-            JOptionPane.showMessageDialog(null, "No se ha podido crear el cliente correctamente.");
-        }
-        
-        
-    }
-    
-    private boolean comprobadorCliente(String codigoIntroducido, String nombreIntroducido, Float cuotaIntroducida){
-        return comprobadorCodigo(codigoIntroducido)
-                && comprobadorNombre(nombreIntroducido)
-                && comprobadorCuota(cuotaIntroducida);
-    }
-    
-    private boolean comprobadorCodigo(String codigoIntroducido){
-        String patron = "^[a-zA-Z]{6}$";
-        
-        return codigoIntroducido != null && codigoIntroducido.matches(patron) && !Cliente.getListaCodigos().contains(codigoIntroducido);
-    }
-    
-    private boolean comprobadorNombre(String nombreIntroducido){
-        String patron = "^[a-zA-Z]{1,30}$";
-        
-        return nombreIntroducido != null && nombreIntroducido.matches(patron);
-    }
-    
-    private boolean comprobadorCuota(Float cuotaIntroducida){
-        return cuotaIntroducida != null && cuotaIntroducida >= 35;
+        Cliente nuevoCliente = new Cliente(codigoCliente, nombreCliente, cuotaCliente);
+        JOptionPane.showMessageDialog(null, "Se ha creado el cliente con exito.");
+        limpiarFormulario();
     }
     
     public void limpiarFormulario(){
@@ -142,6 +123,12 @@ public class MainController {
     }
     
     private void bajaPressed(){
+        mainWindow.hideFrame();
+        
+        bajaDialog.showDialog();
+    }
+    
+    private void crearListenersBajaDialog(){
         
     }
     

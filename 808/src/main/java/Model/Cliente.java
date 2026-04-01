@@ -17,15 +17,59 @@ public class Cliente {
     protected static ArrayList<String> listaCodigos = new ArrayList<>();
     
     public Cliente(String codigoIntroducido, String nombreIntroducido, Float cuotaIntroducida){
-        codigo = codigoIntroducido;
-        AñadirCodigo(codigoIntroducido);
-        nombre = nombreIntroducido;
-        cuota = cuotaIntroducida;
-        listaClientes.add(this);
+        if (comprobadorCliente(codigoIntroducido, nombreIntroducido, cuotaIntroducida)){
+            codigo = codigoIntroducido;
+            AñadirCodigo(codigoIntroducido);
+            nombre = nombreIntroducido;
+            cuota = cuotaIntroducida;
+            listaClientes.add(this);
+        }
+        else{
+            //TODO Excepcion? 
+        }
+        
     }
     
     public void AñadirCodigo(String codigoIntroducido) {
         listaCodigos.add(codigoIntroducido);
+    }
+    
+    public static boolean booleanComprobadorCliente(String codigoIntroducido, String nombreIntroducido, Float cuotaIntroducida){
+        if (comprobadorCliente(codigoIntroducido, nombreIntroducido, cuotaIntroducida)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    private static boolean comprobadorCliente(String codigoIntroducido, String nombreIntroducido, Float cuotaIntroducida){
+        return comprobadorCodigo(codigoIntroducido)
+                && comprobadorNombre(nombreIntroducido)
+                && comprobadorCuota(cuotaIntroducida);
+    }
+    
+    private static boolean comprobadorCodigo(String codigoIntroducido){
+        String patron = "^[a-zA-Z]{6}$";
+        
+        return codigoIntroducido != null && codigoIntroducido.matches(patron) && !Cliente.getListaCodigos().contains(codigoIntroducido);
+    }
+    
+    private static boolean comprobadorNombre(String nombreIntroducido){
+        String patron = "^[a-zA-Z]{1,30}$";
+        
+        return nombreIntroducido != null && nombreIntroducido.matches(patron);
+    }
+    
+    private static boolean comprobadorCuota(Float cuotaIntroducida){
+        return cuotaIntroducida != null && cuotaIntroducida >= 35;
+    }
+    
+    @Override
+    public String toString(){
+        return "Codigo: " + this.codigo + "\n"
+                + "Nombre: " + this.nombre + "\n"
+                + "Cuota: " + this.cuota;
     }
 
     public String getCodigo() {
@@ -59,12 +103,6 @@ public class Cliente {
     public static ArrayList<Cliente> getListaClientes() {
         return listaClientes;
     }
-
-    @Override
-    public String toString(){
-        return "Codigo: " + this.codigo + "\n"
-                + "Nombre: " + this.nombre + "\n"
-                + "Cuota: " + this.cuota;
-    }
+    
     
 }
