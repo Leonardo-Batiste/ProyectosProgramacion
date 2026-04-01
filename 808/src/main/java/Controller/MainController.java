@@ -2,6 +2,7 @@ package Controller;
 import View.*;
 import Model.*;
 import java.awt.event.*;
+import java.util.*;
 import javax.swing.*;
 
 public class MainController {
@@ -35,7 +36,7 @@ public class MainController {
         mainWindow.getBaja().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                bajaPressed();
             }
         });
         
@@ -49,7 +50,7 @@ public class MainController {
         mainWindow.getListado().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                listadoPressed();
             }
         });
         
@@ -138,6 +139,18 @@ public class MainController {
         altaDialog.getCodigo().setText("");
         altaDialog.getNombre().setText("");
         altaDialog.getCuota().setText("");
+    }
+    
+    private void bajaPressed(){
+        
+    }
+    
+    private void listadoPressed(){
+        ArrayList<Cliente> listadoClientes = Cliente.getListaClientes();
+        
+        for (Cliente c : listadoClientes){
+            JOptionPane.showMessageDialog(null, c.toString());
+        }
     }
     
 }

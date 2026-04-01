@@ -6,6 +6,8 @@ import javax.swing.JOptionPane;
 import View.*;
 
 public class Cliente {
+    protected static ArrayList<Cliente> listaClientes = new ArrayList<>();
+    
     protected String codigo;
     
     protected String nombre;
@@ -19,6 +21,11 @@ public class Cliente {
         AñadirCodigo(codigoIntroducido);
         nombre = nombreIntroducido;
         cuota = cuotaIntroducida;
+        listaClientes.add(this);
+    }
+    
+    public void AñadirCodigo(String codigoIntroducido) {
+        listaCodigos.add(codigoIntroducido);
     }
 
     public String getCodigo() {
@@ -49,8 +56,15 @@ public class Cliente {
         return listaCodigos;
     }
 
-    public void AñadirCodigo(String codigoIntroducido) {
-        listaCodigos.add(codigoIntroducido);
+    public static ArrayList<Cliente> getListaClientes() {
+        return listaClientes;
+    }
+
+    @Override
+    public String toString(){
+        return "Codigo: " + this.codigo + "\n"
+                + "Nombre: " + this.nombre + "\n"
+                + "Cuota: " + this.cuota;
     }
     
 }
