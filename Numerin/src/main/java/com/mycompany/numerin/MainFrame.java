@@ -1,6 +1,7 @@
 package com.mycompany.numerin;
 
-import java.awt.GridLayout;
+import java.awt.*;
+import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 
@@ -23,8 +24,6 @@ public class MainFrame {
         crearPanel();
         
         crearBotones();
-        
-        crearListenersBotones(); //TODO Falta crear los listeners, que tiene que ser compartido pero no se como
         
         generarNumeroAleatorio();
         
@@ -74,18 +73,34 @@ public class MainFrame {
         for (int i=1;i<(filas * columnas) + 1;i++){
             JButton boton = new JButton(i + "");
             
+            crearListenersBotones(boton);
+            
             mainPanel.add(boton);
         }
     }
     
-    private void crearListenersBotones(){
-        
+    private void crearListenersBotones(JButton boton){
+        boton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                String numeroBoton = boton.getText();
+                
+                if (numeroBoton.equals(numeritoGanador + "")){
+                    boton.setBackground(Color.green);
+                    JOptionPane.showMessageDialog(null, "Has ganado, has acertado! El numero era: " + numeritoGanador);
+                    System.exit(0);
+                }
+                else{
+                    boton.setBackground(Color.red);
+                }
+            }
+        });
     }
     
     private void generarNumeroAleatorio(){
         Random rand = new Random();
         
-        numeritoGanador = rand.nextInt(1, (filas * columnas) + 2);
+        numeritoGanador = rand.nextInt(1, (filas * columnas) + 1);
     }
     
     
