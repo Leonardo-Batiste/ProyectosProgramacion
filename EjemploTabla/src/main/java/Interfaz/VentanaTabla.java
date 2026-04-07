@@ -13,8 +13,15 @@ public class VentanaTabla extends javax.swing.JFrame {
         initComponents();
         
         //Ya esta inicializada la tabla
-        dtm = (DefaultTableModel) tabla.getModel(); //Los datos siempre aqui
-       
+        dtm = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
+        
+        tabla.setModel(dtm);
+        
         rellenarTabla();
         
     }
