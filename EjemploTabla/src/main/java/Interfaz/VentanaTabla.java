@@ -1,5 +1,6 @@
 package Interfaz;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class VentanaTabla extends javax.swing.JFrame {
@@ -63,6 +64,7 @@ public class VentanaTabla extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
+        boton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,17 +72,31 @@ public class VentanaTabla extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(tabla);
 
+        boton.setText("ELIMINAR FILA");
+        boton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout ContenedorLayout = new javax.swing.GroupLayout(Contenedor);
         Contenedor.setLayout(ContenedorLayout);
         ContenedorLayout.setHorizontalGroup(
             ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ContenedorLayout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContenedorLayout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContenedorLayout.createSequentialGroup()
+                        .addContainerGap(13, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ContenedorLayout.createSequentialGroup()
+                        .addGroup(ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(ContenedorLayout.createSequentialGroup()
+                                .addGap(77, 77, 77)
+                                .addComponent(jLabel1))
+                            .addGroup(ContenedorLayout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(boton)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         ContenedorLayout.setVerticalGroup(
@@ -89,8 +105,10 @@ public class VentanaTabla extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(boton)
+                .addGap(44, 44, 44))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -106,6 +124,25 @@ public class VentanaTabla extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActionPerformed
+        // numero de filas que ha seleccionado el usuario
+        int numFilas = tabla.getSelectedRowCount();
+        if (numFilas == 0){
+            JOptionPane.showMessageDialog(null, "Tienes que seleccionar una fila como minimo.");
+        } 
+        else if (numFilas > 1) {
+            JOptionPane.showMessageDialog(null, "No se puede seleccionar mas de 1 fila.");
+        } 
+        else {
+            //ha seleccionado una sola fila
+            int fila = tabla.getSelectedRow();
+            int col = tabla.getSelectedColumn();
+            System.out.println(dtm.getValueAt(fila, col));
+            dtm.setValueAt("Cambiado", fila, col);
+            dtm.removeRow(fila);
+        }
+    }//GEN-LAST:event_botonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,6 +172,7 @@ public class VentanaTabla extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Contenedor;
+    private javax.swing.JButton boton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabla;
