@@ -31,20 +31,23 @@ public class MainFrame {
     
     private JLabel header;
     private JPanel north;
+    private JTextField cajaTexto;
     
     private void initNorth(){
-        north = new JPanel(new GridLayout(1,1));
+        north = new JPanel(new GridLayout(0,1));
         
         header = new JLabel("FICHEROS");
         
+        cajaTexto = new JTextField();
+        
         north.add(header);
+        
+        north.add(cajaTexto);
         
         mainPanel.add(north, BorderLayout.NORTH);
     }
     
     private JPanel center;
-    private JTextField cajaTexto;
-    private JLabel espacioBlanco;
     private JCheckBox existeFichero;
     private JLabel existeFicheroL;
     private JCheckBox permisoEscritura;
@@ -52,12 +55,8 @@ public class MainFrame {
     private JCheckBox permisoLectura;
     private JLabel permisoLecturaL;
     
-    private void initCenter(){ // FIXME Sale mal el layout
-        center = new JPanel(new GridLayout(8,2));
-        
-        cajaTexto = new JTextField();
-        
-        espacioBlanco = new JLabel("");
+    private void initCenter(){
+        center = new JPanel(new GridLayout(0,2));
         
         existeFichero = new JCheckBox();
         
@@ -70,10 +69,6 @@ public class MainFrame {
         permisoLectura = new JCheckBox();
         
         permisoLecturaL = new JLabel("Permisos de lectura");
-        
-        center.add(cajaTexto);
-        
-        center.add(espacioBlanco);
         
         center.add(existeFichero);
         

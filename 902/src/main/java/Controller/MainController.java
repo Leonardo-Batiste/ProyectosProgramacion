@@ -12,12 +12,18 @@ public class MainController {
     MainFrame mainFrame;
     
     private void start(){
-        mainFrame = new MainFrame();
+        try {
+            mainFrame = new MainFrame();
         
-        //TODO inputMap de cuando se pulse enter, busque el directorio/fichero, y si funciona, haga ajustarCheckBoxes
-        //añadirKeyListener();
+            //TODO inputMap de cuando se pulse enter, busque el directorio/fichero, y si funciona, haga ajustarCheckBoxes
+            //añadirKeyListener();
+
+            mainFrame.showFrame();
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Error al start()");
+        }
         
-        mainFrame.showFrame();
     }
     
     File fichero;
