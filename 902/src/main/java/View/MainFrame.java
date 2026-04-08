@@ -1,6 +1,7 @@
 package View;
 
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 public class MainFrame {
@@ -24,7 +25,7 @@ public class MainFrame {
         
         mainFrame.pack();
         
-        mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        crearCloseOperation();
         
         mainFrame.setLocationRelativeTo(null);
     }
@@ -91,6 +92,26 @@ public class MainFrame {
     
     public void hideFrame(){
         mainFrame.setVisible(false);
+    }
+    
+    private void crearCloseOperation(){
+
+    WindowListener exitListener = new WindowAdapter() {
+
+        @Override
+        public void windowClosing(WindowEvent e) {
+            int confirm = JOptionPane.showOptionDialog(
+                 null, "Seguro de que quieres cerrar la aplicacion?", 
+                 "Confirmar Salida", JOptionPane.YES_NO_OPTION, 
+                 JOptionPane.QUESTION_MESSAGE, null, null, null);
+            if (confirm == 0) {
+               System.exit(0);
+            }
+        }
+    };
+    
+    mainFrame.addWindowListener(exitListener);
+
     }
 
     private JLabel esDirectorio;
