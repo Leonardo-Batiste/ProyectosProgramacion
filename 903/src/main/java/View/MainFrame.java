@@ -47,7 +47,7 @@ public class MainFrame {
     }
     
     public void mostrarListado(String[] listado){
-        
+        JOptionPane.showMessageDialog(null, "Se va a mostrar a continuacion el contenido del directorio.");
         JOptionPane.showMessageDialog(null, listado);
     }
     

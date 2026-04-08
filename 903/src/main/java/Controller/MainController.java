@@ -26,6 +26,7 @@ public class MainController {
         mf.getMostrarListado().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
+                mf.hideFrame();
                 fichero = new File(mf.getCampo().getText());
                 if (fichero.isDirectory()){
                     mf.mostrarListado(fichero.list());
@@ -33,7 +34,7 @@ public class MainController {
                 else{
                     JOptionPane.showMessageDialog(null, "El fichero seleccionado, no es un directorio o carpeta");
                 }
-                
+                mf.showFrame();
             }
         });
     }
