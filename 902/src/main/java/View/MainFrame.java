@@ -22,6 +22,8 @@ public class MainFrame {
         
         mainFrame.add(mainPanel);
         
+        mainFrame.pack();
+        
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
         mainFrame.setLocationRelativeTo(null);
@@ -41,15 +43,21 @@ public class MainFrame {
     }
     
     private JPanel center;
+    private JTextField cajaTexto;
+    private JLabel espacioBlanco;
     private JCheckBox existeFichero;
     private JLabel existeFicheroL;
     private JCheckBox permisoEscritura;
     private JLabel permisoEscrituraL;
+    private JCheckBox permisoLectura;
+    private JLabel permisoLecturaL;
     
     private void initCenter(){
-        center = new JPanel(new GridLayout(6,2));
+        center = new JPanel(new GridLayout(8,2));
         
-        //TODO Añadir el JTextField para introducir el fichero/directorio
+        cajaTexto = new JTextField();
+        
+        espacioBlanco = new JLabel("");
         
         existeFichero = new JCheckBox();
         
@@ -59,6 +67,14 @@ public class MainFrame {
         
         permisoEscrituraL = new JLabel("Permisos escritura");
         
+        permisoLectura = new JCheckBox();
+        
+        permisoLecturaL = new JLabel("Permisos de lectura");
+        
+        center.add(cajaTexto);
+        
+        center.add(espacioBlanco);
+        
         center.add(existeFichero);
         
         center.add(existeFicheroL);
@@ -67,8 +83,20 @@ public class MainFrame {
         
         center.add(permisoEscrituraL);
         
+        center.add(permisoLectura);
+        
+        center.add(permisoLecturaL);
+        
         //TODO Añadir, si es directorio, mostrar cuantos archivos tiene, y si es fichero, cuanto ocupa
         
         mainPanel.add(center, BorderLayout.CENTER);
+    }
+    
+    public void showFrame(){
+        mainFrame.setVisible(true);
+    }
+    
+    public void hideFrame(){
+        mainFrame.setVisible(false);
     }
 }
