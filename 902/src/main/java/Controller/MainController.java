@@ -17,7 +17,7 @@ public class MainController {
         
             //TODO inputMap de cuando se pulse enter, busque el directorio/fichero, y si funciona, haga ajustarCheckBoxes
             //añadirKeyListener();
-
+            
             mainFrame.showFrame();
         }
         catch (Exception e){
@@ -34,22 +34,20 @@ public class MainController {
         
             fichero = new File(cajaTexto);
 
-            if (!fichero.exists()){
-                //TODO excepcion?
-            }
-            mainFrame.getExisteFichero().setSelected(true);
+            mainFrame.getExisteFichero().setSelected(fichero.exists());
 
-            if (!fichero.canWrite()){
-                //TODO excepcion?
-            }
-            mainFrame.getPermisoEscritura().setSelected(true);
+            mainFrame.getPermisoEscritura().setSelected(fichero.canWrite());
 
-            if (!fichero.canRead()){
-                //TODO excepcion?
-            }
-            mainFrame.getPermisoLectura().setSelected(true);
+            mainFrame.getPermisoLectura().setSelected(fichero.canRead());
 
-            //TODO Falta el si es directorio, o fichero y sus subcosas
+            if (fichero.isDirectory()){
+                mainFrame.crearEsDirectorio();
+            }
+            else if (fichero.isFile()){
+                mainFrame.crearEsFichero();
+            }
+            
+            
         }
         catch (Exception e){
             JOptionPane.showMessageDialog(null, "Error al ajustarCheckBoxes()");

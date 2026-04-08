@@ -95,6 +95,34 @@ public class MainFrame {
         mainFrame.setVisible(false);
     }
 
+    private JLabel esDirectorio;
+    
+    public void crearEsDirectorio(){
+        //FIXME Falta algo, para que no se cree mas de una vez cuando se pulse enter
+        
+        esDirectorio = new JLabel("Es un Directorio");
+        
+        center.add(esDirectorio);
+        
+        center.revalidate();
+        
+        center.repaint();
+    }
+    
+    private JLabel esFichero;
+    
+    public void crearEsFichero(){
+        //FIXME Falta algo, para que no se cree mas de una vez cuando se pulse enter
+        
+        esFichero = new JLabel("Es un FICHERO");
+        
+        center.add(esFichero);
+        
+        center.revalidate();
+        
+        center.repaint();
+    }
+
     public JTextField getCajaTexto() {
         return cajaTexto;
     }
