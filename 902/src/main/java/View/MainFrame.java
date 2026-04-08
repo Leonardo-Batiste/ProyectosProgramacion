@@ -105,6 +105,8 @@ public class MainFrame {
         
         center.add(esDirectorio);
         
+        center.add(numeroArchivos);
+        
         center.revalidate();
         
         center.repaint();
@@ -118,7 +120,7 @@ public class MainFrame {
         
         esFichero = new JLabel("Es un FICHERO");
         
-        espacio = new JLabel("Ocupa " + espacioOcupado);
+        espacio = new JLabel("Ocupa " + espacioOcupado + " bytes");
         
         center.add(esFichero);
         
@@ -144,6 +146,9 @@ public class MainFrame {
     public JCheckBox getPermisoLectura() {
         return permisoLectura;
     }
+
+    
+    
     
     
 }

@@ -1,8 +1,10 @@
 package Controller;
 
 import View.*;
+import java.awt.event.*;
 import java.io.File;
-import javax.swing.JOptionPane;
+import static java.lang.Math.floor;
+import javax.swing.*;
 
 public class MainController {
     public MainController(){
@@ -15,13 +17,31 @@ public class MainController {
         try {
             mainFrame = new MainFrame();
         
-            //TODO inputMap de cuando se pulse enter, busque el directorio/fichero, y si funciona, haga ajustarCheckBoxes
-            //añadirKeyListener();
+            añadirKeyBindings();
             
             mainFrame.showFrame();
         }
         catch (Exception e){
             JOptionPane.showMessageDialog(null, "Error al start()");
+        }
+        
+    }
+    
+    private void añadirKeyBindings(){
+        try {
+            Action anAction = new AbstractAction() {
+            public void actionPerformed(ActionEvent e) {
+                ajustarCheckBoxes();
+            }
+            };
+
+            mainFrame.getCajaTexto().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("ENTER"),
+                                "doSomething");
+            mainFrame.getCajaTexto().getActionMap().put("doSomething",
+                                 anAction);
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(null, "AJfgpiowAGWA");
         }
         
     }
@@ -45,7 +65,8 @@ public class MainController {
                 mainFrame.crearEsDirectorio(cantidadArchivos);
             }
             else if (fichero.isFile()){
-                mainFrame.crearEsFichero(fichero.getTotalSpace() + "");
+                String tamañoFichero = fichero.length() + "";
+                mainFrame.crearEsFichero(tamañoFichero);
             }
             
             
