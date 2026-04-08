@@ -82,8 +82,6 @@ public class MainFrame {
         
         center.add(permisoLecturaL);
         
-        //TODO Añadir, si es directorio, mostrar cuantos archivos tiene, y si es fichero, cuanto ocupa
-        
         mainPanel.add(center, BorderLayout.CENTER);
     }
     
@@ -96,11 +94,14 @@ public class MainFrame {
     }
 
     private JLabel esDirectorio;
+    private JLabel numeroArchivos;
     
-    public void crearEsDirectorio(){
+    public void crearEsDirectorio(Integer numeroArchivosIntroducido){
         //FIXME Falta algo, para que no se cree mas de una vez cuando se pulse enter
         
         esDirectorio = new JLabel("Es un Directorio");
+        
+        numeroArchivos = new JLabel("Tiene " + numeroArchivosIntroducido + " archivos");
         
         center.add(esDirectorio);
         
@@ -110,13 +111,18 @@ public class MainFrame {
     }
     
     private JLabel esFichero;
+    private JLabel espacio;
     
-    public void crearEsFichero(){
+    public void crearEsFichero(String espacioOcupado){
         //FIXME Falta algo, para que no se cree mas de una vez cuando se pulse enter
         
         esFichero = new JLabel("Es un FICHERO");
         
+        espacio = new JLabel("Ocupa " + espacioOcupado);
+        
         center.add(esFichero);
+        
+        center.add(espacio);
         
         center.revalidate();
         

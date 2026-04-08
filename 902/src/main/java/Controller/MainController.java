@@ -41,10 +41,11 @@ public class MainController {
             mainFrame.getPermisoLectura().setSelected(fichero.canRead());
 
             if (fichero.isDirectory()){
-                mainFrame.crearEsDirectorio();
+                Integer cantidadArchivos = fichero.listFiles().length;
+                mainFrame.crearEsDirectorio(cantidadArchivos);
             }
             else if (fichero.isFile()){
-                mainFrame.crearEsFichero();
+                mainFrame.crearEsFichero(fichero.getTotalSpace() + "");
             }
             
             
