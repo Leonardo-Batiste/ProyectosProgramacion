@@ -52,7 +52,7 @@ public class MainFrame {
     private JCheckBox permisoLectura;
     private JLabel permisoLecturaL;
     
-    private void initCenter(){
+    private void initCenter(){ // FIXME Sale mal el layout
         center = new JPanel(new GridLayout(8,2));
         
         cajaTexto = new JTextField();
@@ -99,4 +99,22 @@ public class MainFrame {
     public void hideFrame(){
         mainFrame.setVisible(false);
     }
+
+    public JTextField getCajaTexto() {
+        return cajaTexto;
+    }
+
+    public JCheckBox getExisteFichero() {
+        return existeFichero;
+    }
+
+    public JCheckBox getPermisoEscritura() {
+        return permisoEscritura;
+    }
+
+    public JCheckBox getPermisoLectura() {
+        return permisoLectura;
+    }
+    
+    
 }
