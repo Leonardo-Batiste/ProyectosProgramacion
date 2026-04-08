@@ -19,6 +19,8 @@ public class MainController {
         
             añadirKeyBindings();
             
+            añadirListenersLimpiar();
+            
             mainFrame.showFrame();
         }
         catch (Exception e){
@@ -74,5 +76,14 @@ public class MainController {
         catch (Exception e){
             JOptionPane.showMessageDialog(null, "Error al ajustarCheckBoxes()");
         }
+    }
+    
+    private void añadirListenersLimpiar(){
+        mainFrame.getLimpiar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                mainFrame.limpiarFormulario();
+            }
+        });
     }
 }

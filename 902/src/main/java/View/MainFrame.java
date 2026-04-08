@@ -21,6 +21,8 @@ public class MainFrame {
         
         initCenter();
         
+        initSouth();
+        
         mainFrame.add(mainPanel);
         
         mainFrame.pack();
@@ -60,14 +62,17 @@ public class MainFrame {
         center = new JPanel(new GridLayout(0,2));
         
         existeFichero = new JCheckBox();
+        existeFichero.setEnabled(false);
         
         existeFicheroL = new JLabel("Existe");
         
         permisoEscritura = new JCheckBox();
+        permisoEscritura.setEnabled(false);
         
         permisoEscrituraL = new JLabel("Permisos escritura");
         
         permisoLectura = new JCheckBox();
+        permisoLectura.setEnabled(false);
         
         permisoLecturaL = new JLabel("Permisos de lectura");
         
@@ -84,6 +89,19 @@ public class MainFrame {
         center.add(permisoLecturaL);
         
         mainPanel.add(center, BorderLayout.CENTER);
+    }
+    
+    private JPanel south;
+    private JButton limpiar;
+    
+    private void initSouth(){
+        south = new JPanel();
+        
+        limpiar = new JButton("Limpiar Formulario");
+        
+        south.add(limpiar);
+        
+        mainPanel.add(south, BorderLayout.SOUTH);
     }
     
     public void showFrame(){
@@ -114,38 +132,58 @@ public class MainFrame {
 
     }
 
-    private JLabel esDirectorio;
-    private JLabel numeroArchivos;
+    private JLabel esResultado;
+    private JLabel esResultado2;
     
     public void crearEsDirectorio(Integer numeroArchivosIntroducido){
-        //FIXME Falta algo, para que no se cree mas de una vez cuando se pulse enter
+        if (esResultado != null){
+            limpiarFormulario();
+        }
         
-        esDirectorio = new JLabel("Es un Directorio");
         
-        numeroArchivos = new JLabel("Tiene " + numeroArchivosIntroducido + " archivos");
+        esResultado = new JLabel("Es un Directorio");
         
-        center.add(esDirectorio);
+        esResultado2 = new JLabel("Tiene " + numeroArchivosIntroducido + " archivos");
         
-        center.add(numeroArchivos);
+        center.add(esResultado);
+        
+        center.add(esResultado2);
         
         center.revalidate();
         
         center.repaint();
     }
     
-    private JLabel esFichero;
-    private JLabel espacio;
-    
     public void crearEsFichero(String espacioOcupado){
-        //FIXME Falta algo, para que no se cree mas de una vez cuando se pulse enter
+        if (esResultado != null){
+            limpiarFormulario();
+        }
         
-        esFichero = new JLabel("Es un FICHERO");
+        esResultado = new JLabel("Es un FICHERO");
         
-        espacio = new JLabel("Ocupa " + espacioOcupado + " bytes");
+        esResultado2 = new JLabel("Ocupa " + espacioOcupado + " bytes");
         
-        center.add(esFichero);
+        center.add(esResultado);
         
-        center.add(espacio);
+        center.add(esResultado2);
+        
+        center.revalidate();
+        
+        center.repaint();
+    }
+    
+    public void limpiarFormulario(){
+        cajaTexto.setText("");
+        
+        existeFichero.setSelected(false);
+        
+        permisoEscritura.setSelected(false);
+        
+        permisoLectura.setSelected(false);
+        
+        center.remove(esResultado);
+        
+        center.remove(esResultado2);
         
         center.revalidate();
         
@@ -168,8 +206,9 @@ public class MainFrame {
         return permisoLectura;
     }
 
-    
-    
+    public JButton getLimpiar() {
+        return limpiar;
+    }
     
     
 }
