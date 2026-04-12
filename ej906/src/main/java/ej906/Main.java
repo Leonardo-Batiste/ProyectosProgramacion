@@ -1,12 +1,10 @@
 package ej906;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import Controller.*;
 
 public class Main {
 
-   public static void main(String[] args) throws IOException {
-       
+   public static void main(String[] args) {
+       MainController mc = new MainController();
    }
 }
