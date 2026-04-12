@@ -50,9 +50,14 @@ public class MainController {
                 bos.write(puente, 0, bytesLeidos);
             }
             
-            JOptionPane.showMessageDialog(null, "Se ha completado la copia correctamente.");
-
             bis.close();
             bos.close();
+            
+            if (destino.exists()){
+                JOptionPane.showMessageDialog(null, "Se ha completado la copia correctamente.");
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "No se ha podido completado la copia correctamente.");
+            }
         }
 }
