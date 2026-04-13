@@ -35,29 +35,29 @@ public class MainController {
     }
     
     private void crearCopia() throws IOException {
-            File origen = new File(mf.getOrigen().getText());
-            FileInputStream fis = new FileInputStream(origen);
-            BufferedInputStream bis = new BufferedInputStream(fis);
+        File origen = new File(mf.getOrigen().getText());
+        FileInputStream fis = new FileInputStream(origen);
+        BufferedInputStream bis = new BufferedInputStream(fis);
 
-            File destino = new File(mf.getDestino().getText());
-            FileOutputStream fos = new FileOutputStream(destino);
-            BufferedOutputStream bos = new BufferedOutputStream(fos);
+        File destino = new File(mf.getDestino().getText());
+        FileOutputStream fos = new FileOutputStream(destino);
+        BufferedOutputStream bos = new BufferedOutputStream(fos);
 
-            byte[] puente = new byte[1024];
-            int bytesLeidos;
+        byte[] puente = new byte[1024];
+        int bytesLeidos;
 
-            while ((bytesLeidos = bis.read(puente)) != -1){
-                bos.write(puente, 0, bytesLeidos);
-            }
-            
-            bis.close();
-            bos.close();
-            
-            if (destino.exists()){
-                JOptionPane.showMessageDialog(null, "Se ha completado la copia correctamente.");
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "No se ha podido completado la copia correctamente.");
-            }
+        while ((bytesLeidos = bis.read(puente)) != -1){
+            bos.write(puente, 0, bytesLeidos);
         }
+            
+        bis.close();
+        bos.close();
+            
+        if (destino.exists()){
+            JOptionPane.showMessageDialog(null, "Se ha completado la copia correctamente.");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "No se ha podido completado la copia correctamente.");
+        }
+    }
 }
