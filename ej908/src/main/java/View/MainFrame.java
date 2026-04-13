@@ -86,6 +86,15 @@ public class MainFrame {
     public JButton getFin() {
         return fin;
     }
+
+    public JTextField getCantidad() {
+        return cantidad;
+    }
+
+    public JTextField getCodigo() {
+        return codigo;
+    }
+    
     
     
 }

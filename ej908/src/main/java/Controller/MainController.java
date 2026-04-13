@@ -23,6 +23,12 @@ public class MainController {
         mf.getServirMaterial().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
+                String codigoMaterialIntroducido = mf.getCodigo().getText();
+                boolean materialExiste = false;
+                
+                if (){
+                    
+                }
                 
             }
         });
