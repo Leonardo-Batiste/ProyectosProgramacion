@@ -29,6 +29,7 @@ public class Teoria13_04_2026 {
             fr.close();
             */
             
+            /*
             File fichero = new File("prueba.dat");
             FileOutputStream fos = new FileOutputStream(fichero);
             fos.write('c');
@@ -36,6 +37,24 @@ public class Teoria13_04_2026 {
             fos.close();
             FileInputStream fis = new FileInputStream(fichero);
             System.out.println((char)fis.read() + " " + fis.read() + " " + fis.read());
+            */
+            
+            File fichero = new File("prueba.dat");
+            FileOutputStream fos = new FileOutputStream(fichero);
+            DataOutputStream dos = new DataOutputStream(fos);
+            dos.write(345634324);
+            dos.writeLong(23423874892374l);
+            dos.writeDouble(5.5);
+            dos.writeUTF("Hola");
+            dos.writeBoolean(true);
+            dos.close();
+            fos.close();
+            FileInputStream fis = new FileInputStream(fichero);
+            DataInputStream dis = new DataInputStream(fis);
+            System.out.println(dis.readInt() + " " + dis.readLong() + " " + dis.readUTF() + " " + dis.readBoolean());
+            dis.close();
+            fis.close();
+            
         }
         catch (IOException e){
             e.getMessage();
