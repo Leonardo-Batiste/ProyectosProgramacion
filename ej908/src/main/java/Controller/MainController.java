@@ -1,8 +1,6 @@
 package Controller;
 import View.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.awt.event.*;
 import javax.swing.JOptionPane;
 public class MainController {
     public MainController(){
@@ -22,10 +20,20 @@ public class MainController {
     }
     
     private void crearListenersServirMaterial(){
-        
+        mf.getServirMaterial().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                
+            }
+        });
     }
     
     private void crearListenersFin(){
-        
+        mf.getFin().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                System.exit(0);
+            }
+        });
     }
 }
