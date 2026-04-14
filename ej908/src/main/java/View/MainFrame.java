@@ -2,6 +2,7 @@ package View;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.WindowAdapter;
 import javax.swing.*;
 
 public class MainFrame {
@@ -22,7 +23,7 @@ public class MainFrame {
         
         mainFrame.add(mainPanel);
         mainFrame.pack();
-        mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        mainFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         mainFrame.setLocationRelativeTo(null);
     }
     
@@ -100,6 +101,10 @@ public class MainFrame {
 
     public JButton getListar() {
         return listar;
+    }
+
+    public JFrame getMainFrame() {
+        return mainFrame;
     }
     
     

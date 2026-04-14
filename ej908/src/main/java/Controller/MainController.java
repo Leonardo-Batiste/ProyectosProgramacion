@@ -16,6 +16,8 @@ public class MainController {
         
         crearMapaInventarioDat();
         
+        guardarInventario();
+        
         crearListenersListar();
         
         crearListenersServirMaterial();
@@ -34,12 +36,13 @@ public class MainController {
             FileInputStream fis = new FileInputStream(fichero);
             DataInputStream dis = new DataInputStream(fis);
             
+            
             while (dis.available() > 0){
-                inventario.put(dis.readUTF(), dis.readInt()); // FIXME
+                inventario.put(dis.readUTF(), dis.readInt());
             }
         }
         catch (IOException e){
-            System.out.println("Error crearMapaInventarioDat()");
+            e.getMessage();
         }
         
     }
@@ -49,7 +52,7 @@ public class MainController {
             @Override
             public void actionPerformed(ActionEvent e){
                 for (Map.Entry<String, Integer> listado : inventario.entrySet()){
-                    JOptionPane.showMessageDialog(null, listado);
+                    System.out.println(listado);
                 }
                 
             }
@@ -79,6 +82,33 @@ public class MainController {
                 
                 inventario.replace(codigoIntroducido, stockDisponible);
                 
+                JOptionPane.showMessageDialog(null, "Se ha restado " + stockIntroducido + " del stock total, ahora quedan: " + stockDisponible);
+            }
+        });
+    }
+    
+    private void actualizarInventarioDat(){
+        try{
+            File fichero = new File("inventario.dat");
+            FileOutputStream fos = new FileOutputStream(fichero);
+            DataOutputStream dos = new DataOutputStream(fos);
+            for (Map.Entry<String, Integer> listado : inventario.entrySet()){
+                dos.writeUTF(listado.getKey());
+                dos.writeInt(listado.getValue());
+            }
+            dos.close();
+            System.exit(0);  
+        }
+        catch (IOException excep){
+            JOptionPane.showMessageDialog(null, excep.getMessage());
+        }
+    }
+    
+    private void guardarInventario(){
+        mf.getMainFrame().addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e){
+                actualizarInventarioDat();
             }
         });
     }
@@ -87,7 +117,7 @@ public class MainController {
         mf.getFin().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                System.exit(0);
+                actualizarInventarioDat();
             }
         });
     }
