@@ -59,14 +59,17 @@ public class MainFrame {
     
     private JPanel south;
     private JButton servirMaterial;
+    private JButton listar;
     private JButton fin;
     
     private void initSouth(){
         south = new JPanel();
         servirMaterial = new JButton("SERVIR MATERIAL");
+        listar = new JButton("LISTAR INVENTARIO");
         fin = new JButton("FIN");
         
         south.add(servirMaterial);
+        south.add(listar);
         south.add(fin);
         mainPanel.add(south, BorderLayout.SOUTH);
     }
@@ -93,6 +96,10 @@ public class MainFrame {
 
     public JTextField getCodigo() {
         return codigo;
+    }
+
+    public JButton getListar() {
+        return listar;
     }
     
     

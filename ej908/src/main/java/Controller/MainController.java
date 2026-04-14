@@ -1,6 +1,7 @@
 package Controller;
 import View.*;
 import java.awt.event.*;
+import java.io.*;
 import java.util.*;
 import javax.swing.JOptionPane;
 public class MainController {
@@ -13,6 +14,10 @@ public class MainController {
     private void start(){
         mf = new MainFrame();
         
+        crearMapaInventarioDat();
+        
+        crearListenersListar();
+        
         crearListenersServirMaterial();
         
         crearListenersFin();
@@ -20,7 +25,36 @@ public class MainController {
         mf.showFrame();
     }
     
-    Map<String, Integer> inventario = new HashMap<>();
+    Map<String, Integer> inventario;
+    
+    private void crearMapaInventarioDat(){
+        try {
+            inventario = new HashMap<>();
+            File fichero = new File("inventario.dat");
+            FileInputStream fis = new FileInputStream(fichero);
+            DataInputStream dis = new DataInputStream(fis);
+            
+            while (dis.available() > 0){
+                inventario.put(dis.readUTF(), dis.readInt()); // FIXME
+            }
+        }
+        catch (IOException e){
+            System.out.println("Error crearMapaInventarioDat()");
+        }
+        
+    }
+    
+    private void crearListenersListar(){
+        mf.getListar().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                for (Map.Entry<String, Integer> listado : inventario.entrySet()){
+                    JOptionPane.showMessageDialog(null, listado);
+                }
+                
+            }
+        });
+    }
     
     private void crearListenersServirMaterial(){
         mf.getServirMaterial().addActionListener(new ActionListener() {
