@@ -3,24 +3,28 @@ package View;
 import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 public class MainFrame {
     public MainFrame(){
         initComponents();
     }
 
-    private JFrame mainFrame;
-    private JPanel mainPanel;
+    private JFrame mf;
+    private JPanel mp;
     
     private void initComponents(){
-        mainFrame = new JFrame("Main Frame");
-        mainPanel = new JPanel(new BorderLayout());
+        mf = new JFrame("Main Frame");
+        mp = new JPanel(new BorderLayout());
         initNorth();
         initCenter();
         initSouth();
-        mainFrame.add(mainPanel);
-        mainFrame.pack();
-        mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        mf.add(mp);
+        mf.pack();
+        mf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
     private JPanel north;
@@ -29,17 +33,51 @@ public class MainFrame {
     private void initNorth(){
         north = new JPanel(new FlowLayout());
         header = new JLabel("SUBASTAS");
-        header.add(north);
-        mainPanel.add(north);
+        north.add(header, BorderLayout.NORTH);
+        mp.add(north);
     }
 
     private JPanel center;
-    //TODO Poner la tabla aqui
-
     private void initCenter(){
         center = new JPanel(new FlowLayout());
-
-        mainPanel.add(center);
+        crearTabla();
+        mp.add(center, BorderLayout.CENTER);
+    }
+    
+    private void crearTabla(){
+        try {
+            Object[][] datos = añadirDatos();
+            String[] nombreColumnas = añadirNombresColumnas();
+            //FIXME tabla no se añade a ningun panel?
+            
+            JTable tabla = new JTable(datos, nombreColumnas);
+            
+            //TODO Falta tambine un DefaultTableModel??
+            JScrollPane scroll = new JScrollPane(tabla);
+            mp.add(scroll);
+        }
+        catch (IOException exc){
+            exc.getMessage();
+        }
+    }
+    
+    private Object[][] añadirDatos() throws IOException {
+            File fichero = new File("C:\\Users\\AluDAM\\Documents\\ProyectosProgramacion\\ej911\\Subastas");
+            FileInputStream fis = new FileInputStream(fichero);
+            DataInputStream dis = new DataInputStream(fis);
+            Object[][] vector = {
+                {dis.readByte(), ""},
+                {dis.readByte(), ""},
+                {dis.readByte(), ""},
+                {dis.readByte(), ""}
+            };   
+            return vector;
+    }
+    
+    private String[] añadirNombresColumnas(){
+        String[] nombresColumnas = new String[1];
+        nombresColumnas[0] = "Listado de ficheros";
+        return nombresColumnas;
     }
 
     private JPanel south;
@@ -55,15 +93,15 @@ public class MainFrame {
         south.add(subasta);
         south.add(verContenido);
         south.add(salir);
-        mainPanel.add(south);
+        mp.add(south, BorderLayout.SOUTH);
     }
 
     public void showFrame(){
-        mainFrame.setVisible(true);
+        mf.setVisible(true);
     }
 
     public void hideFrame(){
-        mainFrame.setVisible(false);
+        mf.setVisible(false);
     }
 
     public JButton getSubasta() {

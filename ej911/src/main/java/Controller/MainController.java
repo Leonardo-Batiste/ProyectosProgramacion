@@ -9,5 +9,6 @@ public class MainController {
 
     private void start(){
         mf = new MainFrame();
+        mf.showFrame();
     }
 }
