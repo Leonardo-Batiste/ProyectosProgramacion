@@ -1,12 +1,9 @@
 package View;
 
 import javax.swing.*;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.awt.*;
+import java.io.*;
+import javax.swing.table.*;
 
 public class MainFrame {
     public MainFrame(){
@@ -33,8 +30,8 @@ public class MainFrame {
     private void initNorth(){
         north = new JPanel(new FlowLayout());
         header = new JLabel("SUBASTAS");
-        north.add(header, BorderLayout.NORTH);
-        mp.add(north);
+        north.add(header);
+        mp.add(north, BorderLayout.NORTH);
     }
 
     private JPanel center;
@@ -44,40 +41,38 @@ public class MainFrame {
         mp.add(center, BorderLayout.CENTER);
     }
     
+    //https://hyperskill.org/learn/step/12402
     private void crearTabla(){
-        try {
-            Object[][] datos = añadirDatos();
-            String[] nombreColumnas = añadirNombresColumnas();
-            //FIXME tabla no se añade a ningun panel?
-            
-            JTable tabla = new JTable(datos, nombreColumnas);
-            
-            //TODO Falta tambine un DefaultTableModel??
-            JScrollPane scroll = new JScrollPane(tabla);
-            mp.add(scroll);
+        try{
+            Object[] columnas = crearColumnas();
+            Object[][] filas = crearFilas();
+            DefaultTableModel dm = new DefaultTableModel();
+            //Añadir columnas
+            dm.setColumnIdentifiers(columnas);
+            //Añadir filas
+            for (Object[] datosFilas : filas){
+                dm.addRow(datosFilas);
+            }
         }
-        catch (IOException exc){
-            exc.getMessage();
+        catch (IOException excep){
+            excep.getMessage();
         }
+        
     }
     
-    private Object[][] añadirDatos() throws IOException {
-            File fichero = new File("C:\\Users\\AluDAM\\Documents\\ProyectosProgramacion\\ej911\\Subastas");
-            FileInputStream fis = new FileInputStream(fichero);
-            DataInputStream dis = new DataInputStream(fis);
-            Object[][] vector = {
-                {dis.readByte(), ""},
-                {dis.readByte(), ""},
-                {dis.readByte(), ""},
-                {dis.readByte(), ""}
-            };   
-            return vector;
+    private Object[] crearColumnas(){
+        Object[] columnas = new Object[]{"Hola"};
+        return columnas;
     }
     
-    private String[] añadirNombresColumnas(){
-        String[] nombresColumnas = new String[1];
-        nombresColumnas[0] = "Listado de ficheros";
-        return nombresColumnas;
+    private Object[][] crearFilas() throws IOException {
+        Object[][] filas;
+        File fichero = new File("C:\\Users\\AluDAM\\Documents\\ProyectosProgramacion\\ej911\\Subastas");
+        FileInputStream fis = new FileInputStream(fichero);
+        DataInputStream dis = new DataInputStream(fis);
+        //TODO return todo lo de dentro de subastas
+        
+        return filas;
     }
 
     private JPanel south;
