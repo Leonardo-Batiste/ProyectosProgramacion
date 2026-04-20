@@ -53,6 +53,10 @@ public class MainFrame {
             for (Object[] datosFilas : filas){
                 dm.addRow(datosFilas);
             }
+            JTable tabla = new JTable(dm);
+            JScrollPane sp = new JScrollPane(tabla);
+            tabla.add(sp); //FIXME A lo mejor no es tabla, sino mf
+            tabla.setVisible(true);
         }
         catch (IOException excep){
             excep.getMessage();
