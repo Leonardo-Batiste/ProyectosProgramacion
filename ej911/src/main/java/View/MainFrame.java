@@ -42,20 +42,23 @@ public class MainFrame {
     }
     
     //https://hyperskill.org/learn/step/12402
+    
+    DefaultTableModel dm;
     private void crearTabla(){
         try{
-            Object[] columnas = crearColumnas();
-            Object[][] filas = crearFilas();
-            DefaultTableModel dm = new DefaultTableModel();
+            dm = new DefaultTableModel();
+            
             //Añadir columnas
+            Object[] columnas = crearColumnas();
             dm.setColumnIdentifiers(columnas);
+            
             //Añadir filas
-            for (Object[] datosFilas : filas){
-                dm.addRow(datosFilas);
-            }
+            crearFilas();
+            
             JTable tabla = new JTable(dm);
+            center.add(tabla);
             JScrollPane sp = new JScrollPane(tabla);
-            tabla.add(sp); //FIXME A lo mejor no es tabla, sino mf
+            center.add(sp);
             tabla.setVisible(true);
         }
         catch (IOException excep){
@@ -65,18 +68,22 @@ public class MainFrame {
     }
     
     private Object[] crearColumnas(){
-        Object[] columnas = new Object[]{"Hola"};
+        Object[] columnas = new Object[]{"Listado de Ficheros"};
         return columnas;
     }
     
-    private Object[][] crearFilas() throws IOException {
-        Object[][] filas;
-        File fichero = new File("C:\\Users\\AluDAM\\Documents\\ProyectosProgramacion\\ej911\\Subastas");
-        FileInputStream fis = new FileInputStream(fichero);
-        DataInputStream dis = new DataInputStream(fis);
-        //TODO return todo lo de dentro de subastas
+    private void crearFilas() throws IOException {
+        File directorio = new File("C:\\Users\\AluDAM\\Documents\\ProyectosProgramacion\\ej911\\Subastas");
+        File[] listado = directorio.listFiles();
+        Object[][] filas = new Object[listado.length][1];
         
-        return filas;
+        for (int i=0;i<listado.length;i++){
+            filas[i][0] = listado[i];
+        }
+        
+        for (Object[] array : filas){
+            dm.addRow(array);
+        }
     }
 
     private JPanel south;
