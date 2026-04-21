@@ -1,8 +1,8 @@
-package Main;
+package App;
 
 import Controller.*;
 
-public class Ej911 {
+public class Main {
 
     public static void main(String[] args) {
         MainController mc = new MainController();

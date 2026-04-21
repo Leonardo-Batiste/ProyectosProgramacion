@@ -44,6 +44,7 @@ public class MainFrame {
     //https://hyperskill.org/learn/step/12402
     
     DefaultTableModel dm;
+    JTable tabla;
     private void crearTabla(){
         try{
             dm = new DefaultTableModel();
@@ -55,7 +56,7 @@ public class MainFrame {
             //Añadir filas
             crearFilas();
             
-            JTable tabla = new JTable(dm);
+            tabla = new JTable(dm);
             center.add(tabla);
             JScrollPane sp = new JScrollPane(tabla);
             center.add(sp);
@@ -75,14 +76,8 @@ public class MainFrame {
     private void crearFilas() throws IOException {
         File directorio = new File("C:\\Users\\AluDAM\\Documents\\ProyectosProgramacion\\ej911\\Subastas");
         File[] listado = directorio.listFiles();
-        Object[][] filas = new Object[listado.length][1];
-        
         for (int i=0;i<listado.length;i++){
-            filas[i][0] = listado[i];
-        }
-        
-        for (Object[] array : filas){
-            dm.addRow(array);
+            dm.addRow(new Object[] {listado[i]});
         }
     }
 
@@ -121,5 +116,15 @@ public class MainFrame {
     public JButton getSalir() {
         return salir;
     }
+
+    public JTable getTabla() {
+        return tabla;
+    }
+
+    public DefaultTableModel getDm() {
+        return dm;
+    }
+    
+    
     
 }
