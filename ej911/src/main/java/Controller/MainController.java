@@ -2,6 +2,8 @@ package Controller;
 import View.*;
 import java.awt.event.*;
 import java.io.*;
+import java.util.*;
+
 import javax.swing.*;
 public class MainController {
     public MainController(){
@@ -46,16 +48,32 @@ public class MainController {
                 int columnaSeleccionada = mf.getTabla().getSelectedColumn();
                 
                 File fichero = new File(mf.getDm().getValueAt(filaSeleccionada, columnaSeleccionada) + "");
-                FileReader fr = new FileReader(fichero);
-                BufferedReader br = new BufferedReader(fr);
-                
-                String linea = "";
-                while ((linea = br.readLine()) != null){
-                    JOptionPane.showMessageDialog(null, linea);
+                FileInputStream fis = new FileInputStream(fichero);
+                DataInputStream dis = new DataInputStream(fis);
+
+                HashMap<String, String> listaPescados = new LinkedHashMap<>();
+                try{
+                    while (true){
+                        listaPescados.put(dis.readUTF(), (dis.readInt() + "kg") );
+                    }
                 }
+                catch (IOException excep){
+                    
+                }
+                
+                String imprimirPescados = "";
+                for (Map.Entry<String, String> indice : listaPescados.entrySet()){
+                    imprimirPescados = imprimirPescados + indice + "\n";
+                }
+
+                JOptionPane.showMessageDialog(null, imprimirPescados);
+                dis.close();
             }
             catch (IOException excep) {
-                excep.getMessage();
+
+            }
+            finally {
+                //Aqui iria cerrar el datainputstream, pero si pongo dis.close(); no va, tengo que poner otro try catch?
             }
         }
     }

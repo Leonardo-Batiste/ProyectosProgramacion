@@ -74,7 +74,7 @@ public class MainFrame {
     }
     
     private void crearFilas() throws IOException {
-        File directorio = new File("C:\\Users\\AluDAM\\Documents\\ProyectosProgramacion\\ej911\\Subastas");
+        File directorio = new File("F:\\ProyectosProgramacion\\ej911\\Subastas");
         File[] listado = directorio.listFiles();
         for (int i=0;i<listado.length;i++){
             dm.addRow(new Object[] {listado[i]});
