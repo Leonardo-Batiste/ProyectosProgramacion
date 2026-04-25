@@ -125,6 +125,12 @@ public class MainFrame {
         return dm;
     }
     
+    public File[] getFiles(){
+        File directorio = new File("F:\\ProyectosProgramacion\\ej911\\Subastas");
+        File[] listaFicheros;
+        listaFicheros = directorio.listFiles();
+        return listaFicheros;
+    }
     
     
 }
